@@ -20,13 +20,13 @@ public struct RepositoryAffiliation: OptionSet {
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }
-    
-    static let owner = RepositoryAffiliation(rawValue: 1 << 0)
-    static let collaborator = RepositoryAffiliation(rawValue: 1 << 1)
-    static let organizationMember = RepositoryAffiliation(rawValue: 1 << 2)
-    static let `default`: RepositoryAffiliation = [.owner, .collaborator, .organizationMember]
 
-    var stringValue: String {
+    public static let owner = RepositoryAffiliation(rawValue: 1 << 0)
+    public static let collaborator = RepositoryAffiliation(rawValue: 1 << 1)
+    public static let organizationMember = RepositoryAffiliation(rawValue: 1 << 2)
+    public static let `default`: RepositoryAffiliation = [.owner, .collaborator, .organizationMember]
+
+    public var stringValue: String {
         var str = ""
         if self.contains(.owner) {
             str += "owner"
@@ -64,32 +64,32 @@ public enum RepositoryDirection: String {
 }
 
 public struct Repository: Codable {
-    let keysUrl: String
-    let statusesUrl: String
-    let issuesUrl: String
-    let defaultBranch: String
-    let issueEventsUrl: String
-    let hasProjects: Bool
-    let id: Int
-    let score: Double?
-    struct Owner: Codable {
-        let id: Int
-        let organizationsUrl: URL
-        let receivedEventsUrl: URL
-        let followingUrl: String
-        let login: String
-        let avatarUrl: URL
-        let url: URL
-        let subscriptionsUrl: URL
-        let type: String
-        let reposUrl: URL
-        let htmlUrl: URL
-        let eventsUrl: String
-        let siteAdmin: Bool
-        let starredUrl: String
-        let gistsUrl: String
-        let gravatarId: String
-        let followersUrl: URL
+    public let keysUrl: String
+    public let statusesUrl: String
+    public let issuesUrl: String
+    public let defaultBranch: String
+    public let issueEventsUrl: String
+    public let hasProjects: Bool
+    public let id: Int
+    public let score: Double?
+    public struct Owner: Codable {
+        public let id: Int
+        public let organizationsUrl: URL
+        public let receivedEventsUrl: URL
+        public let followingUrl: String
+        public let login: String
+        public let avatarUrl: URL
+        public let url: URL
+        public let subscriptionsUrl: URL
+        public let type: String
+        public let reposUrl: URL
+        public let htmlUrl: URL
+        public let eventsUrl: String
+        public let siteAdmin: Bool
+        public let starredUrl: String
+        public let gistsUrl: String
+        public let gravatarId: String
+        public let followersUrl: URL
         private enum CodingKeys: String, CodingKey {
             case id
             case organizationsUrl = "organizations_url"
@@ -110,74 +110,74 @@ public struct Repository: Codable {
             case followersUrl = "followers_url"
         }
     }
-    let owner: Owner
-    let eventsUrl: URL
-    let subscriptionUrl: URL
-    let watchers: Int
-    let gitCommitsUrl: String
-    let subscribersUrl: URL
-    let cloneUrl: URL
-    let hasWiki: Bool
-    let url: URL
-    let pullsUrl: String
-    let fork: Bool
-    let notificationsUrl: String
-    let description: String?
-    let collaboratorsUrl: String
-    let deploymentsUrl: URL
-    let languagesUrl: URL
-    let hasIssues: Bool
-    let commentsUrl: String
-    let `private`: Bool
-    let size: Int
-    let gitTagsUrl: String
-    let updatedAt: String
-    let sshUrl: String
-    let name: String
-    let contentsUrl: String
-    let archiveUrl: String
-    let milestonesUrl: String
-    let blobsUrl: String
-    let contributorsUrl: URL
-    let openIssuesCount: Int
-    struct Permissions: Codable {
-        let admin: Bool
-        let push: Bool
-        let pull: Bool
+    public let owner: Owner
+    public let eventsUrl: URL
+    public let subscriptionUrl: URL
+    public let watchers: Int
+    public let gitCommitsUrl: String
+    public let subscribersUrl: URL
+    public let cloneUrl: URL
+    public let hasWiki: Bool
+    public let url: URL
+    public let pullsUrl: String
+    public let fork: Bool
+    public let notificationsUrl: String
+    public let description: String?
+    public let collaboratorsUrl: String
+    public let deploymentsUrl: URL
+    public let languagesUrl: URL
+    public let hasIssues: Bool
+    public let commentsUrl: String
+    public let `private`: Bool
+    public let size: Int
+    public let gitTagsUrl: String
+    public let updatedAt: String
+    public let sshUrl: String
+    public let name: String
+    public let contentsUrl: String
+    public let archiveUrl: String
+    public let milestonesUrl: String
+    public let blobsUrl: String
+    public let contributorsUrl: URL
+    public let openIssuesCount: Int
+    public struct Permissions: Codable {
+        public let admin: Bool
+        public let push: Bool
+        public let pull: Bool
     }
-    let permissions: Permissions
-    let forksCount: Int
-    let treesUrl: String
-    let svnUrl: URL
-    let commitsUrl: String
-    let createdAt: String
-    let forksUrl: URL
-    let hasDownloads: Bool
-    let mirrorUrl: URL?
-    let homepage: String?
-    let teamsUrl: URL
-    let branchesUrl: String
-    let issueCommentUrl: String
-    let mergesUrl: URL
-    let gitRefsUrl: String
-    let gitUrl: URL
-    let forks: Int
-    let openIssues: Int
-    let hooksUrl: URL
-    let htmlUrl: URL
-    let stargazersUrl: URL
-    let assigneesUrl: String
-    let compareUrl: String
-    let fullName: String
-    let tagsUrl: URL
-    let releasesUrl: String
-    let pushedAt: String
-    let labelsUrl: String
-    let downloadsUrl: URL
-    let stargazersCount: Int
-    let watchersCount: Int
-    let language: String?
-    let hasPages: Bool
+    public let permissions: Permissions?
+    public let forksCount: Int
+    public let treesUrl: String
+    public let svnUrl: URL
+    public let commitsUrl: String
+    public let createdAt: String
+    public let forksUrl: URL
+    public let hasDownloads: Bool
+    public let mirrorUrl: URL?
+    public let homepage: String?
+    public let teamsUrl: URL
+    public let branchesUrl: String
+    public let issueCommentUrl: String
+    public let mergesUrl: URL
+    public let gitRefsUrl: String
+    public let gitUrl: URL
+    public let forks: Int
+    public let openIssues: Int
+    public let hooksUrl: URL
+    public let htmlUrl: URL
+    public let stargazersUrl: URL
+    public let assigneesUrl: String
+    public let compareUrl: String
+    public let fullName: String
+    public let tagsUrl: URL
+    public let releasesUrl: String
+    public let pushedAt: String
+    public let labelsUrl: String
+    public let downloadsUrl: URL
+    public let stargazersCount: Int
+    public let watchersCount: Int
+    public let language: String?
+    public let hasPages: Bool
     private enum CodingKeys: String, CodingKey {
         case keysUrl = "keys_url"
         case statusesUrl = "statuses_url"
@@ -254,9 +254,9 @@ public struct Repository: Codable {
 }
 
 public struct SearchRepositoryResult: Codable {
-    let totalCount: Int
-    let incompleteResults: Bool
-    let items: [Repository]
+    public let totalCount: Int
+    public let incompleteResults: Bool
+    public let items: [Repository]
     private enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
         case incompleteResults = "incomplete_results"

@@ -1,0 +1,57 @@
+PODS:
+  - DynamicColor (3.3)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - GitHubClient (0.1.0)
+  - MBProgressHUD (1.0.0)
+  - Nimble (7.0.2)
+  - Nimble-Snapshots (6.3.0):
+    - Nimble-Snapshots/Core (= 6.3.0)
+  - Nimble-Snapshots/Core (6.3.0):
+    - FBSnapshotTestCase (~> 2.0)
+    - Nimble (~> 7.0)
+  - Quick (1.2.0)
+  - SideMenu (3.1.1)
+  - SnapKit (4.0.0)
+  - SwiftyBeaver (1.4.2)
+  - SwiftyImage (1.2.0)
+  - UITableView+FDTemplateLayoutCell (1.6)
+
+DEPENDENCIES:
+  - DynamicColor
+  - FBSnapshotTestCase (~> 2.1.4)
+  - GitHubClient (from `../`)
+  - MBProgressHUD
+  - Nimble (~> 7.0.2)
+  - Nimble-Snapshots (~> 6.3.0)
+  - Quick (~> 1.2.0)
+  - SideMenu
+  - SnapKit
+  - SwiftyBeaver
+  - SwiftyImage
+  - UITableView+FDTemplateLayoutCell
+
+EXTERNAL SOURCES:
+  GitHubClient:
+    :path: ../
+
+SPEC CHECKSUMS:
+  DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  GitHubClient: 9adeb35340ab0e85a35fc4801a60f5a2d20dce31
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SideMenu: 1bf32e90afaa2dc0e0ab68e938a0ff85014c4217
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyBeaver: 91057725648ee4980308f1650af077d04b3654a0
+  SwiftyImage: ebaa7c7b6163cd4ad102f3bb05a8fb276d35b4f3
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+
+PODFILE CHECKSUM: 0e34bda34a61aaad3c27d378ea1ad409d2d8b26d
+
+COCOAPODS: 1.4.0.beta.1

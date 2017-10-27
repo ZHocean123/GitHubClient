@@ -12,6 +12,11 @@ public struct Pagination {
     public var page: Int = 1
     public var perPage: Int = 30
 
+    public init(page: Int = 1, perPage: Int = 30) {
+        self.page = page
+        self.perPage = perPage
+    }
+
     public var param: [String: Any] {
         return ["page": page, "per_page": perPage]
     }

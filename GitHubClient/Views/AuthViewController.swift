@@ -23,6 +23,8 @@ class AuthViewController: UIViewController {
     private var progressView: UIProgressView!
     private var webViewObservation: NSKeyValueObservation!
     private var state = ""
+    private let urlSession = URLSession(configuration: .default)
+    private var task: URLSessionDataTask?
 
     // MARK - Initializers
     init(client: GithubClient, success: SuccessHandler?, failure: FailureHandler?) {
@@ -51,6 +53,14 @@ class AuthViewController: UIViewController {
         loadAuthorizationURL(webView: webView)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        progressView.removeFromSuperview()
+
+        webViewObservation.invalidate()
+    }
+
     private func setupProgressView() {
         let navBar = navigationController!.navigationBar
         progressView = UIProgressView(progressViewStyle: .bar)
@@ -60,9 +70,9 @@ class AuthViewController: UIViewController {
         navBar.addSubview(progressView)
 
         if #available(iOS 9.0, *) {
-            let bottomConstraint = navBar.bottomAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 1)
-            let leftConstraint = navBar.leadingAnchor.constraint(equalTo: progressView.leadingAnchor)
-            let rightConstraint = navBar.trailingAnchor.constraint(equalTo: progressView.trailingAnchor)
+            let bottomConstraint = progressView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -1)
+            let leftConstraint = progressView.leadingAnchor.constraint(equalTo: navBar.leadingAnchor)
+            let rightConstraint = progressView.trailingAnchor.constraint(equalTo: navBar.trailingAnchor)
             NSLayoutConstraint.activate([bottomConstraint, leftConstraint, rightConstraint])
         } else {
             // Fallback on earlier versions
@@ -138,27 +148,27 @@ extension AuthViewController: WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        guard let url = navigationAction.request.url else {
-            return
-        }
-        print("action url:" + (url.absoluteString))
-        if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-            components.path == "/github_callbak" {
+        if let url = navigationAction.request.url,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let redirectComponents = URLComponents(url: URL(string: client.redirectURL ?? "")!, resolvingAgainstBaseURL: false),
+            components.path == redirectComponents.path {
+            decisionHandler(.cancel)
             var code: String
             for queryItem in components.queryItems ?? [] where queryItem.name == "code" {
                 if let value = queryItem.value {
                     code = value
                     print("code:" + code)
-                    getAccessToken(String(code))
+                    DispatchQueue.main.async { [weak self] in
+                        self?.getAccessToken(String(code))
+                    }
                 } else {
                     print("emptyCode")
                 }
                 break
             }
-            return
+        } else {
+            decisionHandler(.allow)
         }
-
-        decisionHandler(.allow)
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -167,44 +177,57 @@ extension AuthViewController: WKNavigationDelegate {
             case 400:
                 decisionHandler(.cancel)
                 DispatchQueue.main.async {
-                    self.failure?(GithubError())
+                    self.failure?(GithubError(kind: .invalidRequest, message: "Invalid request"))
                 }
             default:
-                break
+                decisionHandler(.allow)
             }
+        } else {
+            decisionHandler(.allow)
         }
-        decisionHandler(.allow)
     }
 }
 
 extension AuthViewController {
     private func getAccessToken(_ code: String) {
-//        disposeBag = DisposeBag()
-//        GithubAuthPrvider.rx.request(.oAuth(client_id: clientId, client_secret: client_secret, code: code)).mapString().subscribe { [weak self] (event) in
-//            switch event {
-//            case .success(let str):
-//                var params = [String: String]()
-//                let valueStrs = str.split(separator: "&")
-//                for valueStr in valueStrs {
-//                    let array = valueStr.split(separator: "=")
-//                    let key = array.count > 0 ? String(array[0]) : ""
-//                    let value = array.count > 1 ? String(array[1]) : ""
-//                    params[key] = value
-//                }
-//                print(params)
-//                if let accessToken = params["access_token"] {
-//                    if let strongSelf = self, !strongSelf.keychain.set(accessToken, forKey: "accessToken") {
-//
-//                    } else {
-//                        self?.dismiss(animated: true, completion: {
-//
-//                        })
-//                    }
-//                    Defaults.shared.set(accessToken, for: accessTokenKey)
-//                }
-//            case .error(let error):
-//                print(error)
-//            }
-//        }.disposed(by: disposeBag)
+
+        var urlRequest = URLRequest(url: URL(string: "https://github.com/login/oauth/access_token")!)
+        urlRequest.httpMethod = "POST"
+        let params = [
+            "client_id": client.clientId ?? "",
+            "client_secret": Github.clientSecret,
+            "code": code
+        ]
+        let paramStr = params.map { "\($0.key)=\($0.value)" }.joined(separator: "&")
+        urlRequest.httpBody = paramStr.data(using: .utf8)
+        urlRequest.httpShouldHandleCookies = true
+        var allHTTPHeaderFields = urlRequest.allHTTPHeaderFields ?? [String: String]()
+        allHTTPHeaderFields["Content-Type"] = "application/x-www-form-urlencoded; charset=utf-8"
+        urlRequest.allHTTPHeaderFields = allHTTPHeaderFields
+        task = urlSession.dataTask(with: urlRequest) { [weak self] (data, respones, error) in
+            if let error = error {
+                self?.failure?(GithubError(kind: .invalidRequest, message: error.localizedDescription))
+            }
+            if let data = data, let str = String(data: data, encoding: .utf8) {
+                DispatchQueue.global(qos: .utility).async {
+                    var params = [String: String]()
+                    let valueStrs = str.split(separator: "&")
+                    for valueStr in valueStrs {
+                        let array = valueStr.split(separator: "=")
+                        let key = array.count > 0 ? String(array[0]) : ""
+                        let value = array.count > 1 ? String(array[1]) : ""
+                        params[key] = value
+                    }
+                    if let accessToken = params["access_token"] {
+                        DispatchQueue.main.async {
+                            self?.success?(accessToken)
+                        }
+                        return
+                    }
+                }
+            }
+            self?.failure?(GithubError(kind: .jsonParseError, message: "response"))
+        }
+        task?.resume()
     }
 }
