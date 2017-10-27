@@ -35,5 +35,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
+	<key>GithubClientId</key>
+	<string>563c1feaccf901f7741f</string>
+	<key>GithubRedirectURL</key>
+	<string>https://localhost/github_callback</string>
 </dict>
 </plist>

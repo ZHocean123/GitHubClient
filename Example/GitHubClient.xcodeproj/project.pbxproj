@@ -13,6 +13,8 @@
 		2FA352291FA1C8C800D87553 /* RepositorySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA352251FA1C8C800D87553 /* RepositorySearchViewController.swift */; };
 		2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3522A1FA1C8D200D87553 /* AppDelegate.swift */; };
 		2FA3522D1FA1C8E000D87553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA3522C1FA1C8E000D87553 /* Main.storyboard */; };
+		2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3525A1FA1CA5F00D87553 /* DateString.swift */; };
+		2FA3525D1FA1CB0500D87553 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3525C1FA1CB0500D87553 /* HUD.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
@@ -38,6 +40,8 @@
 		2FA352251FA1C8C800D87553 /* RepositorySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewController.swift; sourceTree = "<group>"; };
 		2FA3522A1FA1C8D200D87553 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FA3522C1FA1C8E000D87553 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2FA3525A1FA1CA5F00D87553 /* DateString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateString.swift; sourceTree = "<group>"; };
+		2FA3525C1FA1CB0500D87553 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		4582893BE03D6C68A98EDA11 /* Pods-GitHubClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient_Tests/Pods-GitHubClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		51E3C22D1E017EADDC38C36C /* Pods-GitHubClient_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient_Example/Pods-GitHubClient_Example.release.xcconfig"; sourceTree = "<group>"; };
 		54E0F7678E55F191F64F1B2A /* Pods-GitHubClient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient_Example/Pods-GitHubClient_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		607FACD21AFB9204008FA782 /* Example for GitHubClient */ = {
 			isa = PBXGroup;
 			children = (
+				2FA3525C1FA1CB0500D87553 /* HUD.swift */,
+				2FA3525A1FA1CA5F00D87553 /* DateString.swift */,
 				2FA3522A1FA1C8D200D87553 /* AppDelegate.swift */,
 				2FA352241FA1C8C800D87553 /* RepositoryCell.swift */,
 				2FA352221FA1C8C800D87553 /* RepositoryCell.xib */,
@@ -340,12 +346,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubClient_Example/Pods-GitHubClient_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubClient/GitHubClient.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyImage/SwiftyImage.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +412,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
+				2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */,
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,
+				2FA3525D1FA1CB0500D87553 /* HUD.swift in Sources */,
 				2FA352281FA1C8C800D87553 /* RepositoryCell.swift in Sources */,
 				2FA352291FA1C8C800D87553 /* RepositorySearchViewController.swift in Sources */,
 			);

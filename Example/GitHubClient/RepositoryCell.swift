@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DynamicColor
+import GitHubClient
 
 class RepositoryCell: UITableViewCell {
 
@@ -80,7 +82,7 @@ struct CellLayout {
     var height: CGFloat
 
     static let cell: RepositoryCell = {
-        let width = screenWidth
+        let width = UIScreen.main.bounds.width
         let cell = UINib.init(nibName: "RepositoryCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RepositoryCell
         cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: width))
         return cell

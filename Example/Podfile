@@ -4,6 +4,13 @@ use_frameworks!
 target 'GitHubClient_Example' do
   pod 'GitHubClient', :path => '../'
   pod 'UITableView+FDTemplateLayoutCell'
+  pod 'SwiftyImage'
+  pod 'DynamicColor'
+  pod 'SwiftyBeaver'
+  pod 'MBProgressHUD'
+  pod 'SideMenu'
+  pod 'UITableView+FDTemplateLayoutCell'
+  pod 'SnapKit'
 
   target 'GitHubClient_Tests' do
     inherit! :search_paths

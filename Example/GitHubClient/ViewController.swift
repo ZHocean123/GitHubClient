@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHubClient
 
 class ViewController: UIViewController {
 
@@ -20,5 +21,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func onBtnLogin(_ sender: Any) {
+        Github.shared.login(navController: self.navigationController!, success: nil, failure: nil)
+    }
 }
 

@@ -8,12 +8,13 @@
 
 import UIKit
 import UITableView_FDTemplateLayoutCell
+import GitHubClient
 
 class RepositorySearchViewController: UIViewController {
 
     var pagination = Pagination()
     @IBOutlet weak var tableview: UITableView!
-    var disposeBag = DisposeBag()
+
     var repositories = [Repository]()
     var layouts = [CellLayout]()
     override func viewDidLoad() {
@@ -48,27 +49,17 @@ extension RepositorySearchViewController: UISearchBarDelegate {
             return
         }
         pagination.page += 1
-        disposeBag = DisposeBag()
         showProcess()
-        SearchPrvider.rx.request(.repositories(q: key,
-                                               sort: .stars,
-                                               order: .desc,
-                                               pagination: pagination))
-            .mapObject(SearchRepositoryResult.self)
-            .subscribe { [weak self] (event) in
-                switch event {
-                case .success(let result):
-                    self?.repositories = result.items
-                    self?.layouts = result.items.map({ (item) -> CellLayout in
-                        return CellLayout(item)
-                    })
-                    self?.hideAllHUD()
-                    self?.tableview.reloadData()
-                case .error(let error):
-                    self?.showError(error.errorMessage)
-                    print(error.errorMessage)
-                }
-            }.disposed(by: disposeBag)
+        Github.shared.search(repo: key, success: { [weak self] (result) in
+            self?.repositories = result.items
+            self?.layouts = result.items.map({ (item) -> CellLayout in
+                return CellLayout(item)
+            })
+            self?.hideAllHUD()
+            self?.tableview.reloadData()
+        }, failure: { [weak self] (error) in
+            self?.showError(error.localizedDescription)
+        })
     }
 }
 
@@ -77,7 +68,8 @@ extension RepositorySearchViewController: UITableViewDataSource {
         return repositories.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as! RepositoryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell",
+                                                 for: indexPath) as! RepositoryCell
         cell.cellLayout = layouts[indexPath.row]
         return cell
     }
@@ -97,8 +89,8 @@ extension RepositorySearchViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = RepositoryViewController()
-        controller.repository = repositories[indexPath.row]
-        navigationController?.pushViewController(controller, animated: true)
+//        let controller = RepositoryViewController()
+//        controller.repository = repositories[indexPath.row]
+//        navigationController?.pushViewController(controller, animated: true)
     }
 }
