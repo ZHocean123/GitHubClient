@@ -6,6 +6,7 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - GitHubClient (0.1.0)
+  - Kingfisher (4.2.0)
   - MBProgressHUD (1.0.0)
   - Nimble (7.0.2)
   - Nimble-Snapshots (6.3.0):
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - DynamicColor
   - FBSnapshotTestCase (~> 2.1.4)
   - GitHubClient (from `../`)
+  - Kingfisher
   - MBProgressHUD
   - Nimble (~> 7.0.2)
   - Nimble-Snapshots (~> 6.3.0)
@@ -42,6 +44,7 @@ SPEC CHECKSUMS:
   DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   GitHubClient: 9adeb35340ab0e85a35fc4801a60f5a2d20dce31
+  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
@@ -52,6 +55,6 @@ SPEC CHECKSUMS:
   SwiftyImage: ebaa7c7b6163cd4ad102f3bb05a8fb276d35b4f3
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 0e34bda34a61aaad3c27d378ea1ad409d2d8b26d
+PODFILE CHECKSUM: 8771a30350c3d117e9fced12964c2034869ce4a8
 
 COCOAPODS: 1.4.0.beta.1

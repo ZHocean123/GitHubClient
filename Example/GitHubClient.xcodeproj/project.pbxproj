@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3065121FA32AB0005A6E5A /* NewsCell.swift */; };
 		2F3065151FA32AB0005A6E5A /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3065131FA32AB0005A6E5A /* NewsCell.xib */; };
+		2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47071F1FA6B40900BD9328 /* EventsViewController.swift */; };
 		2FA352261FA1C8C800D87553 /* RepositoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA352221FA1C8C800D87553 /* RepositoryCell.xib */; };
 		2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA352231FA1C8C800D87553 /* ViewController.swift */; };
 		2FA352281FA1C8C800D87553 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA352241FA1C8C800D87553 /* RepositoryCell.swift */; };
@@ -38,6 +39,7 @@
 		09306493ACF418F9E17AC3B6 /* GitHubClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GitHubClient.podspec; path = ../GitHubClient.podspec; sourceTree = "<group>"; };
 		2F3065121FA32AB0005A6E5A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		2F3065131FA32AB0005A6E5A /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		2F47071F1FA6B40900BD9328 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		2FA352221FA1C8C800D87553 /* RepositoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryCell.xib; sourceTree = "<group>"; };
 		2FA352231FA1C8C800D87553 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FA352241FA1C8C800D87553 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				2F3065121FA32AB0005A6E5A /* NewsCell.swift */,
 				2F3065131FA32AB0005A6E5A /* NewsCell.xib */,
+				2F47071F1FA6B40900BD9328 /* EventsViewController.swift */,
 			);
 			name = "Example for GitHubClient";
 			path = GitHubClient;
@@ -355,6 +358,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubClient_Example/Pods-GitHubClient_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubClient/GitHubClient.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -366,6 +370,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -419,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
+				2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */,
 				2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */,
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,
 				2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */,

@@ -11,6 +11,7 @@ target 'GitHubClient_Example' do
   pod 'SideMenu'
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'SnapKit'
+  pod 'Kingfisher'
 
   target 'GitHubClient_Tests' do
     inherit! :search_paths
