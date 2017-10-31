@@ -20,13 +20,13 @@ public struct PullRequest: Codable {
     public let body: String
     public let createdAt: String
     public let updatedAt: String
-    public let closedAt: String
-    public let mergedAt: String
-    public let mergeCommitSha: String
-    public let assignee: String?
-    public let assignees: [String]
-    public let requestedReviewers: [String]
-    public let milestone: String?
+    public let closedAt: String?
+    public let mergedAt: String?
+    public let mergeCommitSha: String?
+    public let assignee: User?
+    public let assignees: [User]
+    public let requestedReviewers: [User]
+    public let milestone: Milestone?
     public let commitsUrl: URL
     public let reviewCommentsUrl: URL
     public let reviewCommentUrl: String
@@ -98,7 +98,7 @@ public struct PullRequest: Codable {
     public let mergeable: Bool?
     public let rebaseable: Bool?
     public let mergeableState: String
-    public let mergedBy: User
+    public let mergedBy: User?
     public let comments: Int
     public let reviewComments: Int
     public let maintainerCanModify: Bool

@@ -98,7 +98,7 @@ public class Github {
             }
             if let data = data {
                 DispatchQueue.global(qos: .utility).async {
-                    print(String(data:data, encoding:.utf8))
+                    print(String(data:data, encoding:.utf8) ?? "no string data")
                     // TODO: custom error
 
                     // decode object

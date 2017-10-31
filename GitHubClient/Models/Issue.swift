@@ -28,40 +28,6 @@ public struct Issue: Codable {
     public let labels: [Label]
     public let assignee: User?
     public let assignees: [User]
-    public struct Milestone: Codable {
-        public let url: URL
-        public let htmlUrl: URL
-        public let labelsUrl: URL
-        public let id: Int
-        public let number: Int
-        public let state: String
-        public let title: String
-        public let description: String
-        public let creator: User
-        public let openIssues: Int
-        public let closedIssues: Int
-        public let createdAt: String
-        public let updatedAt: String
-        public let closedAt: String
-        public let dueOn: String
-        private enum CodingKeys: String, CodingKey {
-            case url
-            case htmlUrl = "html_url"
-            case labelsUrl = "labels_url"
-            case id
-            case number
-            case state
-            case title
-            case description
-            case creator
-            case openIssues = "open_issues"
-            case closedIssues = "closed_issues"
-            case createdAt = "created_at"
-            case updatedAt = "updated_at"
-            case closedAt = "closed_at"
-            case dueOn = "due_on"
-        }
-    }
     public let milestone: Milestone?
     public let locked: Bool
     public let comments: Int

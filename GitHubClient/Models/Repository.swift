@@ -72,45 +72,7 @@ public struct Repository: Codable {
     public let hasProjects: Bool
     public let id: Int
     public let score: Double?
-    public struct Owner: Codable {
-        public let id: Int
-        public let organizationsUrl: URL
-        public let receivedEventsUrl: URL
-        public let followingUrl: String
-        public let login: String
-        public let avatarUrl: URL
-        public let url: URL
-        public let subscriptionsUrl: URL
-        public let type: String
-        public let reposUrl: URL
-        public let htmlUrl: URL
-        public let eventsUrl: String
-        public let siteAdmin: Bool
-        public let starredUrl: String
-        public let gistsUrl: String
-        public let gravatarId: String
-        public let followersUrl: URL
-        private enum CodingKeys: String, CodingKey {
-            case id
-            case organizationsUrl = "organizations_url"
-            case receivedEventsUrl = "received_events_url"
-            case followingUrl = "following_url"
-            case login
-            case avatarUrl = "avatar_url"
-            case url
-            case subscriptionsUrl = "subscriptions_url"
-            case type
-            case reposUrl = "repos_url"
-            case htmlUrl = "html_url"
-            case eventsUrl = "events_url"
-            case siteAdmin = "site_admin"
-            case starredUrl = "starred_url"
-            case gistsUrl = "gists_url"
-            case gravatarId = "gravatar_id"
-            case followersUrl = "followers_url"
-        }
-    }
-    public let owner: Owner
+    public let owner: User
     public let eventsUrl: URL
     public let subscriptionUrl: URL
     public let watchers: Int
