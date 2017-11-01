@@ -1,4 +1,5 @@
 PODS:
+  - CFNotify (1.0.0)
   - DynamicColor (3.3)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
@@ -22,6 +23,7 @@ PODS:
   - UITableView+FDTemplateLayoutCell (1.6)
 
 DEPENDENCIES:
+  - CFNotify
   - DynamicColor
   - FBSnapshotTestCase (~> 2.1.4)
   - GitHubClient (from `../`)
@@ -41,6 +43,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
+  CFNotify: 5d35584f608a1d15c0886eca601a38ee1b7a4c32
   DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   GitHubClient: 9adeb35340ab0e85a35fc4801a60f5a2d20dce31
@@ -55,6 +58,6 @@ SPEC CHECKSUMS:
   SwiftyImage: ebaa7c7b6163cd4ad102f3bb05a8fb276d35b4f3
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 8771a30350c3d117e9fced12964c2034869ce4a8
+PODFILE CHECKSUM: 34df770508083870858e66eba3bfd532820ea95f
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.4.0.beta.2

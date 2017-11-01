@@ -9,12 +9,14 @@
 import UIKit
 import GitHubClient
 import Kingfisher
+import CFNotify
 
 class EventsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
     var events = [Event]()
+    var models = [EventViewModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,10 +47,29 @@ class EventsViewController: UIViewController {
     func loadEvents() {
         Github.shared.events("ZHocean123", success: { [weak self] (result) in
             print(result)
-            self?.events = result
-            self?.tableView.reloadData()
+            DispatchQueue.global(qos: .utility).async {
+                let models = result.map({ EventViewModel($0) })
+                DispatchQueue.main.async {
+                    self?.events = result
+                    self?.models = models
+                    self?.tableView.reloadData()
+                }
+            }
         }) { (error) in
             print(error.localizedDescription)
+            
+            // config
+            var classicViewConfig = CFNotify.Config()
+            classicViewConfig.initPosition = .top(.center)
+            classicViewConfig.appearPosition = .top
+            classicViewConfig.hideTime = .never
+            
+            // view
+            let cyberView = CFNotifyView.cyberWith(title: "Error",
+                                                   body: error.localizedDescription,
+                                                   theme: .Fail(.Light))
+            
+            CFNotify.present(config: classicViewConfig, view: cyberView, tapHandler: nil)
         }
     }
 }
@@ -62,6 +83,7 @@ extension EventsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
         cell.userImageView.kf.setImage(with: ImageResource(downloadURL: events[indexPath.row].actor.avatarUrl))
         cell.dateLabel.text = events[indexPath.row].type.rawValue
+        cell.detailLabel.attributedText = models[indexPath.row].attributedString
         return cell
     }
 }

@@ -91,14 +91,30 @@ public class Github {
                                        failure: FailureHandler?) -> URLSessionDataTask {
         let urlRequest = buildRequest(for: endpoint, withParameters: parameters, method: method)
 
-        let task = urlSession.dataTask(with: urlRequest) { (data, respones, error) in
+        let task = urlSession.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 failure?(GithubError(kind: .netError(error: error), message: error.localizedDescription))
                 return
             }
+            if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 401:
+                    DispatchQueue.main.async {
+                        failure?(GithubError(kind: .oauthError, message: "Bad credentials"))
+                    }
+                    return
+                case 200:
+                    break
+                default:
+                    DispatchQueue.main.async {
+                        failure?(GithubError(kind: .codeError(code: response.statusCode), message: "codeError"))
+                    }
+                    return
+                }
+            }
             if let data = data {
                 DispatchQueue.global(qos: .utility).async {
-                    print(String(data:data, encoding:.utf8) ?? "no string data")
+                    print(String(data: data, encoding: .utf8) ?? "no string data")
                     // TODO: custom error
 
                     // decode object
@@ -109,7 +125,7 @@ public class Github {
                         }
                     } catch {
                         DispatchQueue.main.async {
-                            failure?(GithubError(kind: .jsonParseError, message: error.localizedDescription))
+                            failure?(GithubError(kind: .jsonParseError(error: error), message: error.localizedDescription))
                         }
                     }
                 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */; };
 		2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3065121FA32AB0005A6E5A /* NewsCell.swift */; };
 		2F3065151FA32AB0005A6E5A /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3065131FA32AB0005A6E5A /* NewsCell.xib */; };
 		2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47071F1FA6B40900BD9328 /* EventsViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		09306493ACF418F9E17AC3B6 /* GitHubClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GitHubClient.podspec; path = ../GitHubClient.podspec; sourceTree = "<group>"; };
+		2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		2F3065121FA32AB0005A6E5A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		2F3065131FA32AB0005A6E5A /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		2F47071F1FA6B40900BD9328 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				2F3065121FA32AB0005A6E5A /* NewsCell.swift */,
 				2F3065131FA32AB0005A6E5A /* NewsCell.xib */,
 				2F47071F1FA6B40900BD9328 /* EventsViewController.swift */,
+				2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */,
 			);
 			name = "Example for GitHubClient";
 			path = GitHubClient;
@@ -356,6 +359,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubClient_Example/Pods-GitHubClient_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CFNotify/CFNotify.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubClient/GitHubClient.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -368,6 +372,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CFNotify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -424,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
+				2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */,
 				2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */,
 				2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */,
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,

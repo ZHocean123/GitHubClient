@@ -206,7 +206,9 @@ extension AuthViewController {
         urlRequest.allHTTPHeaderFields = allHTTPHeaderFields
         task = urlSession.dataTask(with: urlRequest) { [weak self] (data, respones, error) in
             if let error = error {
-                self?.failure?(GithubError(kind: .invalidRequest, message: error.localizedDescription))
+                DispatchQueue.main.async {
+                    self?.failure?(GithubError(kind: .invalidRequest, message: error.localizedDescription))
+                }
             }
             if let data = data, let str = String(data: data, encoding: .utf8) {
                 DispatchQueue.global(qos: .utility).async {
@@ -226,7 +228,9 @@ extension AuthViewController {
                     }
                 }
             }
-            self?.failure?(GithubError(kind: .jsonParseError, message: "response"))
+            DispatchQueue.main.async {
+                self?.failure?(GithubError(kind: .invalidRequest, message: "no response data"))
+            }
         }
         task?.resume()
     }

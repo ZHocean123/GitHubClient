@@ -119,7 +119,7 @@ public struct Event: Decodable {
         case statusEvent(event: CommitCommentEvent)
         case teamEvent(event: CommitCommentEvent)
         case teamAddEvent(event: CommitCommentEvent)
-        case watchEvent(event: CommitCommentEvent)
+        case watchEvent(event: WatchEvent)
     }
     public let payload: Payload
     public let `public`: Bool
@@ -132,6 +132,12 @@ public struct Event: Decodable {
         case payload
         case `public` = "public"
         case createdAt = "created_at"
+    }
+
+    public struct PayloadError: Error {
+        var localizedDescription: String {
+            return "unhandled type"
+        }
     }
 
     public init(from decoder: Decoder) throws {
@@ -189,8 +195,11 @@ public struct Event: Decodable {
         case .pullRequestEvent:
             let event = try container.decode(PullRequestEvent.self, forKey: .payload)
             payload = .pullRequestEvent(event: event)
+        case .watchEvent:
+            let event = try container.decode(WatchEvent.self, forKey: .payload)
+            payload = .watchEvent(event: event)
         default:
-            throw GithubError(kind: .jsonParseError, message: "")
+            throw GithubError(kind: .jsonParseError(error: PayloadError()), message: "")
         }
     }
 }
@@ -203,7 +212,7 @@ public struct CommitCommentEvent: Codable {
 }
 
 public struct CreateEvent: Codable {
-    public let ref: String
+    public let ref: String?
     public enum RefType: String, Codable {
         case repository
         case branch
@@ -211,10 +220,10 @@ public struct CreateEvent: Codable {
     }
     public let refType: RefType
     public let masterBranch: String
-    public let description: String
+    public let description: String?
     public let pusherType: String
-    public let repository: Repository
-    public let sender: User
+    public let repository: Repository?
+    public let sender: User?
     private enum CodingKeys: String, CodingKey {
         case ref
         case refType = "ref_type"
@@ -354,8 +363,8 @@ public struct DeploymentStatusEvent: Codable {
 
 public struct ForkEvent: Codable {
     public let forkee: Repository
-    public let repository: Repository
-    public let sender: User
+    public let repository: Repository?
+    public let sender: User?
 }
 
 public struct GollumEvent: Codable {
@@ -545,7 +554,7 @@ public struct MemberEvent: Codable {
     }
     public let member: Member
     public let repository: Repository?
-    public let sender:User?
+    public let sender: User?
 }
 
 public struct PushEvent: Codable {
@@ -599,4 +608,10 @@ public struct PullRequestEvent: Codable {
         case number
         case pullRequest = "pull_request"
     }
+}
+
+public struct WatchEvent: Codable {
+    public let action: String
+    public let repository: Repository?
+    public let sender: User?
 }
