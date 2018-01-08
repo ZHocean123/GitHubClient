@@ -50,7 +50,7 @@ public class Github {
     ///   - scopes: The scope of the access you are requesting from the user.
     ///   - success: The callback called after a correct login.
     ///   - failure: The callback called after an incorrect login.
-    public func login(navController: UINavigationController, scopes: [GithubScope] = [], success: EmptySuccessHandler?, failure: FailureHandler?) {
+    public func login(navController: UINavigationController, scopes: [GithubScope] = [.user, .repo, .notifications], success: EmptySuccessHandler?, failure: FailureHandler?) {
         client?.scopes = scopes
         if let client = client {
             let vc = AuthViewController(client: client, success: { (accessToken) in
@@ -93,7 +93,9 @@ public class Github {
 
         let task = urlSession.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                failure?(GithubError(kind: .netError(error: error), message: error.localizedDescription))
+                DispatchQueue.main.async {
+                    failure?(GithubError(kind: .netError(error: error), message: error.localizedDescription))
+                }
                 return
             }
             if let response = response as? HTTPURLResponse {
@@ -153,7 +155,7 @@ public class Github {
     private func buildRequest(for endpoint: String,
                               withParameters parameters: Parameters? = nil,
                               method: HTTPMethod) -> URLRequest {
-        var headerFields = ["Authorization": "token \(keychain.get("accessToken") ?? "")"]
+        var headerFields = ["Authorization": "token \(keychain.get("accessToken") ?? "")", "Accept": "application/vnd.github.mercy-preview+json"]
         switch method {
         case .get:
             var urlComps = URLComponents(string: baseUrl + endpoint)!
@@ -187,10 +189,10 @@ public class Github {
 
     public func search(repo query: String,
                        success: SuccessHandler<SearchRepositoryResult>?,
-                       failure: FailureHandler?) {
+                       failure: FailureHandler?) -> URLSessionTask {
         var parameters = Parameters()
         parameters["q"] = query
-        request("search/repositories", parameters: parameters, success: success, failure: failure)
+        return request("search/repositories", parameters: parameters, success: success, failure: failure)
     }
 
     public func user(repos visibility: RepositoryVisibility? = nil,
@@ -198,22 +200,37 @@ public class Github {
                      type: RepositoryType? = nil,
                      sort: RepositorySortType? = nil,
                      direction: RepositoryDirection? = nil,
-                     success: SuccessHandler<SearchRepositoryResult>?,
-                     failure: FailureHandler?) {
+                     success: SuccessHandler<[Repository]>?,
+                     failure: FailureHandler?) -> URLSessionTask {
         var parameters = Parameters()
         parameters["visibility"] = visibility?.rawValue
         parameters["affiliation"] = affiliation?.stringValue
         parameters["type"] = type?.rawValue
         parameters["sort"] = sort?.rawValue
         parameters["direction"] = direction?.rawValue
-        request("user/repos", parameters: parameters, success: success, failure: failure)
+        return request("user/repos", parameters: parameters, success: success, failure: failure)
     }
 
     // MARK: - activities
     public func events(_ username: String,
                        success: SuccessHandler<[Event]>?,
-                       failure: FailureHandler?) {
+                       failure: FailureHandler?) -> URLSessionTask {
         var parameters = Parameters()
-        request("users/\(username)/received_events", parameters: parameters, success: success, failure: failure)
+        return request("users/\(username)/received_events", parameters: parameters, success: success, failure: failure)
+    }
+
+    // MARK: - notifications
+    public func notifications(success: SuccessHandler<[Notification]>?,
+                              failure: FailureHandler?) -> URLSessionTask {
+        var parameters = Parameters()
+        parameters["all"] = true
+        return request("notifications", parameters: parameters, success: success, failure: failure)
+    }
+}
+
+public extension Repository {
+    public var readMeRequest: URLRequest {
+        let urlStr = "https://raw.githubusercontent.com/\(self.owner.login)/\(self.name)/\(self.defaultBranch)/README.md"
+        return URLRequest(url: URL(string: urlStr)!)
     }
 }

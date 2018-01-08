@@ -9,8 +9,10 @@
 import UIKit
 import DynamicColor
 import GitHubClient
+import Reusable
+import SnapKit
 
-class RepositoryCell: UITableViewCell {
+class RepositoryCell: UITableViewCell, NibReusable {
 
     // repo图标
     @IBOutlet weak var repoImageView: UIImageView!
@@ -27,7 +29,7 @@ class RepositoryCell: UITableViewCell {
     // 更新时间
     @IBOutlet weak var updateLabel: UILabel!
     // topics
-    let topicsContainer = UIView()
+    @IBOutlet weak var topicsView: TopicsView!
 
     var cellLayout: CellLayout? {
         didSet {
@@ -38,6 +40,11 @@ class RepositoryCell: UITableViewCell {
             starsLabel.text = String(cellLayout?.item.stargazersCount ?? 0)
             forkLabel.text = String(cellLayout?.item.forksCount ?? 0)
             updateLabel.text = DateString(cellLayout?.item.updatedAt ?? "")?.agoDateStr
+            topicsView.topics = cellLayout?.item.topics ?? []
+            print("set")
+            descriptionLabel.backgroundColor = UIColor.gray
+            topicsView.backgroundColor = UIColor.gray
+
             setNeedsLayout()
         }
     }
@@ -63,19 +70,6 @@ class RepositoryCell: UITableViewCell {
 
 }
 
-class TopicLabel: UILabel {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        font = UIFont.systemFont(ofSize: 12)
-        backgroundColor = UIColor(hex: 0xe7f3ff)
-        textColor = UIColor(hex: 0x0366d6)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
-
 struct CellLayout {
     var item: Repository
 //    var topicsFrames: [CGRect]
@@ -84,7 +78,12 @@ struct CellLayout {
     static let cell: RepositoryCell = {
         let width = UIScreen.main.bounds.width
         let cell = UINib.init(nibName: "RepositoryCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RepositoryCell
-        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: width))
+
+        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.snp.makeConstraints({ (make) in
+            make.edges.equalTo(cell)
+            make.width.equalTo(width).priority(999)
+        })
         return cell
     }()
     static let topicLabel = TopicLabel()
@@ -98,6 +97,10 @@ struct CellLayout {
         // descriptionLabel
         CellLayout.cell.descriptionLabel.text = item.description
 
-        height = CellLayout.cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1
+        CellLayout.cell.topicsView.topics = item.topics ?? []
+
+        print("caculate")
+
+        height = CellLayout.cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1 / UIScreen.main.scale
     }
 }

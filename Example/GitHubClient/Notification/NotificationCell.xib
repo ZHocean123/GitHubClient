@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="67" id="KGk-i7-Jjw" customClass="NotificationCell" customModule="GitHubClient_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mYN-YQ-wSs">
+                        <rect key="frame" x="16" y="11" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="Hzf-en-brW"/>
+                            <constraint firstAttribute="height" constant="16" id="Weu-il-Lm0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvo-q9-PSl">
+                        <rect key="frame" x="40" y="11" width="234" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHG-fq-N6a">
+                        <rect key="frame" x="40" y="41.5" width="234" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4es-Cl-BhD">
+                        <rect key="frame" x="284" y="23" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="IDS-Gw-EMF"/>
+                            <constraint firstAttribute="width" constant="20" id="cR5-ho-HdN"/>
+                        </constraints>
+                        <state key="normal" image="marked"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="qvo-q9-PSl" secondAttribute="trailing" constant="30" id="80a-P3-TgM"/>
+                    <constraint firstItem="mYN-YQ-wSs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="JxM-gH-iuj"/>
+                    <constraint firstItem="DHG-fq-N6a" firstAttribute="leading" secondItem="qvo-q9-PSl" secondAttribute="leading" id="OTd-fy-4vY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="4es-Cl-BhD" secondAttribute="trailing" id="PeT-G6-UzH"/>
+                    <constraint firstItem="mYN-YQ-wSs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="fm0-Yr-qoC"/>
+                    <constraint firstItem="4es-Cl-BhD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ggE-5t-ik7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DHG-fq-N6a" secondAttribute="trailing" constant="30" id="hM4-aL-nlb"/>
+                    <constraint firstItem="DHG-fq-N6a" firstAttribute="top" secondItem="qvo-q9-PSl" secondAttribute="bottom" constant="4" id="jwc-kg-pGJ"/>
+                    <constraint firstItem="qvo-q9-PSl" firstAttribute="leading" secondItem="mYN-YQ-wSs" secondAttribute="trailing" constant="8" id="msC-Gl-OCf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="DHG-fq-N6a" secondAttribute="bottom" id="tad-cI-2T2"/>
+                    <constraint firstItem="qvo-q9-PSl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="uzs-cE-dFG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="DHG-fq-N6a" id="gg9-1H-eHj"/>
+                <outlet property="markButton" destination="4es-Cl-BhD" id="gex-9W-90Y"/>
+                <outlet property="subjectLabel" destination="qvo-q9-PSl" id="n7h-bS-XaB"/>
+                <outlet property="typeImageView" destination="mYN-YQ-wSs" id="Wk7-4U-rNE"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="63.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="marked" width="16" height="16"/>
+    </resources>
+</document>

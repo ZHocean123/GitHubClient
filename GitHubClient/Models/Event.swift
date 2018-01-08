@@ -112,9 +112,9 @@ public struct Event: Decodable {
         case publicEvent(event: CommitCommentEvent)
         case pullRequestEvent(event: PullRequestEvent)
         case pullRequestReviewEvent(event: CommitCommentEvent)
-        case pullRequestReviewCommentEvent(event: CommitCommentEvent)
+        case pullRequestReviewCommentEvent(event: PullRequestReviewCommentEvent)
         case pushEvent(event: PushEvent)
-        case releaseEvent(event: CommitCommentEvent)
+        case releaseEvent(event: ReleaseEvent)
         case repositoryEvent(event: CommitCommentEvent)
         case statusEvent(event: CommitCommentEvent)
         case teamEvent(event: CommitCommentEvent)
@@ -198,6 +198,12 @@ public struct Event: Decodable {
         case .watchEvent:
             let event = try container.decode(WatchEvent.self, forKey: .payload)
             payload = .watchEvent(event: event)
+        case .releaseEvent:
+            let event = try container.decode(ReleaseEvent.self, forKey: .payload)
+            payload = .releaseEvent(event: event)
+        case .pullRequestReviewCommentEvent:
+            let event = try container.decode(PullRequestReviewCommentEvent.self, forKey: .payload)
+            payload = .pullRequestReviewCommentEvent(event: event)
         default:
             throw GithubError(kind: .jsonParseError(error: PayloadError()), message: "")
         }
@@ -243,8 +249,8 @@ public struct DeleteEvent: Codable {
     }
     public let refType: RefType
     public let pusherType: String
-    public let repository: Repository
-    public let sender: User
+    public let repository: Repository?
+    public let sender: User?
     private enum CodingKeys: String, CodingKey {
         case ref
         case refType = "ref_type"
@@ -614,4 +620,15 @@ public struct WatchEvent: Codable {
     public let action: String
     public let repository: Repository?
     public let sender: User?
+}
+
+public struct ReleaseEvent: Codable {
+    public let action: String
+    public let release: Release
+    public let repository: Repository?
+    public let sender: User?
+}
+
+public struct PullRequestReviewCommentEvent: Codable {
+    
 }

@@ -6,13 +6,17 @@ target 'GitHubClient_Example' do
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'SwiftyImage'
   pod 'DynamicColor'
-  pod 'SwiftyBeaver'
+  pod 'XCGLogger'
   pod 'MBProgressHUD'
   pod 'SideMenu'
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'SnapKit'
   pod 'Kingfisher'
   pod 'CFNotify'
+  pod 'RxSwift'
+  pod 'RxFlow'
+  pod 'Reusable'
+  pod 'EFMarkdown'
 
   target 'GitHubClient_Tests' do
     inherit! :search_paths

@@ -32,11 +32,11 @@ public struct RepositoryAffiliation: OptionSet {
             str += "owner"
         }
         if self.contains(.collaborator) {
-            str += str.characters.count > 0 ? "," : ""
+            str += str.count > 0 ? "," : ""
             str += "collaborator"
         }
         if self.contains(.organizationMember) {
-            str += str.characters.count > 0 ? "," : ""
+            str += str.count > 0 ? "," : ""
             str += "organization_member"
         }
         return str
@@ -140,6 +140,7 @@ public struct Repository: Codable {
     public let watchersCount: Int
     public let language: String?
     public let hasPages: Bool
+    public let topics: [String]?
     private enum CodingKeys: String, CodingKey {
         case keysUrl = "keys_url"
         case statusesUrl = "statuses_url"
@@ -212,6 +213,7 @@ public struct Repository: Codable {
         case watchersCount = "watchers_count"
         case language
         case hasPages = "has_pages"
+        case topics = "topics"
     }
 }
 

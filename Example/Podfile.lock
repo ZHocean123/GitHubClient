@@ -1,30 +1,51 @@
 PODS:
-  - CFNotify (1.0.0)
-  - DynamicColor (3.3)
+  - CFNotify (1.0.2)
+  - DynamicColor (4.0.2)
+  - EFCMark (0.0.1)
+  - EFMarkdown (4.0.0):
+    - EFCMark
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - GitHubClient (0.1.0)
-  - Kingfisher (4.2.0)
-  - MBProgressHUD (1.0.0)
-  - Nimble (7.0.2)
+  - Kingfisher (4.6.1)
+  - MBProgressHUD (1.1.0)
+  - Nimble (7.0.3)
   - Nimble-Snapshots (6.3.0):
     - Nimble-Snapshots/Core (= 6.3.0)
   - Nimble-Snapshots/Core (6.3.0):
     - FBSnapshotTestCase (~> 2.0)
     - Nimble (~> 7.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - Quick (1.2.0)
-  - SideMenu (3.1.1)
+  - Reusable (4.0.0):
+    - Reusable/Storyboard (= 4.0.0)
+    - Reusable/View (= 4.0.0)
+  - Reusable/Storyboard (4.0.0)
+  - Reusable/View (4.0.0)
+  - RxCocoa (4.1.0):
+    - RxSwift (~> 4.0)
+  - RxFlow (1.0.2):
+    - RxCocoa (>= 4.0.0)
+    - RxSwift (>= 4.0.0)
+  - RxSwift (4.1.0)
+  - SideMenu (3.1.5)
   - SnapKit (4.0.0)
-  - SwiftyBeaver (1.4.2)
   - SwiftyImage (1.2.0)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - XCGLogger (6.0.2):
+    - XCGLogger/Core (= 6.0.2)
+  - XCGLogger/Core (6.0.2):
+    - ObjcExceptionBridging
 
 DEPENDENCIES:
   - CFNotify
   - DynamicColor
+  - EFMarkdown
   - FBSnapshotTestCase (~> 2.1.4)
   - GitHubClient (from `../`)
   - Kingfisher
@@ -32,32 +53,42 @@ DEPENDENCIES:
   - Nimble (~> 7.0.2)
   - Nimble-Snapshots (~> 6.3.0)
   - Quick (~> 1.2.0)
+  - Reusable
+  - RxFlow
+  - RxSwift
   - SideMenu
   - SnapKit
-  - SwiftyBeaver
   - SwiftyImage
   - UITableView+FDTemplateLayoutCell
+  - XCGLogger
 
 EXTERNAL SOURCES:
   GitHubClient:
     :path: ../
 
 SPEC CHECKSUMS:
-  CFNotify: 5d35584f608a1d15c0886eca601a38ee1b7a4c32
-  DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
+  CFNotify: e32996ad9034b4d64b30d685e456ea4b83fecb49
+  DynamicColor: c7adcfe871781a2b39877a5774e452ba51b79eb3
+  EFCMark: 384f782f489f104c590dc375b9de902de37ebca3
+  EFMarkdown: ee89bd6644fca23b9128576d6d87cb2e1c537d89
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   GitHubClient: 9adeb35340ab0e85a35fc4801a60f5a2d20dce31
-  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  SideMenu: 1bf32e90afaa2dc0e0ab68e938a0ff85014c4217
+  Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
+  RxCocoa: cc1fec49cdc8fabe645964de7c51c099a36c2aa8
+  RxFlow: 3677c64de1a2154597e206b56c2f2b84c98f70f2
+  RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
+  SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftyBeaver: 91057725648ee4980308f1650af077d04b3654a0
   SwiftyImage: ebaa7c7b6163cd4ad102f3bb05a8fb276d35b4f3
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  XCGLogger: c9601cae9a8912de34a58666ba931ed3d624dd31
 
-PODFILE CHECKSUM: 34df770508083870858e66eba3bfd532820ea95f
+PODFILE CHECKSUM: a86d66f8e14f7a09e6c2864cca2a2a583c02e77b
 
 COCOAPODS: 1.4.0.beta.2
