@@ -116,7 +116,7 @@ public class Github {
             }
             if let data = data {
                 DispatchQueue.global(qos: .utility).async {
-                    print(String(data: data, encoding: .utf8) ?? "no string data")
+//                    print(String(data: data, encoding: .utf8) ?? "no string data")
                     // TODO: custom error
 
                     // decode object
@@ -229,6 +229,9 @@ public class Github {
 }
 
 public extension Repository {
+    public var readMeUrlStr: String {
+        return "https://raw.githubusercontent.com/\(self.owner.login)/\(self.name)/\(self.defaultBranch)/README.md"
+    }
     public var readMeRequest: URLRequest {
         let urlStr = "https://raw.githubusercontent.com/\(self.owner.login)/\(self.name)/\(self.defaultBranch)/README.md"
         return URLRequest(url: URL(string: urlStr)!)

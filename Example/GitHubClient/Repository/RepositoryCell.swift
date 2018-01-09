@@ -41,7 +41,6 @@ class RepositoryCell: UITableViewCell, NibReusable {
             forkLabel.text = String(cellLayout?.item.forksCount ?? 0)
             updateLabel.text = DateString(cellLayout?.item.updatedAt ?? "")?.agoDateStr
             topicsView.topics = cellLayout?.item.topics ?? []
-            print("set")
             descriptionLabel.backgroundColor = UIColor.gray
             topicsView.backgroundColor = UIColor.gray
 
@@ -98,8 +97,6 @@ struct CellLayout {
         CellLayout.cell.descriptionLabel.text = item.description
 
         CellLayout.cell.topicsView.topics = item.topics ?? []
-
-        print("caculate")
 
         height = CellLayout.cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1 / UIScreen.main.scale
     }

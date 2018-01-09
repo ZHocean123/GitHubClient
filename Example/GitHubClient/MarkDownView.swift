@@ -8,11 +8,42 @@
 
 import UIKit
 import WebKit
+import EFMarkdown
 
-class MarkDownView: UIView {
+@objcMembers class MarkDownView: UIView {
 
-    let webView = WKWebView()
+    let loadingBgView:UIView = {
+        let bgView = UIView()
+//        bgView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        bgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        return bgView
+    }()
+    let indicatorView: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.activityIndicatorViewStyle = .gray
+        indicatorView.autoresizingMask = []
+        return indicatorView
+    }()
+    
+    let webView = WKWebView(frame: CGRect.zero, configuration: WKWebViewConfiguration())
+    let session = URLSession(configuration: .default)
+    var sessionTask: URLSessionTask?
 
+    var isLoading: Bool = false {
+        didSet {
+            if isLoading {
+                addSubview(loadingBgView)
+                loadingBgView.frame = bounds
+                indicatorView.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
+                indicatorView.startAnimating()
+            } else {
+                indicatorView.stopAnimating()
+                loadingBgView.removeFromSuperview()
+            }
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -24,14 +55,74 @@ class MarkDownView: UIView {
     }
 
     func commonInit() {
-        webView.frame = self.bounds
         webView.navigationDelegate = self
+        webView.frame = self.bounds
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(webView)
+
+        addObserver(self, forKeyPath: "webView.scrollView.contentSize", options: .new, context: nil)
+        
+        loadingBgView.addSubview(indicatorView)
+    }
+
+    deinit {
+        removeObserver(self, forKeyPath: "webView.scrollView.contentSize")
+        session.invalidateAndCancel()
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        if let change = change, keyPath == "webView.scrollView.contentSize" {
+            if let newSize = change[NSKeyValueChangeKey.newKey] as? NSValue {
+                if self.frame.height != newSize.cgSizeValue.height {
+                    invalidateIntrinsicContentSize()
+                }
+            }
+        }
     }
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: webView.frame.width,
-                      height: webView.scrollView.contentSize.height)
+                      height: isLoading ? 100 : webView.scrollView.contentSize.height)
+    }
+
+    func loadReadMe(url: String?) {
+        sessionTask?.cancel()
+        guard let url = url else {
+            return
+        }
+        isLoading = true
+        let readMeRequest = URLRequest(url: URL(string: url)!)
+        let task = session.dataTask(with: readMeRequest) { [weak self] (data, response, error) in
+            if error == nil, let data = data, let markDown = String(data: data, encoding: .utf8) {
+                do {
+                    let markdownHTML = try EFMarkdown().markdownToHTML(markDown)
+                    let html = """
+                    <html lang=\"en\">
+                        <head>
+                            <meta name=\"viewport\" content=\"initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width\">
+                        </head>
+                        <body>
+                            \(markdownHTML)
+                        </body>
+                    </html>
+                    """
+                    DispatchQueue.main.async {
+                        self?.webView.loadHTMLString(html, baseURL: nil)
+                    }
+                } catch let error {
+                    print(error)
+                    DispatchQueue.main.async {
+                        self?.isLoading = false
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                }
+            }
+        }
+        task.resume()
+        sessionTask = task
     }
 
     /*
@@ -46,16 +137,17 @@ class MarkDownView: UIView {
 
 extension MarkDownView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        invalidateIntrinsicContentSize()
-        webView.evaluateJavaScript("document.body.offsetHeight") {[weak self] (result, error) in
-            if let height = result as? CGFloat {
-                if var frame = self?.webView.frame {
-                    frame.size.height = height
-                    self?.webView.frame = frame
-                    self?.invalidateIntrinsicContentSize()
-                }
-            }
-        }
+        isLoading = false
+//        invalidateIntrinsicContentSize()
+//        webView.evaluateJavaScript("document.body.offsetHeight") { [weak self] (result, error) in
+//            if let height = result as? CGFloat {
+//                if var frame = self?.webView.frame {
+//                    frame.size.height = height
+//                    self?.webView.frame = frame
+//                    self?.invalidateIntrinsicContentSize()
+//                }
+//            }
+//        }
     }
 }
 

@@ -20,8 +20,17 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>GithubClientId</key>
+	<string>563c1feaccf901f7741f</string>
+	<key>GithubRedirectURL</key>
+	<string>https://localhost/github_callback</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -35,9 +44,5 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
-	<key>GithubClientId</key>
-	<string>563c1feaccf901f7741f</string>
-	<key>GithubRedirectURL</key>
-	<string>https://localhost/github_callback</string>
 </dict>
 </plist>

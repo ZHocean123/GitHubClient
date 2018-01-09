@@ -61,19 +61,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         descriptionLabel?.text = repository?.description
         topicsView?.topics = repository?.topics ?? []
         languageLabel?.text = repository?.language
-        if let readMeRequest = repository?.readMeRequest {
-            let task = URLSession(configuration: .default).dataTask(with: readMeRequest) { (data, response, error) in
-                if error == nil, let data = data, let markDown = String(data: data, encoding: .utf8) {
-                    if let html = try? EFMarkdown().markdownToHTML(markDown) {
-                        DispatchQueue.main.async {
-                            self.readMeView?.webView.loadHTMLString(html, baseURL: nil)
-                        }
-                    }
-                }
-            }
-            task.resume()
-//            readMeView?.webView.load(readMeRequest)
-        }
+        readMeView?.loadReadMe(url: repository?.readMeUrlStr)
     }
     /*
     // MARK: - Navigation
