@@ -30,6 +30,8 @@
 		2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */; };
 		2FBD3D371FFE0FD5003FD6D6 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D361FFE0FD5003FD6D6 /* MainFlow.swift */; };
 		2FBD3D391FFE0FF6003FD6D6 /* AppStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D381FFE0FF6003FD6D6 /* AppStep.swift */; };
+		2FD577002004B6C500C93DDF /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD576FF2004B6C400C93DDF /* ControlButton.swift */; };
+		2FD577022004BA2400C93DDF /* VerticalAlignmentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */; };
 		2FDDB0BA1FAAEF4800CBCED3 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDB0B91FAAEF4800CBCED3 /* NotificationsViewController.swift */; };
 		2FDDB0C01FAAFB3700CBCED3 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDB0BE1FAAFB3700CBCED3 /* NotificationCell.swift */; };
 		2FDDB0C11FAAFB3700CBCED3 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FDDB0BF1FAAFB3700CBCED3 /* NotificationCell.xib */; };
@@ -75,6 +77,8 @@
 		2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
 		2FBD3D361FFE0FD5003FD6D6 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		2FBD3D381FFE0FF6003FD6D6 /* AppStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStep.swift; sourceTree = "<group>"; };
+		2FD576FF2004B6C400C93DDF /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
+		2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignmentLabel.swift; sourceTree = "<group>"; };
 		2FDDB0B91FAAEF4800CBCED3 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		2FDDB0BE1FAAFB3700CBCED3 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		2FDDB0BF1FAAFB3700CBCED3 /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 				2FB576E01FB961390019BF56 /* Layer+Animation.swift */,
 				2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */,
 				2FB54BAA20036304008493F7 /* MarkDownView.swift */,
+				2FD576FF2004B6C400C93DDF /* ControlButton.swift */,
+				2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */,
 				2F894B1A1FFF52B5001F531E /* RepositoryDetailViewController.storyboard */,
 				2F894B171FFF1921001F531E /* UserRepository */,
 				2FB54BA820030138008493F7 /* TopicsView.swift */,
@@ -553,6 +559,8 @@
 				2F894B141FFF1735001F531E /* UserRepositoryViewController.swift in Sources */,
 				2FB54BA920030138008493F7 /* TopicsView.swift in Sources */,
 				2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */,
+				2FD577002004B6C500C93DDF /* ControlButton.swift in Sources */,
+				2FD577022004BA2400C93DDF /* VerticalAlignmentLabel.swift in Sources */,
 				2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */,
 				2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */,
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,

@@ -40,9 +40,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-sD-IF7" userLabel="Control Area" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="36.5" width="359" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-IL-Rol">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-IL-Rol" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="119" height="50"/>
-                                                        <state key="normal" title="Stars"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="name" value="Stars"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-qI-xVR">
                                                         <rect key="frame" x="119" y="0.0" width="1" height="50"/>
@@ -51,9 +56,14 @@
                                                             <constraint firstAttribute="width" constant="1" id="oQc-G6-b9r"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" userLabel="Issues">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" userLabel="Issues" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="120" y="0.0" width="119" height="50"/>
-                                                        <state key="normal" title="Forks"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                                <integer key="value" value="0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="name" value="Forking"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEc-1D-gmx">
                                                         <rect key="frame" x="239" y="0.0" width="1" height="50"/>
@@ -62,9 +72,14 @@
                                                             <constraint firstAttribute="width" constant="1" id="h4p-G9-C38"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="240" y="0.0" width="119" height="50"/>
-                                                        <state key="normal" title="Issues"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                                <integer key="value" value="0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
