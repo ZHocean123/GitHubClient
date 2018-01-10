@@ -52,14 +52,18 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         viewModel.repository.asObservable().subscribe(onNext: { [weak self] (repository) in
             self?.titleLabel.text = repository?.name
             self?.descriptionLabel.text = repository?.description
+            self?.descriptionLabel.superview?.isHidden = repository?.description == nil
             self?.languageLabel.text = repository?.language
+            self?.languageLabel.superview?.isHidden = repository?.language == nil
             self?.readMeView.loadReadMe(url: repository?.readMeUrlStr)
         }).disposed(by: disposeBag)
         viewModel.languages.asObservable().subscribe(onNext: { [weak self] (languages) in
             self?.languagesBar.languages = languages
+            self?.languagesBar.isHidden = languages.count == 0
         }).disposed(by: disposeBag)
         viewModel.topics.asObservable().subscribe(onNext: { [weak self] (topics) in
             self?.topicsView.topics = topics
+            self?.topicsView.superview?.isHidden = topics.count == 0
         }).disposed(by: disposeBag)
     }
     
