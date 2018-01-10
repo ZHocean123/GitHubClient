@@ -113,7 +113,7 @@ import EFMarkdown
                                                      baseURL: templateURL)
                     }
                 } catch let error {
-                    print(error)
+                    log.error(error)
                     DispatchQueue.main.async {
                         self?.isLoading = false
                     }

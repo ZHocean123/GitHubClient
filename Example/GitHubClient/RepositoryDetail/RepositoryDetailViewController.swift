@@ -17,24 +17,28 @@ import RxCocoa
 class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
     var repository: Repository? {
-        didSet {
-            loadRepository()
+        set {
+            viewModel.repo = newValue
+        }
+        get {
+            return viewModel.repo
         }
     }
-    var viewModel: RepositoryDetailViewModel?
+
+    let viewModel = RepositoryDetailViewModel()
 
     // MARK: - subviews
-    @IBOutlet weak var scrollView: UIScrollView?
-    @IBOutlet weak var avatar: UIImageView?
-    @IBOutlet weak var titleLabel: UILabel?
-    @IBOutlet weak var descriptionLabel: UILabel?
-    @IBOutlet weak var topicsView: TopicsView?
-    @IBOutlet weak var starBtn: UIButton?
-    @IBOutlet weak var issueBtn: UIButton?
-    @IBOutlet weak var forkBtn: UIButton?
-    @IBOutlet weak var languageLabel: UILabel?
-    @IBOutlet weak var readMeView: ReadMeView?
-    @IBOutlet weak var languagesBar: LanguageBar?
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var topicsView: TopicsView!
+    @IBOutlet weak var starBtn: UIButton!
+    @IBOutlet weak var issueBtn: UIButton!
+    @IBOutlet weak var forkBtn: UIButton!
+    @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var readMeView: ReadMeView!
+    @IBOutlet weak var languagesBar: LanguageBar!
 
     func setupSubviews() {
 
@@ -44,6 +48,21 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
     }
 
+    func bindViewModel() {
+        viewModel.repository.asObservable().subscribe(onNext: { [weak self] (repository) in
+            self?.titleLabel.text = repository?.name
+            self?.descriptionLabel.text = repository?.description
+            self?.languageLabel.text = repository?.language
+            self?.readMeView.loadReadMe(url: repository?.readMeUrlStr)
+        }).disposed(by: disposeBag)
+        viewModel.languages.asObservable().subscribe(onNext: { [weak self] (languages) in
+            self?.languagesBar.languages = languages
+        }).disposed(by: disposeBag)
+        viewModel.topics.asObservable().subscribe(onNext: { [weak self] (topics) in
+            self?.topicsView.topics = topics
+        }).disposed(by: disposeBag)
+    }
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +71,9 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         view.backgroundColor = .white
         setupSubviews()
         setupConstraints()
-
-        loadRepository()
+        
+        bindViewModel()
+        viewModel.loadRepoDetails()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,27 +83,6 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
     var disposeBag = DisposeBag()
 
-    func loadRepository() {
-
-        if let repository = repository {
-            viewModel = RepositoryDetailViewModel(repository)
-            viewModel?.languagesObserver.subscribe(onNext: { [weak self] (languages) in
-                self?.languagesBar?.languages = languages
-            }).disposed(by: disposeBag)
-            viewModel?.topicsObserver.subscribe(onNext: { [weak self] (topics) in
-                print(topics)
-                self?.topicsView?.topics = topics
-            }).disposed(by: disposeBag)
-        }
-
-        viewModel?.loadRepoTopics()
-
-        titleLabel?.text = repository?.name
-        descriptionLabel?.text = repository?.description
-//        topicsView?.topics = repository?.topics ?? []
-        languageLabel?.text = repository?.language
-        readMeView?.loadReadMe(url: repository?.readMeUrlStr)
-    }
     /*
     // MARK: - Navigation
 
@@ -94,11 +93,4 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     }
     */
 
-}
-
-extension Repository {
-    func getLanguages(success: Github.SuccessHandler<[String: Int]>?,
-                      failure: Github.FailureHandler?) -> URLSessionTask {
-        return Github.shared.languages(owner: owner.login, repo: name, success: success, failure: failure)
-    }
 }

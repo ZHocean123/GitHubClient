@@ -78,7 +78,6 @@ struct CellLayout {
         let width = UIScreen.main.bounds.width
         let cell = UINib.init(nibName: "RepositoryCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RepositoryCell
 
-        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.snp.makeConstraints({ (make) in
             make.edges.equalTo(cell)
             make.width.equalTo(width).priority(999)

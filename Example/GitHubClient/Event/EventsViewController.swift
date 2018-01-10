@@ -61,7 +61,7 @@ class EventsViewController: UIViewController {
                 }
             }
         }) { (error) in
-            print(error.localizedDescription)
+            log.error(error)
             
             // config
             var classicViewConfig = CFNotify.Config()

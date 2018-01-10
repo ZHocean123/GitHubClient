@@ -62,7 +62,7 @@ class NotificationsViewController: UIViewController {
                 }
             }
         }) { (error) in
-            print(error.localizedDescription)
+            log.error(error)
 
             // config
             var classicViewConfig = CFNotify.Config()
