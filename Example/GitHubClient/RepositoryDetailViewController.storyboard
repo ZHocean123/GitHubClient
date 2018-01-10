@@ -40,8 +40,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-sD-IF7" userLabel="Control Area" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="36.5" width="359" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-IL-Rol" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-IL-Rol" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="119" height="50"/>
+                                                        <state key="normal" backgroundImage="btn_bg_normal"/>
+                                                        <state key="highlighted" backgroundImage="btn_bg_highlight"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="count">
                                                                 <real key="value" value="0.0"/>
@@ -49,15 +51,10 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="name" value="Stars"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-qI-xVR">
-                                                        <rect key="frame" x="119" y="0.0" width="1" height="50"/>
-                                                        <color key="backgroundColor" red="0.81960784310000001" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="1" id="oQc-G6-b9r"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" userLabel="Issues" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" userLabel="Issues" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="120" y="0.0" width="119" height="50"/>
+                                                        <state key="normal" backgroundImage="btn_bg_normal"/>
+                                                        <state key="highlighted" backgroundImage="btn_bg_highlight"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="count">
                                                                 <integer key="value" value="0"/>
@@ -65,15 +62,10 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="name" value="Forking"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEc-1D-gmx">
-                                                        <rect key="frame" x="239" y="0.0" width="1" height="50"/>
-                                                        <color key="backgroundColor" red="0.81960784310000001" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="1" id="h4p-G9-C38"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="240" y="0.0" width="119" height="50"/>
+                                                        <state key="normal" backgroundImage="btn_bg_normal"/>
+                                                        <state key="highlighted" backgroundImage="btn_bg_highlight"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="count">
                                                                 <integer key="value" value="0"/>
@@ -81,6 +73,20 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
+                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-qI-xVR">
+                                                        <rect key="frame" x="119" y="-0.5" width="1" height="50"/>
+                                                        <color key="backgroundColor" red="0.01176470588" green="0.40000000000000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="1" id="oQc-G6-b9r"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEc-1D-gmx">
+                                                        <rect key="frame" x="239" y="-0.5" width="1" height="50"/>
+                                                        <color key="backgroundColor" red="0.01176470588" green="0.40000000000000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="1" id="h4p-G9-C38"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -112,7 +118,7 @@
                                                         <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.81960784310000001" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.01176470588" green="0.40000000000000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -202,7 +208,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-qZ-HxB" userLabel="ReadMe" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="185.5" width="359" height="100"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zC9-hf-gyE" customClass="MarkDownView" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zC9-hf-gyE" customClass="ReadMeView" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="359" height="100"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -299,6 +305,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_bg_highlight" width="40" height="40"/>
+        <image name="btn_bg_normal" width="40" height="40"/>
         <image name="code" width="31" height="23"/>
         <image name="info" width="16" height="16"/>
         <image name="repo" width="16" height="16"/>

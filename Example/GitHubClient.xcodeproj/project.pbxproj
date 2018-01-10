@@ -11,6 +11,10 @@
 		2F182DFC1FFCB8C900414E3F /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */; };
 		2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3065121FA32AB0005A6E5A /* NewsCell.swift */; };
 		2F3065151FA32AB0005A6E5A /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3065131FA32AB0005A6E5A /* NewsCell.xib */; };
+		2F38F8B720059AE200B27958 /* vendor.js in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B320059AE100B27958 /* vendor.js */; };
+		2F38F8B820059AE200B27958 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B420059AE200B27958 /* index.html */; };
+		2F38F8B920059AE200B27958 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B520059AE200B27958 /* main.css */; };
+		2F38F8BA20059AE200B27958 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B620059AE200B27958 /* main.js */; };
 		2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47071F1FA6B40900BD9328 /* EventsViewController.swift */; };
 		2F894B141FFF1735001F531E /* UserRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B131FFF1735001F531E /* UserRepositoryViewController.swift */; };
 		2F894B161FFF1903001F531E /* UserRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B151FFF1903001F531E /* UserRepositoryViewModel.swift */; };
@@ -24,7 +28,7 @@
 		2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3525A1FA1CA5F00D87553 /* DateString.swift */; };
 		2FA3525D1FA1CB0500D87553 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3525C1FA1CB0500D87553 /* HUD.swift */; };
 		2FB54BA920030138008493F7 /* TopicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB54BA820030138008493F7 /* TopicsView.swift */; };
-		2FB54BAB20036304008493F7 /* MarkDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB54BAA20036304008493F7 /* MarkDownView.swift */; };
+		2FB54BAB20036304008493F7 /* ReadMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB54BAA20036304008493F7 /* ReadMeView.swift */; };
 		2FB576E11FB961390019BF56 /* Layer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB576E01FB961390019BF56 /* Layer+Animation.swift */; };
 		2FBD3D301FFE085A003FD6D6 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */; };
 		2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */; };
@@ -58,6 +62,10 @@
 		2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		2F3065121FA32AB0005A6E5A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		2F3065131FA32AB0005A6E5A /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		2F38F8B320059AE100B27958 /* vendor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = vendor.js; sourceTree = "<group>"; };
+		2F38F8B420059AE200B27958 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		2F38F8B520059AE200B27958 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
+		2F38F8B620059AE200B27958 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		2F47071F1FA6B40900BD9328 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		2F894B131FFF1735001F531E /* UserRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryViewController.swift; sourceTree = "<group>"; };
 		2F894B151FFF1903001F531E /* UserRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryViewModel.swift; sourceTree = "<group>"; };
@@ -71,7 +79,7 @@
 		2FA3525A1FA1CA5F00D87553 /* DateString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateString.swift; sourceTree = "<group>"; };
 		2FA3525C1FA1CB0500D87553 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		2FB54BA820030138008493F7 /* TopicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsView.swift; sourceTree = "<group>"; };
-		2FB54BAA20036304008493F7 /* MarkDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownView.swift; sourceTree = "<group>"; };
+		2FB54BAA20036304008493F7 /* ReadMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeView.swift; sourceTree = "<group>"; };
 		2FB576E01FB961390019BF56 /* Layer+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layer+Animation.swift"; sourceTree = "<group>"; };
 		2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
@@ -128,6 +136,26 @@
 				5D45858ED2B83436A5FCF18F /* Pods-GitHubClient_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2F38F8B220059ABF00B27958 /* ReadMeView */ = {
+			isa = PBXGroup;
+			children = (
+				2F38F8BB20059AFB00B27958 /* Resources */,
+				2FB54BAA20036304008493F7 /* ReadMeView.swift */,
+			);
+			path = ReadMeView;
+			sourceTree = "<group>";
+		};
+		2F38F8BB20059AFB00B27958 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F38F8B420059AE200B27958 /* index.html */,
+				2F38F8B520059AE200B27958 /* main.css */,
+				2F38F8B620059AE200B27958 /* main.js */,
+				2F38F8B320059AE100B27958 /* vendor.js */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2F894B171FFF1921001F531E /* UserRepository */ = {
@@ -244,7 +272,7 @@
 				2FDDB0C41FAAFB6900CBCED3 /* Notification */,
 				2FB576E01FB961390019BF56 /* Layer+Animation.swift */,
 				2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */,
-				2FB54BAA20036304008493F7 /* MarkDownView.swift */,
+				2F38F8B220059ABF00B27958 /* ReadMeView */,
 				2FD576FF2004B6C400C93DDF /* ControlButton.swift */,
 				2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */,
 				2F894B1A1FFF52B5001F531E /* RepositoryDetailViewController.storyboard */,
@@ -383,8 +411,12 @@
 			files = (
 				2FA352261FA1C8C800D87553 /* RepositoryCell.xib in Resources */,
 				2F894B1B1FFF52B5001F531E /* RepositoryDetailViewController.storyboard in Resources */,
+				2F38F8BA20059AE200B27958 /* main.js in Resources */,
+				2F38F8B720059AE200B27958 /* vendor.js in Resources */,
+				2F38F8B820059AE200B27958 /* index.html in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				2FDDB0C11FAAFB3700CBCED3 /* NotificationCell.xib in Resources */,
+				2F38F8B920059AE200B27958 /* main.css in Resources */,
 				2F3065151FA32AB0005A6E5A /* NewsCell.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				2FA3522D1FA1C8E000D87553 /* Main.storyboard in Resources */,
@@ -551,7 +583,7 @@
 				2FBD3D391FFE0FF6003FD6D6 /* AppStep.swift in Sources */,
 				2FB576E11FB961390019BF56 /* Layer+Animation.swift in Sources */,
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
-				2FB54BAB20036304008493F7 /* MarkDownView.swift in Sources */,
+				2FB54BAB20036304008493F7 /* ReadMeView.swift in Sources */,
 				2FDDB0C01FAAFB3700CBCED3 /* NotificationCell.swift in Sources */,
 				2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */,
 				2FBD3D371FFE0FD5003FD6D6 /* MainFlow.swift in Sources */,

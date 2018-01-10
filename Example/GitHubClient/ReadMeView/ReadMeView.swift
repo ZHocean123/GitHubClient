@@ -1,5 +1,5 @@
 //
-//  MarkDownView.swift
+//  ReadMeView.swift
 //  GitHubClient_Example
 //
 //  Created by yang on 08/01/2018.
@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import EFMarkdown
 
-@objcMembers class MarkDownView: UIView {
+@objcMembers class ReadMeView: UIView {
 
     let loadingBgView:UIView = {
         let bgView = UIView()
@@ -96,6 +96,8 @@ import EFMarkdown
             if error == nil, let data = data, let markDown = String(data: data, encoding: .utf8) {
                 do {
                     let markdownHTML = try EFMarkdown().markdownToHTML(markDown)
+                    let templateURL = Bundle.main.url(forResource: "index", withExtension: "html")!
+                    let templateContent = try String(contentsOf: templateURL, encoding: String.Encoding.utf8)
                     let html = """
                     <html lang=\"en\">
                         <head>
@@ -107,7 +109,8 @@ import EFMarkdown
                     </html>
                     """
                     DispatchQueue.main.async {
-                        self?.webView.loadHTMLString(html, baseURL: nil)
+                        self?.webView.loadHTMLString(templateContent.replacingOccurrences(of: "$PLACEHOLDER", with: markdownHTML),
+                                                     baseURL: templateURL)
                     }
                 } catch let error {
                     print(error)
@@ -135,7 +138,7 @@ import EFMarkdown
 
 }
 
-extension MarkDownView: WKNavigationDelegate {
+extension ReadMeView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isLoading = false
 //        invalidateIntrinsicContentSize()

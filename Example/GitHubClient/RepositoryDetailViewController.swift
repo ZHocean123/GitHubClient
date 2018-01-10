@@ -30,7 +30,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     @IBOutlet weak var issueBtn: UIButton?
     @IBOutlet weak var forkBtn: UIButton?
     @IBOutlet weak var languageLabel: UILabel?
-    @IBOutlet weak var readMeView: MarkDownView?
+    @IBOutlet weak var readMeView: ReadMeView?
 
     func setupSubviews() {
 

@@ -27,6 +27,8 @@ class ControlButton: UIButton {
     }
 
     func commonInit() {
+//        self.setBackgroundImage(#imageLiteral(resourceName: "btn_bg_normal"), for: .normal)
+//        self.setBackgroundImage(#imageLiteral(resourceName: "btn_bg_highlight"), for: .highlighted)
         countLabel.textAlignment = .center
         countLabel.verticalAlignment = .center
 
