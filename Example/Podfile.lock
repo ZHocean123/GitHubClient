@@ -27,12 +27,12 @@ PODS:
     - Reusable/View (= 4.0.0)
   - Reusable/Storyboard (4.0.0)
   - Reusable/View (4.0.0)
-  - RxCocoa (4.1.0):
+  - RxCocoa (4.1.1):
     - RxSwift (~> 4.0)
-  - RxFlow (1.0.2):
+  - RxFlow (1.0.3):
     - RxCocoa (>= 4.0.0)
     - RxSwift (>= 4.0.0)
-  - RxSwift (4.1.0)
+  - RxSwift (4.1.1)
   - SideMenu (3.1.5)
   - SnapKit (4.0.0)
   - SwiftyImage (1.2.0)
@@ -41,6 +41,7 @@ PODS:
     - XCGLogger/Core (= 6.0.2)
   - XCGLogger/Core (6.0.2):
     - ObjcExceptionBridging
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - CFNotify
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - SwiftyImage
   - UITableView+FDTemplateLayoutCell
   - XCGLogger
+  - YYText
 
 EXTERNAL SOURCES:
   GitHubClient:
@@ -80,15 +82,16 @@ SPEC CHECKSUMS:
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
-  RxCocoa: cc1fec49cdc8fabe645964de7c51c099a36c2aa8
-  RxFlow: 3677c64de1a2154597e206b56c2f2b84c98f70f2
-  RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
+  RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
+  RxFlow: 6f8d96a1ae627831212a4bb649e87c8d6eb25143
+  RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
   SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyImage: ebaa7c7b6163cd4ad102f3bb05a8fb276d35b4f3
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   XCGLogger: c9601cae9a8912de34a58666ba931ed3d624dd31
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: a86d66f8e14f7a09e6c2864cca2a2a583c02e77b
+PODFILE CHECKSUM: 565d44c29c9cc224c26a85c8a9fb0262897eafe5
 
 COCOAPODS: 1.4.0.beta.2

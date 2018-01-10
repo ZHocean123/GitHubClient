@@ -211,6 +211,30 @@ public class Github {
         return request("user/repos", parameters: parameters, success: success, failure: failure)
     }
 
+    public func tags(owner: String,
+                     repo: String,
+                     success: SuccessHandler<[String: Int]>?,
+                     failure: FailureHandler?) -> URLSessionTask {
+        return request("repos/\(owner)/\(repo)/tags", success: success, failure: failure)
+    }
+
+    public func languages(owner: String,
+                          repo: String,
+                          success: SuccessHandler<[String: Int]>?,
+                          failure: FailureHandler?) -> URLSessionTask {
+        return request("repos/\(owner)/\(repo)/languages", success: success, failure: failure)
+    }
+
+    public struct Topics: Codable {
+        public let names: [String]
+    }
+    public func topics(owner: String,
+                       repo: String,
+                       success: SuccessHandler<Topics>?,
+                       failure: FailureHandler?) -> URLSessionTask {
+        return request("repos/\(owner)/\(repo)/topics", success: success, failure: failure)
+    }
+
     // MARK: - activities
     public func events(_ username: String,
                        success: SuccessHandler<[Event]>?,
@@ -231,9 +255,5 @@ public class Github {
 public extension Repository {
     public var readMeUrlStr: String {
         return "https://raw.githubusercontent.com/\(self.owner.login)/\(self.name)/\(self.defaultBranch)/README.md"
-    }
-    public var readMeRequest: URLRequest {
-        let urlStr = "https://raw.githubusercontent.com/\(self.owner.login)/\(self.name)/\(self.defaultBranch)/README.md"
-        return URLRequest(url: URL(string: urlStr)!)
     }
 }

@@ -11,6 +11,8 @@ import GitHubClient
 import SnapKit
 import Reusable
 import EFMarkdown
+import RxSwift
+import RxCocoa
 
 class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
@@ -19,6 +21,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
             loadRepository()
         }
     }
+    var viewModel: RepositoryDetailViewModel?
 
     // MARK: - subviews
     @IBOutlet weak var scrollView: UIScrollView?
@@ -31,6 +34,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     @IBOutlet weak var forkBtn: UIButton?
     @IBOutlet weak var languageLabel: UILabel?
     @IBOutlet weak var readMeView: ReadMeView?
+    @IBOutlet weak var languagesBar: LanguageBar?
 
     func setupSubviews() {
 
@@ -48,6 +52,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         view.backgroundColor = .white
         setupSubviews()
         setupConstraints()
+
         loadRepository()
     }
 
@@ -56,10 +61,26 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         // Dispose of any resources that can be recreated.
     }
 
+    var disposeBag = DisposeBag()
+
     func loadRepository() {
+
+        if let repository = repository {
+            viewModel = RepositoryDetailViewModel(repository)
+            viewModel?.languagesObserver.subscribe(onNext: { [weak self] (languages) in
+                self?.languagesBar?.languages = languages
+            }).disposed(by: disposeBag)
+            viewModel?.topicsObserver.subscribe(onNext: { [weak self] (topics) in
+                print(topics)
+                self?.topicsView?.topics = topics
+            }).disposed(by: disposeBag)
+        }
+
+        viewModel?.loadRepoTopics()
+
         titleLabel?.text = repository?.name
         descriptionLabel?.text = repository?.description
-        topicsView?.topics = repository?.topics ?? []
+//        topicsView?.topics = repository?.topics ?? []
         languageLabel?.text = repository?.language
         readMeView?.loadReadMe(url: repository?.readMeUrlStr)
     }
@@ -73,4 +94,11 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     }
     */
 
+}
+
+extension Repository {
+    func getLanguages(success: Github.SuccessHandler<[String: Int]>?,
+                      failure: Github.FailureHandler?) -> URLSessionTask {
+        return Github.shared.languages(owner: owner.login, repo: name, success: success, failure: failure)
+    }
 }

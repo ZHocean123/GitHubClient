@@ -35,6 +35,6 @@ class RepositorySearchViewModel: Stepper {
     }
 
     func pick(repository: Repository) {
-        self.step.onNext(AppStep.repoPicked(with: repository))
+        self.step.accept(AppStep.repoPicked(with: repository))
     }
 }

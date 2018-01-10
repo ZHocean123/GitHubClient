@@ -15,6 +15,8 @@
 		2F38F8B820059AE200B27958 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B420059AE200B27958 /* index.html */; };
 		2F38F8B920059AE200B27958 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B520059AE200B27958 /* main.css */; };
 		2F38F8BA20059AE200B27958 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B620059AE200B27958 /* main.js */; };
+		2F38F8BD2005C03A00B27958 /* LanguageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38F8BC2005C03A00B27958 /* LanguageBar.swift */; };
+		2F38F8C12005FBB200B27958 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38F8C02005FBB200B27958 /* RepositoryDetailViewModel.swift */; };
 		2F4707201FA6B40900BD9328 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47071F1FA6B40900BD9328 /* EventsViewController.swift */; };
 		2F894B141FFF1735001F531E /* UserRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B131FFF1735001F531E /* UserRepositoryViewController.swift */; };
 		2F894B161FFF1903001F531E /* UserRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B151FFF1903001F531E /* UserRepositoryViewModel.swift */; };
@@ -66,6 +68,8 @@
 		2F38F8B420059AE200B27958 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2F38F8B520059AE200B27958 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
 		2F38F8B620059AE200B27958 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		2F38F8BC2005C03A00B27958 /* LanguageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBar.swift; sourceTree = "<group>"; };
+		2F38F8C02005FBB200B27958 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		2F47071F1FA6B40900BD9328 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		2F894B131FFF1735001F531E /* UserRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryViewController.swift; sourceTree = "<group>"; };
 		2F894B151FFF1903001F531E /* UserRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 				2F38F8B320059AE100B27958 /* vendor.js */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2F38F8BF2005FB7900B27958 /* RepositoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */,
+				2F38F8C02005FBB200B27958 /* RepositoryDetailViewModel.swift */,
+			);
+			path = RepositoryDetail;
 			sourceTree = "<group>";
 		};
 		2F894B171FFF1921001F531E /* UserRepository */ = {
@@ -271,7 +284,8 @@
 				2FDDB0C31FAAFB5F00CBCED3 /* Event */,
 				2FDDB0C41FAAFB6900CBCED3 /* Notification */,
 				2FB576E01FB961390019BF56 /* Layer+Animation.swift */,
-				2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */,
+				2F38F8BF2005FB7900B27958 /* RepositoryDetail */,
+				2F38F8BC2005C03A00B27958 /* LanguageBar.swift */,
 				2F38F8B220059ABF00B27958 /* ReadMeView */,
 				2FD576FF2004B6C400C93DDF /* ControlButton.swift */,
 				2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */,
@@ -514,6 +528,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyImage/SwiftyImage.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -534,6 +549,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -599,8 +615,10 @@
 				2FDDB0BA1FAAEF4800CBCED3 /* NotificationsViewController.swift in Sources */,
 				2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */,
 				2FA3525D1FA1CB0500D87553 /* HUD.swift in Sources */,
+				2F38F8C12005FBB200B27958 /* RepositoryDetailViewModel.swift in Sources */,
 				2FA352281FA1C8C800D87553 /* RepositoryCell.swift in Sources */,
 				2FA352291FA1C8C800D87553 /* RepositorySearchViewController.swift in Sources */,
+				2F38F8BD2005C03A00B27958 /* LanguageBar.swift in Sources */,
 				2FBD3D301FFE085A003FD6D6 /* ViewModelBased.swift in Sources */,
 				2F894B161FFF1903001F531E /* UserRepositoryViewModel.swift in Sources */,
 			);
