@@ -41,7 +41,9 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     @IBOutlet weak var languagesBar: LanguageBar!
 
     func setupSubviews() {
-
+        descriptionLabel.superview?.isHidden = true
+        languageLabel.superview?.isHidden = true
+        topicsView.superview?.isHidden = true
     }
 
     func setupConstraints() {
@@ -59,14 +61,23 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
             self?.starBtn.count = repository?.stargazersCount ?? 0
             self?.forkBtn.count = repository?.forks ?? 0
             self?.issueBtn.count = repository?.openIssuesCount ?? 0
+            UIView.animate(withDuration: 0.25, animations: {
+                self?.languageLabel.superview?.superview?.layoutIfNeeded()
+            })
         }).disposed(by: disposeBag)
         viewModel.languages.asObservable().subscribe(onNext: { [weak self] (languages) in
             self?.languagesBar.languages = languages
             self?.languagesBar.isHidden = languages.count == 0
+            UIView.animate(withDuration: 0.25, animations: {
+                self?.languagesBar.superview?.superview?.layoutIfNeeded()
+            })
         }).disposed(by: disposeBag)
         viewModel.topics.asObservable().subscribe(onNext: { [weak self] (topics) in
             self?.topicsView.topics = topics
             self?.topicsView.superview?.isHidden = topics.count == 0
+            UIView.animate(withDuration: 0.25, animations: {
+                self?.languageLabel.superview?.superview?.layoutIfNeeded()
+            })
         }).disposed(by: disposeBag)
     }
     
