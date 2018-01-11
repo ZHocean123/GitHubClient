@@ -31,10 +31,12 @@ class ControlButton: UIButton {
 //        self.setBackgroundImage(#imageLiteral(resourceName: "btn_bg_highlight"), for: .highlighted)
         countLabel.textAlignment = .center
         countLabel.verticalAlignment = .center
+        countLabel.font = UIFont.systemFont(ofSize: 12)
 
         nameLabel.textAlignment = .center
         nameLabel.verticalAlignment = .center
-
+        nameLabel.font = UIFont.systemFont(ofSize: 14)
+        
         addSubview(countLabel)
         addSubview(nameLabel)
         countLabel.snp.makeConstraints { (make) in

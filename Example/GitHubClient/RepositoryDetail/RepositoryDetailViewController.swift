@@ -33,9 +33,9 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var topicsView: TopicsView!
-    @IBOutlet weak var starBtn: UIButton!
-    @IBOutlet weak var issueBtn: UIButton!
-    @IBOutlet weak var forkBtn: UIButton!
+    @IBOutlet weak var starBtn: ControlButton!
+    @IBOutlet weak var issueBtn: ControlButton!
+    @IBOutlet weak var forkBtn: ControlButton!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var readMeView: ReadMeView!
     @IBOutlet weak var languagesBar: LanguageBar!
@@ -56,6 +56,9 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
             self?.languageLabel.text = repository?.language
             self?.languageLabel.superview?.isHidden = repository?.language == nil
             self?.readMeView.loadReadMe(url: repository?.readMeUrlStr)
+            self?.starBtn.count = repository?.stargazersCount ?? 0
+            self?.forkBtn.count = repository?.forks ?? 0
+            self?.issueBtn.count = repository?.openIssuesCount ?? 0
         }).disposed(by: disposeBag)
         viewModel.languages.asObservable().subscribe(onNext: { [weak self] (languages) in
             self?.languagesBar.languages = languages

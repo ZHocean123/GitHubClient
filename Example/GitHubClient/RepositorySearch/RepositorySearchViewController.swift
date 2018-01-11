@@ -103,6 +103,9 @@ extension RepositorySearchViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.pick(repository: self.viewModel.repositories[indexPath.row])
+//        self.viewModel.pick(repository: self.viewModel.repositories[indexPath.row])
+        let controller = RepositoryDetailViewController.instantiate()
+        controller.repository = self.viewModel.repositories[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

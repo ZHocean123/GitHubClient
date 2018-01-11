@@ -78,6 +78,8 @@ let colorSchemes: [String: UInt32] = [
     "C++": 0xf34b7d,
     "Python": 0x3572A5,
     "JavaScript": 0xf1e05a,
+    "Java": 0xb07219,
+    "Ruby": 0x701516,
     "PHP": 0x4F5D95,
     "Shell": 0x89e051,
     "Go": 0x375eab,

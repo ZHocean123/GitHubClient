@@ -169,6 +169,7 @@
 			children = (
 				2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */,
 				2F38F8C02005FBB200B27958 /* RepositoryDetailViewModel.swift */,
+				2F894B1A1FFF52B5001F531E /* RepositoryDetailViewController.storyboard */,
 			);
 			path = RepositoryDetail;
 			sourceTree = "<group>";
@@ -292,7 +293,6 @@
 				2F38F8B220059ABF00B27958 /* ReadMeView */,
 				2FD576FF2004B6C400C93DDF /* ControlButton.swift */,
 				2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */,
-				2F894B1A1FFF52B5001F531E /* RepositoryDetailViewController.storyboard */,
 				2F894B171FFF1921001F531E /* UserRepository */,
 				2FB54BA820030138008493F7 /* TopicsView.swift */,
 			);
