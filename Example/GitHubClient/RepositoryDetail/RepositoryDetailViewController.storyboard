@@ -290,11 +290,6 @@
                             <constraint firstItem="rv6-Yw-xLh" firstAttribute="trailing" secondItem="W7i-M5-Wop" secondAttribute="trailing" id="zGq-0G-9Tr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rv6-Yw-xLh"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.98039215686274506" green="0.98431372549019602" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="avatar" destination="NNb-Ct-Js3" id="Fvf-pc-kZU"/>
