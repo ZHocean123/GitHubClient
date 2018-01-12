@@ -44,7 +44,8 @@ class TopicsView: UIView {
             label?.text = topics[index]
         }
 
-        layoutTopicLabels()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
     @IBInspectable var topics: [String] = ["topic"] {
@@ -112,6 +113,9 @@ class TopicsView: UIView {
         invalidateIntrinsicContentSize()
     }
 
+    override func updateConstraints() {
+        super.updateConstraints()
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

@@ -74,29 +74,29 @@ struct CellLayout {
 //    var topicsFrames: [CGRect]
     var height: CGFloat
 
-    static let cell: RepositoryCell = {
-        let width = UIScreen.main.bounds.width
-        let cell = UINib.init(nibName: "RepositoryCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RepositoryCell
-
-        cell.contentView.snp.makeConstraints({ (make) in
-            make.edges.equalTo(cell)
-            make.width.equalTo(width).priority(999)
-        })
-        return cell
-    }()
+//    static let cell: RepositoryCell = {
+//        let width = UIScreen.main.bounds.width
+//        let cell = UINib.init(nibName: "RepositoryCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RepositoryCell
+//
+////        cell.contentView.snp.makeConstraints({ (make) in
+////            make.edges.equalTo(cell)
+////            make.width.equalTo(width).priority(999)
+////        })
+//        return cell
+//    }()
     static let topicLabel = TopicLabel()
 
     init(_ item: Repository) {
         self.item = item
 
-        // repoNameLabel
-        CellLayout.cell.repoNameLabel.text = item.name
+//        // repoNameLabel
+//        CellLayout.cell.repoNameLabel.text = item.name
+//
+//        // descriptionLabel
+//        CellLayout.cell.descriptionLabel.text = item.description
+//
+//        CellLayout.cell.topicsView.topics = item.topics ?? []
 
-        // descriptionLabel
-        CellLayout.cell.descriptionLabel.text = item.description
-
-        CellLayout.cell.topicsView.topics = item.topics ?? []
-
-        height = CellLayout.cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1 / UIScreen.main.scale
+        height = 0//CellLayout.cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1 / UIScreen.main.scale
     }
 }
