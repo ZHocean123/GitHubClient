@@ -34,8 +34,6 @@
 		2FB576E11FB961390019BF56 /* Layer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB576E01FB961390019BF56 /* Layer+Animation.swift */; };
 		2FBD3D301FFE085A003FD6D6 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */; };
 		2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */; };
-		2FBD3D371FFE0FD5003FD6D6 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D361FFE0FD5003FD6D6 /* MainFlow.swift */; };
-		2FBD3D391FFE0FF6003FD6D6 /* AppStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D381FFE0FF6003FD6D6 /* AppStep.swift */; };
 		2FD577002004B6C500C93DDF /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD576FF2004B6C400C93DDF /* ControlButton.swift */; };
 		2FD577022004BA2400C93DDF /* VerticalAlignmentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */; };
 		2FDDB0BA1FAAEF4800CBCED3 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDB0B91FAAEF4800CBCED3 /* NotificationsViewController.swift */; };
@@ -88,8 +86,6 @@
 		2FB576E01FB961390019BF56 /* Layer+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layer+Animation.swift"; sourceTree = "<group>"; };
 		2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
-		2FBD3D361FFE0FD5003FD6D6 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
-		2FBD3D381FFE0FF6003FD6D6 /* AppStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStep.swift; sourceTree = "<group>"; };
 		2FD576FF2004B6C400C93DDF /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignmentLabel.swift; sourceTree = "<group>"; };
 		2FDDB0B91FAAEF4800CBCED3 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -200,15 +196,6 @@
 			path = RepositorySearch;
 			sourceTree = "<group>";
 		};
-		2FBD3D351FFE0FC4003FD6D6 /* Flows */ = {
-			isa = PBXGroup;
-			children = (
-				2FBD3D361FFE0FD5003FD6D6 /* MainFlow.swift */,
-				2FBD3D381FFE0FF6003FD6D6 /* AppStep.swift */,
-			);
-			path = Flows;
-			sourceTree = "<group>";
-		};
 		2FDDB0C21FAAFB4B00CBCED3 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +261,6 @@
 			children = (
 				B0A9A8652006323500F3CD27 /* Log.swift */,
 				2FBD3D311FFE0864003FD6D6 /* Protocols */,
-				2FBD3D351FFE0FC4003FD6D6 /* Flows */,
 				2FA3525C1FA1CB0500D87553 /* HUD.swift */,
 				2FA3525A1FA1CA5F00D87553 /* DateString.swift */,
 				2FA3522A1FA1C8D200D87553 /* AppDelegate.swift */,
@@ -523,13 +509,12 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyImage/SwiftyImage.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
+				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 			);
@@ -544,13 +529,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 			);
@@ -599,14 +583,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FBD3D391FFE0FF6003FD6D6 /* AppStep.swift in Sources */,
 				2FB576E11FB961390019BF56 /* Layer+Animation.swift in Sources */,
 				B0A9A8662006323500F3CD27 /* Log.swift in Sources */,
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
 				2FB54BAB20036304008493F7 /* ReadMeView.swift in Sources */,
 				2FDDB0C01FAAFB3700CBCED3 /* NotificationCell.swift in Sources */,
 				2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */,
-				2FBD3D371FFE0FD5003FD6D6 /* MainFlow.swift in Sources */,
 				2F182DFC1FFCB8C900414E3F /* RepositoryDetailViewController.swift in Sources */,
 				2F894B141FFF1735001F531E /* UserRepositoryViewController.swift in Sources */,
 				2FB54BA920030138008493F7 /* TopicsView.swift in Sources */,

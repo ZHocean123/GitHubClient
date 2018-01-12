@@ -27,16 +27,12 @@ PODS:
     - Reusable/View (= 4.0.0)
   - Reusable/Storyboard (4.0.0)
   - Reusable/View (4.0.0)
-  - RxCocoa (4.1.1):
-    - RxSwift (~> 4.0)
-  - RxFlow (1.0.3):
-    - RxCocoa (>= 4.0.0)
-    - RxSwift (>= 4.0.0)
   - RxSwift (4.1.1)
   - SideMenu (3.1.5)
   - SnapKit (4.0.0)
   - SwiftyImage (1.2.0)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - URLNavigator (2.0.4)
   - XCGLogger (6.0.2):
     - XCGLogger/Core (= 6.0.2)
   - XCGLogger/Core (6.0.2):
@@ -55,12 +51,12 @@ DEPENDENCIES:
   - Nimble-Snapshots (~> 6.3.0)
   - Quick (~> 1.2.0)
   - Reusable
-  - RxFlow
   - RxSwift
   - SideMenu
   - SnapKit
   - SwiftyImage
   - UITableView+FDTemplateLayoutCell
+  - URLNavigator
   - XCGLogger
   - YYText
 
@@ -82,16 +78,15 @@ SPEC CHECKSUMS:
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
-  RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
-  RxFlow: 6f8d96a1ae627831212a4bb649e87c8d6eb25143
   RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
   SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyImage: ebaa7c7b6163cd4ad102f3bb05a8fb276d35b4f3
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  URLNavigator: af5582fbbb3586c958be16835d799bfdb23a4793
   XCGLogger: c9601cae9a8912de34a58666ba931ed3d624dd31
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 565d44c29c9cc224c26a85c8a9fb0262897eafe5
+PODFILE CHECKSUM: 7b43b0e339481adf66d1f41df8510fd0e9f17244
 
 COCOAPODS: 1.4.0.beta.2

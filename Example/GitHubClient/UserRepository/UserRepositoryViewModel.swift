@@ -8,10 +8,9 @@
 
 import Foundation
 import GitHubClient
-import RxFlow
 import RxSwift
 
-class UserRepositoryViewModel: Stepper {
+class UserRepositoryViewModel {
     var repositories = [Repository]()
     var layouts = [CellLayout]()
     var pagination = Pagination()
@@ -33,10 +32,6 @@ class UserRepositoryViewModel: Stepper {
             })
             return Disposables.create(with: task.cancel)
         })
-    }
-
-    func pick(repository: Repository) {
-        self.step.accept(AppStep.repoPicked(with: repository))
     }
 }
 

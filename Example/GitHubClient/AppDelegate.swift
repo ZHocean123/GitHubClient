@@ -8,20 +8,26 @@
 
 import UIKit
 import GitHubClient
-import RxFlow
+import URLNavigator
+
+let navigator = Navigator()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator = Coordinator()
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         Github.clientSecret = "b560271b6af28686bdc92554296a4f88249a7871"
-        coordinator.coordinate(flow: MainFlow(), withStepper: OneStepper(withSingleStep: AppStep.home))
-        
+
+        navigator.register("app://repo") { (_, _, context) in
+            let controller = RepositoryDetailViewController.instantiate()
+            controller.viewModel.repo = context as? Repository
+            return controller
+        }
+
         return true
     }
 

@@ -11,6 +11,7 @@ import Reusable
 import GitHubClient
 import RxSwift
 import UITableView_FDTemplateLayoutCell
+import URLNavigator
 
 class UserRepositoryViewController: UIViewController {
 
@@ -111,9 +112,6 @@ extension UserRepositoryViewController: UITableViewDelegate {
 //    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.viewModel.pick(repository: self.viewModel.repositories[indexPath.row])
-        let controller = RepositoryDetailViewController.instantiate()
-        controller.repository = self.viewModel.repositories[indexPath.row]
-        navigationController?.pushViewController(controller, animated: true)
+        navigator.push("app://repo", context: viewModel.repositories[indexPath.row])
     }
 }

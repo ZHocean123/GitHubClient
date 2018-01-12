@@ -12,7 +12,6 @@ import SnapKit
 import Reusable
 import EFMarkdown
 import RxSwift
-import RxCocoa
 
 class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
@@ -69,7 +68,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
             self?.languagesBar.languages = languages
             self?.languagesBar.isHidden = languages.count == 0
             UIView.animate(withDuration: 0.25, animations: {
-                self?.languagesBar.superview?.superview?.layoutIfNeeded()
+                self?.languagesBar.superview?.layoutIfNeeded()
             })
         }).disposed(by: disposeBag)
         viewModel.topics.asObservable().subscribe(onNext: { [weak self] (topics) in

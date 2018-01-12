@@ -14,10 +14,10 @@ target 'GitHubClient_Example' do
   pod 'Kingfisher'
   pod 'CFNotify'
   pod 'RxSwift'
-  pod 'RxFlow'
   pod 'Reusable'
   pod 'EFMarkdown'
   pod 'YYText'
+  pod 'URLNavigator'
 
   target 'GitHubClient_Tests' do
     inherit! :search_paths
