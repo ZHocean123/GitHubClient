@@ -36,7 +36,7 @@ class ControlButton: UIButton {
         nameLabel.textAlignment = .center
         nameLabel.verticalAlignment = .center
         nameLabel.font = UIFont.systemFont(ofSize: 14)
-        
+
         addSubview(countLabel)
         addSubview(nameLabel)
         countLabel.snp.makeConstraints { (make) in
@@ -64,6 +64,22 @@ class ControlButton: UIButton {
         didSet {
             nameLabel.text = name
             setNeedsLayout()
+        }
+    }
+
+    @IBInspectable var countColor: UIColor? {
+        didSet {
+            if let color = countColor {
+                countLabel.textColor = color
+            }
+        }
+    }
+
+    @IBInspectable var nameColor: UIColor? {
+        didSet {
+            if let color = nameColor {
+                nameLabel.textColor = color
+            }
         }
     }
 

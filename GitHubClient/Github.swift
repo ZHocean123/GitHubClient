@@ -185,6 +185,13 @@ public class Github {
         }
     }
 
+    // MARK: - user
+    public func user(_ loginName: String,
+                     success: SuccessHandler<User>?,
+                     failure: FailureHandler?) -> URLSessionTask {
+        return request("user/\(loginName)", success: success, failure: failure)
+    }
+    
     // MARK: - repository
 
     public func search(repo query: String,
@@ -225,12 +232,9 @@ public class Github {
         return request("repos/\(owner)/\(repo)/languages", success: success, failure: failure)
     }
 
-    public struct Topics: Codable {
-        public let names: [String]
-    }
     public func topics(owner: String,
                        repo: String,
-                       success: SuccessHandler<Topics>?,
+                       success: SuccessHandler<TopicsWrapper>?,
                        failure: FailureHandler?) -> URLSessionTask {
         return request("repos/\(owner)/\(repo)/topics", success: success, failure: failure)
     }

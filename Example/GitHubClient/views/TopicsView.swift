@@ -19,7 +19,11 @@ class TopicsView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    override func awakeFromNib() {
         commonInit()
+        super.awakeFromNib()
     }
 
     func commonInit() {
@@ -44,8 +48,7 @@ class TopicsView: UIView {
             label?.text = topics[index]
         }
 
-        setNeedsLayout()
-        layoutIfNeeded()
+        layoutTopicLabels()
     }
 
     @IBInspectable var topics: [String] = ["topic"] {

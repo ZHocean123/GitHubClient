@@ -96,20 +96,11 @@ extension UserRepositoryViewController: UITableViewDataSource {
 }
 
 extension UserRepositoryViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
-//            (cell as? RepositoryCell)?.cellLayout = self.viewModel.layouts[indexPath.row]
-//        })
-//        return viewModel.layouts[indexPath.row].height
-//        /*
-//         let item = repositories[indexPath.row]
-//         return tableView.fd_heightForCell(withIdentifier: "searchResultCell", cacheBy: indexPath, configuration: { (cell) in
-//         let cell = cell as! RepositoryCell
-//         cell.repoNameLabel.text = item.name
-//         cell.descriptionLabel.text = item.description
-//         })
-//         */
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
+            (cell as? RepositoryCell)?.cellLayout = self.viewModel.layouts[indexPath.row]
+        })
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigator.push("app://repo", context: viewModel.repositories[indexPath.row])

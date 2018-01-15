@@ -91,15 +91,9 @@ extension RepositorySearchViewController: UITableViewDataSource {
 
 extension RepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.layouts[indexPath.row].height
-        /*
-        let item = repositories[indexPath.row]
-        return tableView.fd_heightForCell(withIdentifier: "searchResultCell", cacheBy: indexPath, configuration: { (cell) in
-            let cell = cell as! RepositoryCell
-            cell.repoNameLabel.text = item.name
-            cell.descriptionLabel.text = item.description
+        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
+            (cell as? RepositoryCell)?.cellLayout = self.viewModel.layouts[indexPath.row]
         })
-         */
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

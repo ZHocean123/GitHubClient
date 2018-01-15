@@ -27,6 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.viewModel.repo = context as? Repository
             return controller
         }
+        navigator.register("app://user") { (_, _, context) in
+            let controller = UserDetailViewController.instantiate()
+            controller.viewModel.user = context as? User
+            return controller
+        }
+        navigator.register("app://user/:login") { (_, values, _) in
+            let controller = UserDetailViewController.instantiate()
+            controller.viewModel.loginName = values["login"] as? String
+            return controller
+        }
 
         return true
     }

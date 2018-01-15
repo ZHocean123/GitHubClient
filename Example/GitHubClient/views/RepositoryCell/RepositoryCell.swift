@@ -11,15 +11,14 @@ import DynamicColor
 import GitHubClient
 import Reusable
 import SnapKit
+import YYText
 
 class RepositoryCell: UITableViewCell, NibReusable {
 
     // repo图标
     @IBOutlet weak var repoImageView: UIImageView!
     // repo名称
-    @IBOutlet weak var repoNameLabel: UILabel!
-    // repo描述
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var repoNameLabel: YYLabel!
     // language
     @IBOutlet weak var languageLabel: UILabel!
     // stars
@@ -34,17 +33,52 @@ class RepositoryCell: UITableViewCell, NibReusable {
     var cellLayout: CellLayout? {
         didSet {
             repoImageView.image = #imageLiteral(resourceName: "repo")
-            repoNameLabel.text = "\(cellLayout?.item.owner.login ?? "")/\(cellLayout?.item.name ?? "")"
-            descriptionLabel.text = cellLayout?.item.description
             languageLabel.text = cellLayout?.item.language
             starsLabel.text = String(cellLayout?.item.stargazersCount ?? 0)
             forkLabel.text = String(cellLayout?.item.forksCount ?? 0)
             updateLabel.text = DateString(cellLayout?.item.updatedAt ?? "")?.agoDateStr
             topicsView.topics = cellLayout?.item.topics ?? []
-            descriptionLabel.backgroundColor = UIColor.gray
-            topicsView.backgroundColor = UIColor.gray
 
-            setNeedsLayout()
+            repoNameLabel.preferredMaxLayoutWidth = repoNameLabel.frame.width
+            repoNameLabel.attributedText = cellLayout?.dispalyStr
+        }
+    }
+
+    var item: Repository? {
+        didSet {
+            repoImageView.image = #imageLiteral(resourceName: "repo")
+            languageLabel.text = item?.language
+            starsLabel.text = String(item?.stargazersCount ?? 0)
+            forkLabel.text = String(item?.forksCount ?? 0)
+            updateLabel.text = DateString(item?.updatedAt ?? "")?.agoDateStr
+            topicsView.topics = item?.topics ?? []
+
+            let owner = NSMutableAttributedString(string: item?.owner.login ?? "")
+            owner.addLink { [weak self] (_, _, _, _) in
+                navigator.push("app://user", context: self?.item?.owner)
+            }
+
+            let repo = NSMutableAttributedString(string: item?.name ?? "")
+            repo.addLink { [weak self] (_, _, _, _) in
+                navigator.push("app://repo", context: self?.item)
+            }
+
+            let str = NSMutableAttributedString()
+            str.append(owner)
+            str.append(NSAttributedString(string: " / "))
+            str.append(repo)
+            str.yy_setFont(UIFont.systemFont(ofSize: 14), range: str.yy_rangeOfAll())
+
+            if let description = item?.description {
+                str.add(spacing: 4)
+                let descriptionStr = NSMutableAttributedString(string: description)
+                descriptionStr.yy_setColor(UIColor.gray, range: descriptionStr.yy_rangeOfAll())
+                descriptionStr.yy_setFont(UIFont.systemFont(ofSize: 12), range: descriptionStr.yy_rangeOfAll())
+                str.append(descriptionStr)
+            }
+
+            repoNameLabel.preferredMaxLayoutWidth = repoNameLabel.frame.width
+            repoNameLabel.attributedText = str
         }
     }
 
@@ -71,32 +105,36 @@ class RepositoryCell: UITableViewCell, NibReusable {
 
 struct CellLayout {
     var item: Repository
-//    var topicsFrames: [CGRect]
-    var height: CGFloat
-
-//    static let cell: RepositoryCell = {
-//        let width = UIScreen.main.bounds.width
-//        let cell = UINib.init(nibName: "RepositoryCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RepositoryCell
-//
-////        cell.contentView.snp.makeConstraints({ (make) in
-////            make.edges.equalTo(cell)
-////            make.width.equalTo(width).priority(999)
-////        })
-//        return cell
-//    }()
+    var dispalyStr: NSAttributedString?
     static let topicLabel = TopicLabel()
 
     init(_ item: Repository) {
         self.item = item
 
-//        // repoNameLabel
-//        CellLayout.cell.repoNameLabel.text = item.name
-//
-//        // descriptionLabel
-//        CellLayout.cell.descriptionLabel.text = item.description
-//
-//        CellLayout.cell.topicsView.topics = item.topics ?? []
+        let owner = NSMutableAttributedString(string: item.owner.login)
+        owner.addLink { (_, _, _, _) in
+            navigator.push("app://user/\(item.owner.login)")
+        }
 
-        height = 0//CellLayout.cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1 / UIScreen.main.scale
+        let repo = NSMutableAttributedString(string: item.name)
+        repo.addLink { (_, _, _, _) in
+            navigator.push("app://repo", context: item)
+        }
+
+        let str = NSMutableAttributedString()
+        str.append(owner)
+        str.append(NSAttributedString(string: " / "))
+        str.append(repo)
+        str.yy_setFont(UIFont.systemFont(ofSize: 14), range: str.yy_rangeOfAll())
+
+        if let description = item.description {
+            str.add(spacing: 4)
+            let descriptionStr = NSMutableAttributedString(string: description)
+            descriptionStr.yy_setColor(UIColor.gray, range: descriptionStr.yy_rangeOfAll())
+            descriptionStr.yy_setFont(UIFont.systemFont(ofSize: 12), range: descriptionStr.yy_rangeOfAll())
+            str.append(descriptionStr)
+        }
+
+        dispalyStr = str
     }
 }

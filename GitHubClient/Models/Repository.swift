@@ -227,3 +227,7 @@ public struct SearchRepositoryResult: Codable {
         case items
     }
 }
+
+public struct TopicsWrapper: Codable {
+    public let names: [String]
+}

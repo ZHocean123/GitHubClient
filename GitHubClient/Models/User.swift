@@ -10,36 +10,42 @@ public struct User: Codable {
     public let id: Int
     public let avatarUrl: URL
     public let gravatarId: String
-    public let url: URL
     public let htmlUrl: URL
-    public let followersUrl: URL
-    public let followingUrl: String
-    public let gistsUrl: String
-    public let starredUrl: String
-    public let subscriptionsUrl: URL
-    public let organizationsUrl: URL
-    public let reposUrl: URL
-    public let eventsUrl: String
-    public let receivedEventsUrl: URL
     public let type: String
     public let siteAdmin: Bool
+    public let name: String?
+    public let company: String?
+    public let blog: String?
+    public let location: String?
+    public let email: String?
+    public let hireable: Bool?
+    public let bio: String?
+    public let publicRepos: Int?
+    public let publicGists: Int?
+    public let followers: Int?
+    public let following: Int?
+    public let createdAt: String?
+    public let updatedAt: String?
     private enum CodingKeys: String, CodingKey {
         case login
         case id
         case avatarUrl = "avatar_url"
         case gravatarId = "gravatar_id"
-        case url
         case htmlUrl = "html_url"
-        case followersUrl = "followers_url"
-        case followingUrl = "following_url"
-        case gistsUrl = "gists_url"
-        case starredUrl = "starred_url"
-        case subscriptionsUrl = "subscriptions_url"
-        case organizationsUrl = "organizations_url"
-        case reposUrl = "repos_url"
-        case eventsUrl = "events_url"
-        case receivedEventsUrl = "received_events_url"
         case type
         case siteAdmin = "site_admin"
+        case name
+        case company
+        case blog
+        case location
+        case email
+        case hireable
+        case bio
+        case publicRepos = "public_repos"
+        case publicGists = "public_gists"
+        case followers
+        case following
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }
