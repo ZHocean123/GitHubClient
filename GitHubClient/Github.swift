@@ -189,7 +189,7 @@ public class Github {
     public func user(_ loginName: String,
                      success: SuccessHandler<User>?,
                      failure: FailureHandler?) -> URLSessionTask {
-        return request("user/\(loginName)", success: success, failure: failure)
+        return request("users/\(loginName)", success: success, failure: failure)
     }
     
     // MARK: - repository

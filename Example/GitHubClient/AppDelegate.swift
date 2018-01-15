@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.viewModel.user = context as? User
             return controller
         }
-        navigator.register("app://user/:login") { (_, values, _) in
+        navigator.register("app://user/<string:login>") { (_, values, _) in
             let controller = UserDetailViewController.instantiate()
             controller.viewModel.loginName = values["login"] as? String
             return controller
