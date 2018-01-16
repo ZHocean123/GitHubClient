@@ -49,6 +49,8 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
         default:
             break
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-mail_filter"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(onBtnFilter))
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,8 +86,10 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
     }
 }
 
-extension RepositoryListViewController: UISearchBarDelegate {
-
+@objc extension RepositoryListViewController {
+    func onBtnFilter() {
+        
+    }
 }
 
 extension RepositoryListViewController: UITableViewDataSource {
