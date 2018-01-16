@@ -44,8 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return controller
         }
         navigator.register("app://users/<string:loginName>/repos") { (_, values, _) in
-            let controller = UserRepositoryViewController.instantiate()
-            controller.viewModel.ownerLogin = values["loginName"] as? String
+            guard let username = values["loginName"] as? String else { return nil }
+            let controller = RepositoryListViewController.instantiate()
+            controller.viewModel.sourceType = .user(username: username)
             return controller
         }
 

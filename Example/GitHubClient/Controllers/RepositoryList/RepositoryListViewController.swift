@@ -13,29 +13,42 @@ import RxSwift
 import UITableView_FDTemplateLayoutCell
 import URLNavigator
 
-class UserRepositoryViewController: UIViewController, StoryboardBased {
+class RepositoryListViewController: UIViewController, StoryboardBased {
 
-    var viewModel = UserRepositoryViewModel()
+    var viewModel = RepositoryListViewModel()
 
     let disposeBag = DisposeBag()
-    
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableview: UITableView!
 
     func bindViewModel() {
-        viewModel.loadingVariable.asObservable().subscribe(onNext: { [weak self] (isLoading) in
-            if !isLoading {
+        viewModel.loadingVariable.asObservable().subscribe(onNext: { [weak self] (state) in
+            switch state {
+            case .loading:
+                self?.showProcess()
+            case .loaded:
+                self?.hideAllHUD()
                 self?.tableview.reloadData()
+            case .error(let error):
+                self?.showError(error.localizedDescription)
             }
         }).disposed(by: disposeBag)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableview.register(cellType: RepositoryCell.self)
         bindViewModel()
+
+        switch viewModel.sourceType {
+        case .none:
+            viewModel.sourceType = .owner
+        default:
+            break
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,11 +84,11 @@ class UserRepositoryViewController: UIViewController, StoryboardBased {
     }
 }
 
-extension UserRepositoryViewController: UISearchBarDelegate {
-    
+extension RepositoryListViewController: UISearchBarDelegate {
+
 }
 
-extension UserRepositoryViewController: UITableViewDataSource {
+extension RepositoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.layouts.count
     }
@@ -86,7 +99,7 @@ extension UserRepositoryViewController: UITableViewDataSource {
     }
 }
 
-extension UserRepositoryViewController: UITableViewDelegate {
+extension RepositoryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
             (cell as? RepositoryCell)?.cellLayout = self.viewModel.layouts[indexPath.row]

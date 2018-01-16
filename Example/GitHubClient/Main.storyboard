@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="-2535" y="253"/>
         </scene>
-        <!--UserRepositoryViewController-->
+        <!--RepositoryListViewController-->
         <scene sceneID="NSc-lV-AXu">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserRepositoryViewController" id="xF7-WX-GJV" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="RepositoryListViewController" id="xF7-WX-GJV" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="gid-XE-Kqy"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ce-MQ-vLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
