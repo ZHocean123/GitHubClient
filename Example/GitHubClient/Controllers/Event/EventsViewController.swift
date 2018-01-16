@@ -10,6 +10,8 @@ import UIKit
 import GitHubClient
 import Kingfisher
 import CFNotify
+import UITableView_FDTemplateLayoutCell
+import Reusable
 
 class EventsViewController: UIViewController {
 
@@ -20,14 +22,14 @@ class EventsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        tableView.register(cellType: EventCell.self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadEvents()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +51,7 @@ class EventsViewController: UIViewController {
             DispatchQueue.global(qos: .utility).async {
                 let models = result.filter({ (event) -> Bool in
                     switch event.type {
-                    case .issuesEvent,.issueCommentEvent:
+                    case .issuesEvent, .issueCommentEvent:
                         return false
                     default:
                         return true
@@ -62,18 +64,18 @@ class EventsViewController: UIViewController {
             }
         }) { (error) in
             log.error(error)
-            
+
             // config
             var classicViewConfig = CFNotify.Config()
             classicViewConfig.initPosition = .top(.center)
             classicViewConfig.appearPosition = .top
             classicViewConfig.hideTime = .never
-            
+
             // view
             let cyberView = CFNotifyView.cyberWith(title: "Error",
                                                    body: error.localizedDescription,
                                                    theme: .fail(.light))
-            
+
             CFNotify.present(config: classicViewConfig, view: cyberView, tapHandler: nil)
         }
     }
@@ -85,10 +87,19 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EventCell.self)
         cell.userImageView.kf.setImage(with: ImageResource(downloadURL: models[indexPath.row].event.actor.avatarUrl))
         cell.dateLabel.text = models[indexPath.row].event.type.rawValue
         cell.detailLabel.attributedText = models[indexPath.row].attributedString
         return cell
+    }
+}
+
+extension EventsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.fd_heightForCell(withIdentifier: EventCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
+            let cell = cell as! EventCell
+            cell.detailLabel.attributedText = self.models[indexPath.row].attributedString
+        })
     }
 }

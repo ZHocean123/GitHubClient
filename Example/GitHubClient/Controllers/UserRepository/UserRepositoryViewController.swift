@@ -13,19 +13,29 @@ import RxSwift
 import UITableView_FDTemplateLayoutCell
 import URLNavigator
 
-class UserRepositoryViewController: UIViewController {
+class UserRepositoryViewController: UIViewController, StoryboardBased {
 
     var viewModel = UserRepositoryViewModel()
 
+    let disposeBag = DisposeBag()
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableview: UITableView!
 
+    func bindViewModel() {
+        viewModel.loadingVariable.asObservable().subscribe(onNext: { [weak self] (isLoading) in
+            if !isLoading {
+                self?.tableview.reloadData()
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableview.register(cellType: RepositoryCell.self)
-        loadList()
+        bindViewModel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,35 +68,16 @@ class UserRepositoryViewController: UIViewController {
         default:
             return
         }
-        loadList()
     }
-
-    var disposeBag: DisposeBag?
 }
 
 extension UserRepositoryViewController: UISearchBarDelegate {
-    func loadList() {
-        let disposeBag = DisposeBag()
-        viewModel.pagination.page += 1
-        showProcess()
-        viewModel.fetch().subscribe { [weak self] event in
-            switch event {
-            case .next:
-                self?.hideAllHUD()
-                self?.tableview.reloadData()
-            case .error(let error):
-                self?.showError(error.localizedDescription)
-            default:
-                break
-            }
-        }.disposed(by: disposeBag)
-        self.disposeBag = disposeBag
-    }
+    
 }
 
 extension UserRepositoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.repositories.count
+        return viewModel.layouts.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RepositoryCell.self)

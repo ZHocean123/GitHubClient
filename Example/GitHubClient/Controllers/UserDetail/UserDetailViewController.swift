@@ -60,4 +60,10 @@ class UserDetailViewController: UIViewController, StoryboardBased {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func onBtnRepos(_ sender: ControlButton) {
+        guard sender.count > 0, let loginName = viewModel.loginName else {
+            return
+        }
+        navigator.push("app://users/\(loginName)/repos")
+    }
 }

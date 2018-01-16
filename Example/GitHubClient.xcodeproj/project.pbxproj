@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F00FEA3200DE65E00B6D4D2 /* UserRepositoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F00FEA2200DE65E00B6D4D2 /* UserRepositoryViewController.storyboard */; };
 		2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */; };
 		2F182DFC1FFCB8C900414E3F /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */; };
 		2F300143200C7477000B2CBF /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F300142200C7477000B2CBF /* NSMutableAttributedString+.swift */; };
 		2F300145200C87D2000B2CBF /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F300144200C87D2000B2CBF /* UserDetailViewController.swift */; };
 		2F300147200C87EB000B2CBF /* UserDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F300146200C87EB000B2CBF /* UserDetailViewController.storyboard */; };
 		2F30014A200C8876000B2CBF /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F300149200C8876000B2CBF /* UserDetailViewModel.swift */; };
-		2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3065121FA32AB0005A6E5A /* NewsCell.swift */; };
-		2F3065151FA32AB0005A6E5A /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3065131FA32AB0005A6E5A /* NewsCell.xib */; };
+		2F3065141FA32AB0005A6E5A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3065121FA32AB0005A6E5A /* EventCell.swift */; };
+		2F3065151FA32AB0005A6E5A /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3065131FA32AB0005A6E5A /* EventCell.xib */; };
 		2F38F8B720059AE200B27958 /* vendor.js in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B320059AE100B27958 /* vendor.js */; };
 		2F38F8B820059AE200B27958 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B420059AE200B27958 /* index.html */; };
 		2F38F8B920059AE200B27958 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 2F38F8B520059AE200B27958 /* main.css */; };
@@ -64,14 +65,15 @@
 
 /* Begin PBXFileReference section */
 		09306493ACF418F9E17AC3B6 /* GitHubClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GitHubClient.podspec; path = ../GitHubClient.podspec; sourceTree = "<group>"; };
+		2F00FEA2200DE65E00B6D4D2 /* UserRepositoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserRepositoryViewController.storyboard; sourceTree = "<group>"; };
 		2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		2F300142200C7477000B2CBF /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		2F300144200C87D2000B2CBF /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		2F300146200C87EB000B2CBF /* UserDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetailViewController.storyboard; sourceTree = "<group>"; };
 		2F300149200C8876000B2CBF /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
-		2F3065121FA32AB0005A6E5A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
-		2F3065131FA32AB0005A6E5A /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		2F3065121FA32AB0005A6E5A /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		2F3065131FA32AB0005A6E5A /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		2F38F8B320059AE100B27958 /* vendor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = vendor.js; sourceTree = "<group>"; };
 		2F38F8B420059AE200B27958 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2F38F8B520059AE200B27958 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				2F894B131FFF1735001F531E /* UserRepositoryViewController.swift */,
+				2F00FEA2200DE65E00B6D4D2 /* UserRepositoryViewController.storyboard */,
 				2F894B151FFF1903001F531E /* UserRepositoryViewModel.swift */,
 			);
 			path = UserRepository;
@@ -259,8 +262,8 @@
 			children = (
 				2F47071F1FA6B40900BD9328 /* EventsViewController.swift */,
 				2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */,
-				2F3065121FA32AB0005A6E5A /* NewsCell.swift */,
-				2F3065131FA32AB0005A6E5A /* NewsCell.xib */,
+				2F3065121FA32AB0005A6E5A /* EventCell.swift */,
+				2F3065131FA32AB0005A6E5A /* EventCell.xib */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -459,8 +462,9 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				2FDDB0C11FAAFB3700CBCED3 /* NotificationCell.xib in Resources */,
 				2F38F8B920059AE200B27958 /* main.css in Resources */,
-				2F3065151FA32AB0005A6E5A /* NewsCell.xib in Resources */,
+				2F3065151FA32AB0005A6E5A /* EventCell.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				2F00FEA3200DE65E00B6D4D2 /* UserRepositoryViewController.storyboard in Resources */,
 				2F300147200C87EB000B2CBF /* UserDetailViewController.storyboard in Resources */,
 				2FA3522D1FA1C8E000D87553 /* Main.storyboard in Resources */,
 			);
@@ -642,7 +646,7 @@
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,
 				2FDDB0BA1FAAEF4800CBCED3 /* NotificationsViewController.swift in Sources */,
 				2F300143200C7477000B2CBF /* NSMutableAttributedString+.swift in Sources */,
-				2F3065141FA32AB0005A6E5A /* NewsCell.swift in Sources */,
+				2F3065141FA32AB0005A6E5A /* EventCell.swift in Sources */,
 				2FA3525D1FA1CB0500D87553 /* HUD.swift in Sources */,
 				2F8725942008836900B5125E /* BorderView.swift in Sources */,
 				2F38F8C12005FBB200B27958 /* RepositoryDetailViewModel.swift in Sources */,

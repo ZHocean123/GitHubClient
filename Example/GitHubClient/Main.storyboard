@@ -20,89 +20,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Eca-cT-BQu" kind="relationship" relationship="rootViewController" id="M2r-En-cg4"/>
+                        <segue destination="xF7-WX-GJV" kind="relationship" relationship="rootViewController" id="0Og-tg-izY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePo-9v-WfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2954" y="590"/>
-        </scene>
-        <!--Repository-->
-        <scene sceneID="m5l-vd-dbj">
-            <objects>
-                <viewController id="Eca-cT-BQu" customClass="UserRepositoryViewController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="350-tw-yl4"/>
-                        <viewControllerLayoutGuide type="bottom" id="bYe-LJ-b3l"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ynr-GF-XCc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qj-KF-kMo">
-                                <rect key="frame" x="0.0" y="88" width="375" height="38"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bKD-8F-dMD">
-                                        <rect key="frame" x="5" y="5" width="365" height="29"/>
-                                        <segments>
-                                            <segment title="All"/>
-                                            <segment title="Public"/>
-                                            <segment title="Private"/>
-                                            <segment title="Sources"/>
-                                            <segment title="Forks"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="onChangeRepositoryType:" destination="Eca-cT-BQu" eventType="valueChanged" id="49Z-x4-a2H"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6K-mY-yHa">
-                                        <rect key="frame" x="0.0" y="37" width="375" height="1"/>
-                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="w1H-zc-b9m"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="q6K-mY-yHa" firstAttribute="leading" secondItem="1qj-KF-kMo" secondAttribute="leading" id="2lp-Ju-dHh"/>
-                                    <constraint firstAttribute="bottom" secondItem="q6K-mY-yHa" secondAttribute="bottom" id="4Rs-ZK-sPN"/>
-                                    <constraint firstItem="bKD-8F-dMD" firstAttribute="leading" secondItem="1qj-KF-kMo" secondAttribute="leading" constant="5" id="FIb-zl-Mm1"/>
-                                    <constraint firstAttribute="trailing" secondItem="q6K-mY-yHa" secondAttribute="trailing" id="RD5-JJ-HXb"/>
-                                    <constraint firstItem="bKD-8F-dMD" firstAttribute="top" secondItem="1qj-KF-kMo" secondAttribute="top" constant="5" id="SDY-1B-fqs"/>
-                                    <constraint firstAttribute="bottom" secondItem="bKD-8F-dMD" secondAttribute="bottom" constant="5" id="ttd-R0-Cga"/>
-                                    <constraint firstAttribute="trailing" secondItem="bKD-8F-dMD" secondAttribute="trailing" constant="5" id="xcA-AL-2Fo"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="99n-gi-ARR">
-                                <rect key="frame" x="0.0" y="126" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Eca-cT-BQu" id="Emz-Ao-VYV"/>
-                                    <outlet property="delegate" destination="Eca-cT-BQu" id="2f3-GB-8be"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="99n-gi-ARR" firstAttribute="leading" secondItem="Ynr-GF-XCc" secondAttribute="leading" id="2tu-fD-977"/>
-                            <constraint firstItem="bYe-LJ-b3l" firstAttribute="top" secondItem="99n-gi-ARR" secondAttribute="bottom" id="6Vu-R9-78W"/>
-                            <constraint firstItem="1qj-KF-kMo" firstAttribute="top" secondItem="350-tw-yl4" secondAttribute="bottom" id="Alb-So-wfZ"/>
-                            <constraint firstItem="1qj-KF-kMo" firstAttribute="leading" secondItem="Ynr-GF-XCc" secondAttribute="leading" id="BJE-K5-K8n"/>
-                            <constraint firstAttribute="trailing" secondItem="1qj-KF-kMo" secondAttribute="trailing" id="eiE-hN-24H"/>
-                            <constraint firstItem="99n-gi-ARR" firstAttribute="top" secondItem="1qj-KF-kMo" secondAttribute="bottom" id="fub-3Q-EeR"/>
-                            <constraint firstAttribute="trailing" secondItem="99n-gi-ARR" secondAttribute="trailing" id="xVv-NV-J5T"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Repository" id="E5f-yd-CbL"/>
-                    <connections>
-                        <outlet property="segmentedControl" destination="bKD-8F-dMD" id="Naz-LZ-tQ9"/>
-                        <outlet property="tableview" destination="99n-gi-ARR" id="H1n-5n-zLS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Dn-j0-gfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2090.4000000000001" y="589.65517241379314"/>
+            <point key="canvasLocation" x="-3302" y="-551"/>
         </scene>
         <!--Item-->
         <scene sceneID="CDS-OA-3mM">
@@ -119,7 +42,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBH-tV-WY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2954" y="1288"/>
+            <point key="canvasLocation" x="-2535" y="-551"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="y5z-CF-Eoo">
@@ -154,7 +77,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X77-M3-hc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2090" y="1288"/>
+            <point key="canvasLocation" x="-2535" y="253"/>
+        </scene>
+        <!--UserRepositoryViewController-->
+        <scene sceneID="NSc-lV-AXu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserRepositoryViewController" id="xF7-WX-GJV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gid-XE-Kqy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ce-MQ-vLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3303" y="-113"/>
         </scene>
         <!--Events-->
         <scene sceneID="08B-ym-DU0">
@@ -170,7 +103,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ste-xn-Hz4">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wPG-uP-8Au" id="RYA-Tn-ISd"/>
                                     <outlet property="delegate" destination="wPG-uP-8Au" id="tV2-aA-ciz"/>
@@ -192,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXj-9W-qyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2089" y="-146"/>
+            <point key="canvasLocation" x="-4130" y="273"/>
         </scene>
         <!--notification-->
         <scene sceneID="xc4-m0-7t2">
@@ -209,7 +142,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOG-ha-37X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2954" y="-146"/>
+            <point key="canvasLocation" x="-4130" y="-551"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zbD-hR-bjN">
@@ -229,7 +162,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U44-Jw-2z7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3950" y="-146"/>
+            <point key="canvasLocation" x="-3726" y="-1323"/>
         </scene>
         <!--Item-->
         <scene sceneID="REN-FV-Mwg">
@@ -246,7 +179,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHx-NB-cLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2954" y="-865"/>
+            <point key="canvasLocation" x="-4980" y="-551"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -283,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2090" y="-865"/>
+            <point key="canvasLocation" x="-5788" y="253"/>
         </scene>
         <!--Repository Search View Controller-->
         <scene sceneID="7Ob-9R-g7F">
@@ -336,7 +269,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1282" y="-865"/>
+            <point key="canvasLocation" x="-4980" y="253"/>
         </scene>
     </scenes>
 </document>

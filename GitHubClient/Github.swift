@@ -218,6 +218,25 @@ public class Github {
         return request("user/repos", parameters: parameters, success: success, failure: failure)
     }
 
+    public func repos(owner: String,
+                     success: SuccessHandler<[Repository]>?,
+                     failure: FailureHandler?) -> URLSessionTask {
+        return request("users/\(owner)/repos", success: success, failure: failure)
+    }
+    
+    public func repos(org: String,
+                      success: SuccessHandler<[Repository]>?,
+                      failure: FailureHandler?) -> URLSessionTask {
+        return request("orgs/\(org)/repos", success: success, failure: failure)
+    }
+    
+    public func repo(owner: String,
+                     name: String,
+                     success: SuccessHandler<Repository>?,
+                     failure: FailureHandler?) -> URLSessionTask {
+        return request("repos/\(owner)/\(name)", success: success, failure: failure)
+    }
+    
     public func tags(owner: String,
                      repo: String,
                      success: SuccessHandler<[String: Int]>?,

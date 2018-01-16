@@ -8,6 +8,7 @@
 
 import UIKit
 import GitHubClient
+import YYText
 
 struct EventViewModel {
 
@@ -22,8 +23,15 @@ struct EventViewModel {
 
     mutating func buildViews() {
 
+        let attributedString = NSMutableAttributedString()
+
+        // actor
         let actor = event.actor
-        let attributedString = NSMutableAttributedString(string: actor.login).addActorAttribut(URL(string: "user://\(actor.login)")!)
+        let actorStr = NSMutableAttributedString(string: actor.login)
+        actorStr.addLink { (_, _, _, _) in
+            navigator.push("app://user/\(actor.login)")
+        }
+        attributedString.append(actorStr)
 
         switch event.payload {
         case .forkEvent(let forkEvent):
@@ -34,24 +42,45 @@ struct EventViewModel {
             attributedString.append(NSMutableAttributedString(string: " from ").addNormalAttribut())
             attributedString.append(NSMutableAttributedString(string: "\(forkee.owner.login)/\(forkee.name)").addRepoAttribut(URL(string: "repo://\(forkee.url)")!))
         case .watchEvent:
-            let repo = event.repo
             attributedString.append(NSMutableAttributedString(string: " stared ").addNormalAttribut())
-            attributedString.append(NSMutableAttributedString(string: repo.name).addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+            let repo = event.repo
+            let repoStr = NSMutableAttributedString(string: repo.name)
+            repoStr.addLink { (_, _, _, _) in
+                navigator.push("app://repo/\(repo.name)")
+            }
+            attributedString.append(repoStr)
         case .issueCommentEvent(let issueCommentEvent):
             let repo = event.repo
         case .issuesEvent(let issuesEvent):
             let repo = event.repo
         case .pushEvent(let pushEvent):
             let repo = event.repo
-            attributedString.append(NSMutableAttributedString(string: " pushed to ").addNormalAttribut())
-            attributedString.append(NSMutableAttributedString(string: pushEvent.ref).addRepoAttribut(URL(string: "repo://\(repo.url)")!))
-            attributedString.append(NSMutableAttributedString(string: " in ").addNormalAttribut())
-            attributedString.append(NSMutableAttributedString(string: repo.name).addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+            let branchName = String(pushEvent.ref.split(separator: "/").last ?? "")
+
+            let components = [" pushed to ", branchName, " in ", repo.name]
+                .map({ NSMutableAttributedString(string: $0) })
+            components[0].addNormalAttribut()
+            components[1].addBranchAttribut()
+            components[1].addLink { (_, _, _, _) in
+                navigator.push("app://repo/\(repo.name)")
+            }
+            components[2].addNormalAttribut()
+            components[3].addLink { (_, _, _, _) in
+                navigator.push("app://repo/\(repo.name)")
+            }
+            components.forEach({ attributedString.append($0) })
+
+            attributedString.add(spacing: 4)
             for commit in pushEvent.commits {
-                attributedString.append(NSMutableAttributedString(string: "\n").addSmallAttribut())
-                attributedString.append(NSMutableAttributedString(string: String(commit.sha.prefix(6))).addCommitAttribut(URL(string: "commit://\(commit.url)")!))
-                attributedString.append(NSMutableAttributedString(string: " - ").addSmallSepAttribut())
-                attributedString.append(NSMutableAttributedString(string: commit.message).addSmallAttribut())
+                let components = [String(commit.sha.prefix(6)), " - ", commit.message, "\n"]
+                    .map({ NSMutableAttributedString(string: $0) })
+                components[0].addLink { (_, _, _, _) in
+                    navigator.push("app://repo/\(repo.name)")
+                }
+                components[1].addSmallSepAttribut()
+                components[2].addSmallAttribut()
+                components[3].addSmallAttribut()
+                components.forEach({ attributedString.append($0) })
             }
         case .createEvent(let createEvent):
             let repo = event.repo
@@ -89,7 +118,7 @@ let commitColor = UIColor(hex: 0x586069)
 
 extension NSMutableAttributedString {
     func addNormalAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: regularFont, .foregroundColor: UIColor.black],
+        self.addAttributes([.font: regularFont, .foregroundColor: UIColor.white],
                            range: NSMakeRange(0, self.length))
         return self
     }
@@ -104,6 +133,17 @@ extension NSMutableAttributedString {
         self.addAttributes([.URLLinkKey: link, .font: semiboldFont, .foregroundColor: UIColor.blue],
                            range: NSMakeRange(0, self.length))
         return self
+    }
+
+    func addBranchAttribut() {
+        guard string.count > 0 else {
+            return
+        }
+
+        yy_color = UIColor(hex: 0xB4D6FE)
+
+        let border = YYTextBorder(fill: UIColor(white: 1, alpha: 0.15), cornerRadius: 3)
+        yy_setTextBorder(border, range: yy_rangeOfAll())
     }
 
     func addBranchAttribut(_ link: URL) -> NSMutableAttributedString {
@@ -123,10 +163,11 @@ extension NSMutableAttributedString {
                            range: NSMakeRange(0, self.length))
         return self
     }
-    
+
     func addSmallSepAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: smallregularFont, .foregroundColor: UIColor.gray],
+        self.addAttributes([.font: smallregularFont, .foregroundColor: UIColor.white],
                            range: NSMakeRange(0, self.length))
         return self
     }
 }
+

@@ -16,7 +16,7 @@ let navigator = Navigator()
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.viewModel.repo = context as? Repository
             return controller
         }
+        navigator.register("app://repo/<:owner>/<:name>") { (_, values, _) in
+            let controller = RepositoryDetailViewController.instantiate()
+            controller.viewModel.owner = values["owner"] as? String
+            controller.viewModel.name = values["name"] as? String
+            return controller
+        }
         navigator.register("app://user") { (_, _, context) in
             let controller = UserDetailViewController.instantiate()
             controller.viewModel.userVariable.value = context as? User
@@ -35,6 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigator.register("app://user/<string:login>") { (_, values, _) in
             let controller = UserDetailViewController.instantiate()
             controller.viewModel.loginName = values["login"] as? String
+            return controller
+        }
+        navigator.register("app://users/<string:loginName>/repos") { (_, values, _) in
+            let controller = UserRepositoryViewController.instantiate()
+            controller.viewModel.ownerLogin = values["loginName"] as? String
             return controller
         }
 

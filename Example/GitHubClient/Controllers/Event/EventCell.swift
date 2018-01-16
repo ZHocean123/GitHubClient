@@ -1,5 +1,5 @@
 //
-//  NewsCell.swift
+//  EventCell.swift
 //  GitHubClient_Example
 //
 //  Created by yang on 27/10/2017.
@@ -8,8 +8,9 @@
 
 import UIKit
 import YYText
+import Reusable
 
-class EventCell: UITableViewCell {
+class EventCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var detailLabel: YYLabel!

@@ -11,6 +11,18 @@ import GitHubClient
 import RxSwift
 
 class RepositoryDetailViewModel {
+    var owner: String? {
+        didSet {
+            loadRepo()
+        }
+    }
+    
+    var name: String? {
+        didSet {
+            loadRepo()
+        }
+    }
+    
     var repo: Repository? {
         didSet {
             languages.value = [:]
@@ -22,6 +34,7 @@ class RepositoryDetailViewModel {
         }
     }
 
+    private var repoTask: URLSessionTask?
     private var languagesTask: URLSessionTask?
     private var tagsTask: URLSessionTask?
     private var topicsTask: URLSessionTask?
@@ -30,6 +43,18 @@ class RepositoryDetailViewModel {
     let languages: Variable<[String: Int]> = Variable([:])
     let topics: Variable<[String]> = Variable([])
 
+    func loadRepo() {
+        guard let owner = owner, let name = name else {
+            return
+        }
+        repoTask?.cancel()
+        repoTask = Github.shared.repo(owner: owner, name: name, success: { [weak self] (repo) in
+            self?.repo = repo
+        }, failure: { (error) in
+            log.error(error)
+        })
+    }
+    
     func loadRepoDetails() {
         loadRepoLanguages()
         loadRepoTopics()

@@ -11,27 +11,92 @@ import GitHubClient
 import RxSwift
 
 class UserRepositoryViewModel {
+    var ownerLogin: String? {
+        didSet {
+            loadUserRepos()
+        }
+    }
+
     var repositories = [Repository]()
-    var layouts = [CellLayout]()
+    var layouts = [CellLayout]() {
+        didSet {
+            layoutsVariable.value = layouts
+        }
+    }
     var pagination = Pagination()
     var repositoryType: RepositoryType = .all
 
-    func fetch() -> Observable<Any> {
-        return Observable.create({ observer in
-            let task = Github.shared.user(type: self.repositoryType, success: { [weak self] (result) in
-                DispatchQueue(label: "json", qos: DispatchQoS.background).async {
-                    self?.repositories = result
-                    DispatchQueue.main.async {
-                        self?.layouts = result.map({ CellLayout($0) })
-                        observer.on(.next(true))
-                        observer.on(.completed)
-                    }
+    var loadingTask: URLSessionTask?
+
+    let layoutsVariable = Variable<[CellLayout]>([])
+    let loadingVariable = Variable<Bool>(false)
+    let errorVariable = Variable<Error?>(nil)
+
+    func loadUserRepos() {
+        guard let ownerLogin = ownerLogin else {
+            return
+        }
+        loadingTask?.cancel()
+        loadingVariable.value = true
+        errorVariable.value = nil
+        loadingTask = Github.shared.repos(owner: ownerLogin, success: { [weak self] (result) in
+            DispatchQueue(label: "json", qos: DispatchQoS.background).async {
+                self?.repositories = result
+                DispatchQueue.main.async {
+                    self?.layouts = result.map({ CellLayout($0) })
+                    self?.loadingVariable.value = false
                 }
-            }, failure: { (error) in
-                observer.on(.error(error))
-            })
-            return Disposables.create(with: task.cancel)
+            }
+        }, failure: { [weak self] (error) in
+            self?.errorVariable.value = error
+            self?.loadingVariable.value = false
         })
+    }
+    
+    func loadOrgRepos() {
+        guard let ownerLogin = ownerLogin else {
+            return
+        }
+        loadingTask?.cancel()
+        loadingVariable.value = true
+        errorVariable.value = nil
+        loadingTask = Github.shared.repos(org: ownerLogin, success: { [weak self] (result) in
+            DispatchQueue(label: "json", qos: DispatchQoS.background).async {
+                self?.repositories = result
+                DispatchQueue.main.async {
+                    self?.layouts = result.map({ CellLayout($0) })
+                    self?.loadingVariable.value = false
+                }
+            }
+            }, failure: { [weak self] (error) in
+                self?.errorVariable.value = error
+                self?.loadingVariable.value = false
+        })
+    }
+    
+    func loadOwnerRepos() {
+        guard let ownerLogin = ownerLogin else {
+            return
+        }
+        loadingTask?.cancel()
+        loadingVariable.value = true
+        errorVariable.value = nil
+        loadingTask = Github.shared.repos(org: ownerLogin, success: { [weak self] (result) in
+            DispatchQueue(label: "json", qos: DispatchQoS.background).async {
+                self?.repositories = result
+                DispatchQueue.main.async {
+                    self?.layouts = result.map({ CellLayout($0) })
+                    self?.loadingVariable.value = false
+                }
+            }
+            }, failure: { [weak self] (error) in
+                self?.errorVariable.value = error
+                self?.loadingVariable.value = false
+        })
+    }
+
+    deinit {
+        loadingTask?.cancel()
     }
 }
 
