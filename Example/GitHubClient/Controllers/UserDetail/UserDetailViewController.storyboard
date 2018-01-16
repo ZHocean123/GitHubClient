@@ -139,17 +139,17 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUp-su-HJX" userLabel="Organization">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUp-su-HJX" userLabel="company">
                                                         <rect key="frame" x="0.0" y="130" width="355" height="14"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="swI-QQ-N5a">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-user_group_man_man" translatesAutoresizingMaskIntoConstraints="NO" id="swI-QQ-N5a">
                                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="14" id="Ix0-93-uIR"/>
                                                                     <constraint firstAttribute="height" constant="14" id="dA4-2Q-5uE"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-xr-VNR" userLabel="Organization">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-xr-VNR" userLabel="company">
                                                                 <rect key="frame" x="22" y="-1" width="333" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,7 +168,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rP-HU-2mw" userLabel="location">
                                                         <rect key="frame" x="0.0" y="154" width="355" height="14"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ejp-r1-Dua">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-marker" translatesAutoresizingMaskIntoConstraints="NO" id="Ejp-r1-Dua">
                                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="14" id="dhk-WA-AD3"/>
@@ -191,17 +191,17 @@
                                                             <constraint firstItem="Ejp-r1-Dua" firstAttribute="top" secondItem="5rP-HU-2mw" secondAttribute="top" id="uoQ-TZ-f3Y"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMy-9L-9BZ" userLabel="contact">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMy-9L-9BZ" userLabel="email">
                                                         <rect key="frame" x="0.0" y="178" width="355" height="14"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OIY-xt-DAC">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-email" translatesAutoresizingMaskIntoConstraints="NO" id="OIY-xt-DAC">
                                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="14" id="a31-6v-iyv"/>
                                                                     <constraint firstAttribute="width" constant="14" id="hMC-Yk-C2R"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-Ye-G4h">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-Ye-G4h" userLabel="email">
                                                                 <rect key="frame" x="22" y="-1" width="333" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,17 +217,17 @@
                                                             <constraint firstItem="OIY-xt-DAC" firstAttribute="leading" secondItem="GMy-9L-9BZ" secondAttribute="leading" id="pJk-OG-vQy"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6Y-e0-ZvO" userLabel="website">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6Y-e0-ZvO" userLabel="blog">
                                                         <rect key="frame" x="0.0" y="202" width="355" height="14"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lp6-K9-SHL">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-link" translatesAutoresizingMaskIntoConstraints="NO" id="Lp6-K9-SHL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="14" id="4vc-gw-wCD"/>
                                                                     <constraint firstAttribute="height" constant="14" id="gKt-40-j7e"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dme-fG-5Hq" userLabel="website">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dme-fG-5Hq" userLabel="blog">
                                                                 <rect key="frame" x="22" y="-1" width="333" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,6 +273,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Px2-IR-hgX"/>
                     </view>
+                    <connections>
+                        <outlet property="avatarView" destination="FwJ-6j-yNv" id="Uy3-i0-R4Z"/>
+                        <outlet property="blogLabel" destination="dme-fG-5Hq" id="gln-Jp-Qfu"/>
+                        <outlet property="companyLabel" destination="sp2-xr-VNR" id="wC6-Jr-OWw"/>
+                        <outlet property="emailLabel" destination="RnN-Ye-G4h" id="NV0-TW-SzB"/>
+                        <outlet property="followersBtn" destination="C5b-67-cGr" id="Tjp-hQ-4u5"/>
+                        <outlet property="followingBtn" destination="ESa-It-gEt" id="K4v-ZR-Or8"/>
+                        <outlet property="fullNameLabel" destination="LdM-oD-Rk5" id="pap-7d-19f"/>
+                        <outlet property="locationLabel" destination="St3-g7-bJK" id="Vm2-v8-ifi"/>
+                        <outlet property="nameLabel" destination="g95-yX-fE3" id="uYj-pg-7tV"/>
+                        <outlet property="reposBtn" destination="4VR-je-vDN" id="O6d-jc-Llz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjF-pt-HGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,5 +293,9 @@
     </scenes>
     <resources>
         <image name="defaultAvatar" width="420" height="420"/>
+        <image name="icons8-email" width="24" height="24"/>
+        <image name="icons8-link" width="24" height="24"/>
+        <image name="icons8-marker" width="24" height="24"/>
+        <image name="icons8-user_group_man_man" width="26" height="26"/>
     </resources>
 </document>

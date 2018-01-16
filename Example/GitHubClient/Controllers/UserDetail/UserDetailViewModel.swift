@@ -16,27 +16,9 @@ class UserDetailViewModel {
             loadUserInfo()
         }
     }
-    var user: User? {
-        didSet {
-            avatar.value = user?.avatarUrl
-            name.value = user?.name ?? ""
-            followers.value = user?.followers ?? 0
-            following.value = user?.following ?? 0
-            repos.value = user?.publicRepos ?? 0
-        }
-    }
 
+    let userVariable = Variable<User?>(nil)
     var task: URLSessionTask?
-    let avatar = Variable<URL?>(nil)
-    let name = Variable<String>("")
-    let fullName = Variable("")
-    let followers = Variable(0)
-    let following = Variable(0)
-    let repos = Variable(0)
-    let organization = Variable("")
-    let location = Variable("")
-    let email = Variable("")
-    let website = Variable("")
 
     func loadUserInfo() {
         task?.cancel()
@@ -44,7 +26,7 @@ class UserDetailViewModel {
             return
         }
         task = Github.shared.user(loginName, success: { [weak self] (user) in
-            self?.user = user
+            self?.userVariable.value = user
         }) { (error) in
             log.error(error)
         }
