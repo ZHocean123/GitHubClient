@@ -21,7 +21,11 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableview: UITableView!
-
+    lazy var filterMenu: FilterMenu = {
+        let menu = FilterMenu()
+        menu.options = ["all","public","private"]
+        return menu
+    }()
     func bindViewModel() {
         viewModel.loadingVariable.asObservable().subscribe(onNext: { [weak self] (state) in
             switch state {
@@ -88,7 +92,11 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
 @objc extension RepositoryListViewController {
     func onBtnFilter() {
-        
+        if filterMenu.isShow {
+            filterMenu.hide()
+        } else {
+            filterMenu.show(toView: view)
+        }
     }
 }
 
