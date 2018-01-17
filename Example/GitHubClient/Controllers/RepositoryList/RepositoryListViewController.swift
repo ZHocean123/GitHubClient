@@ -19,11 +19,13 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var dropDownMenu: DropDownMenu!
     @IBOutlet weak var tableview: UITableView!
-    lazy var filterMenu: FilterMenu = {
-        let menu = FilterMenu()
-        menu.options = ["all","public","private"]
+    lazy var filterMenu: OptionMenu = {
+        let menu = OptionMenu()
+        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { (types) in
+            menu.options = types
+        }).disposed(by: disposeBag)
         return menu
     }()
     func bindViewModel() {
@@ -38,6 +40,10 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
                 self?.showError(error.localizedDescription)
             }
         }).disposed(by: disposeBag)
+        
+        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { [weak self] (types) in
+            self?.dropDownMenu.options = types
+        }).disposed(by: disposeBag)
     }
 
     override func viewDidLoad() {
@@ -45,6 +51,9 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
         // Do any additional setup after loading the view.
         tableview.register(cellType: RepositoryCell.self)
+        var temp = tableview.contentInset
+        temp.top += 30
+        tableview.contentInset = temp
         bindViewModel()
 
         switch viewModel.sourceType {
@@ -53,10 +62,10 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
         default:
             break
         }
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-mail_filter"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(onBtnFilter))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,31 +81,29 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func onChangeRepositoryType(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            viewModel.repositoryType = .all
-        case 1:
-            viewModel.repositoryType = .public
-        case 2:
-            viewModel.repositoryType = .private
-        case 3:
-            viewModel.repositoryType = .owner
-        case 4:
-            viewModel.repositoryType = .member
-        default:
-            return
-        }
+    @IBAction func onBtnType(_ sender: Any) {
+        dropDownMenu.showOptionSelect(viewModel.repositoryTypesVariable.value, selectedOption: viewModel.repositoryTypesVariable.value.last)
+    }
+    @IBAction func onBtnSortType(_ sender: Any) {
+        dropDownMenu.hideMenu()
     }
 }
 
 @objc extension RepositoryListViewController {
     func onBtnFilter() {
+        filterMenu.delegate = self
         if filterMenu.isShow {
             filterMenu.hide()
         } else {
-            filterMenu.show(toView: view)
+            filterMenu.show(toController: self)
         }
+    }
+}
+
+extension RepositoryListViewController: OptionMenuDelegate {
+    func didSelect(option: MenuOption) {
+        filterMenu.hide()
+        viewModel.repositoryType = option as! RepositoryType
     }
 }
 

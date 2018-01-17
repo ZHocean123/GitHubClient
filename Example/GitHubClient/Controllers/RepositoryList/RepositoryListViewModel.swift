@@ -18,6 +18,16 @@ enum loadingState {
 
 class RepositoryListViewModel {
 
+    lazy var ownerRepositoryTypes: [RepositoryType] = {
+        return [.all, .public, .private]
+    }()
+
+    lazy var userRepositoryTypes: [RepositoryType] = {
+        return [.all, .public, .private, .member, .owner]
+    }()
+
+    let repositoryTypesVariable = Variable<[RepositoryType]>([])
+
     enum SourceType {
         case user(username: String)
         case owner
@@ -28,17 +38,16 @@ class RepositoryListViewModel {
     var sourceType: SourceType = .none {
         didSet {
             switch sourceType {
-            case .user(let username):
-                ownerLogin = username
-                loadUserRepos()
+            case .user:
+                repositoryTypesVariable.value = userRepositoryTypes
             case .owner:
-                loadOwnerRepos()
-            case .org(let org):
-                orgName = org
-                loadOrgRepos()
+                repositoryTypesVariable.value = ownerRepositoryTypes
+            case .org:
+                repositoryTypesVariable.value = []
             default:
-                break
+                repositoryTypesVariable.value = []
             }
+            load()
         }
     }
 
@@ -52,12 +61,31 @@ class RepositoryListViewModel {
         }
     }
     var pagination = Pagination()
-    var repositoryType: RepositoryType = .all
+    var repositoryType: RepositoryType = .all {
+        didSet {
+            load()
+        }
+    }
 
     var loadingTask: URLSessionTask?
 
     let layoutsVariable = Variable<[CellLayout]>([])
     let loadingVariable = Variable<loadingState>(.loaded)
+
+    func load() {
+        switch sourceType {
+        case .user(let username):
+            ownerLogin = username
+            loadUserRepos()
+        case .owner:
+            loadOwnerRepos()
+        case .org(let org):
+            orgName = org
+            loadOrgRepos()
+        default:
+            break
+        }
+    }
 
     func loadUserRepos() {
         guard let ownerLogin = ownerLogin else {
@@ -119,3 +147,8 @@ class RepositoryListViewModel {
     }
 }
 
+extension RepositoryType: MenuOption {
+    var title: String {
+        return self.rawValue
+    }
+}

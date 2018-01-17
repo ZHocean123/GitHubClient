@@ -45,9 +45,9 @@ public struct RepositoryAffiliation: OptionSet {
 
 public enum RepositoryType: String {
     case all = "all"
-    case owner = "owner"
     case `public` = "public"
     case `private` = "private"
+    case owner = "owner"
     case member = "member"
 }
 
