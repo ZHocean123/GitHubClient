@@ -30,30 +30,43 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhQ-00-XLq" customClass="DropDownMenu" customModule="GitHubClient_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kka-bb-au9">
-                                        <rect key="frame" x="26" y="0.0" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="all"/>
-                                        <connections>
-                                            <action selector="onBtnType:" destination="Gma-GE-1qZ" eventType="touchUpInside" id="r8F-PA-Xb2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-KL-OgK">
-                                        <rect key="frame" x="164" y="0.0" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="name"/>
-                                        <connections>
-                                            <action selector="onBtnSortType:" destination="Gma-GE-1qZ" eventType="touchUpInside" id="jxj-Dg-DGV"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-NA-eeL">
-                                        <rect key="frame" x="321" y="0.0" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="desc"/>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Fo3-Qu-zrx">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kka-bb-au9">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                                <state key="normal" title="all">
+                                                    <color key="titleColor" red="0.019607843140000001" green="0.51764705879999995" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onBtnType:" destination="Gma-GE-1qZ" eventType="touchUpInside" id="r8F-PA-Xb2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-KL-OgK">
+                                                <rect key="frame" x="125" y="0.0" width="125" height="30"/>
+                                                <state key="normal" title="name">
+                                                    <color key="titleColor" red="0.019607843140000001" green="0.51764705879999995" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onBtnSortType:" destination="Gma-GE-1qZ" eventType="touchUpInside" id="jxj-Dg-DGV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-NA-eeL">
+                                                <rect key="frame" x="250" y="0.0" width="125" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="desc" image="icons8-sort">
+                                                    <color key="titleColor" red="0.019607843140000001" green="0.51764705879999995" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Fo3-Qu-zrx" firstAttribute="leading" secondItem="IhQ-00-XLq" secondAttribute="leading" id="3H0-NM-NyP"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fo3-Qu-zrx" secondAttribute="bottom" id="AJ0-1r-dHJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fo3-Qu-zrx" secondAttribute="trailing" id="D8X-K2-nat"/>
+                                    <constraint firstItem="Fo3-Qu-zrx" firstAttribute="top" secondItem="IhQ-00-XLq" secondAttribute="top" id="H0Q-kN-UMf"/>
                                     <constraint firstAttribute="height" constant="30" id="q7w-Hv-0y6"/>
                                 </constraints>
                             </view>
@@ -81,4 +94,7 @@
             <point key="canvasLocation" x="422" y="126"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-sort" width="11" height="11"/>
+    </resources>
 </document>

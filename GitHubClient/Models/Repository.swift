@@ -48,6 +48,7 @@ public enum RepositoryType: String {
     case `public` = "public"
     case `private` = "private"
     case owner = "owner"
+    
     case member = "member"
 }
 
