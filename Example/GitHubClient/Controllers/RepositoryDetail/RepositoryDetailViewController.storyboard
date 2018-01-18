@@ -89,6 +89,9 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="onBtnIssues:" destination="0Qg-ue-VN0" eventType="touchUpInside" id="BQX-EF-c1P"/>
+                                                                </connections>
                                                             </button>
                                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-qI-xVR">
                                                                 <rect key="frame" x="119" y="0.0" width="1" height="50"/>

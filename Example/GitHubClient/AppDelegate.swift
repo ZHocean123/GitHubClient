@@ -38,15 +38,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.viewModel.userVariable.value = context as? User
             return controller
         }
-        navigator.register("app://user/<string:login>") { (_, values, _) in
+        navigator.register("app://user/<login>") { (_, values, _) in
             let controller = UserDetailViewController.instantiate()
             controller.viewModel.loginName = values["login"] as? String
             return controller
         }
-        navigator.register("app://users/<string:loginName>/repos") { (_, values, _) in
+        navigator.register("app://users/<loginName>/repos") { (_, values, _) in
             guard let username = values["loginName"] as? String else { return nil }
             let controller = RepositoryListViewController.instantiate()
             controller.viewModel.sourceType = .user(username: username)
+            return controller
+        }
+        navigator.register("app://repo/<owner>/<name>/issues") { (_, values, _) in
+            guard let owner = values["owner"] as? String, let name = values["name"] as? String else {
+                return nil
+            }
+            let controller = IssueListViewController.instantiate()
+            controller.viewModel.sourceType = .repo(owner: owner, name: name)
             return controller
         }
 

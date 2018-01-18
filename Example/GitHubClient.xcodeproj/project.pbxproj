@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2F00FEA3200DE65E00B6D4D2 /* RepositoryListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F00FEA2200DE65E00B6D4D2 /* RepositoryListViewController.storyboard */; };
+		2F0ACA5920107BAD00AFE403 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F0ACA5820107BAD00AFE403 /* iconfont.ttf */; };
+		2F0ACA5B2010868E00AFE403 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0ACA5A2010868E00AFE403 /* IssueDetailViewController.swift */; };
+		2F0ACA5D201086A600AFE403 /* IssueDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0ACA5C201086A600AFE403 /* IssueDetailViewController.storyboard */; };
+		2F0ACA61201086D200AFE403 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0ACA60201086D200AFE403 /* IssueDetailViewModel.swift */; };
 		2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */; };
 		2F182DFC1FFCB8C900414E3F /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */; };
 		2F2EF0F220103BB500F16F33 /* NotificationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2EF0F120103BB500F16F33 /* NotificationListViewModel.swift */; };
 		2F2EF0F42010448B00F16F33 /* NotificationListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2EF0F32010448B00F16F33 /* NotificationListViewController.storyboard */; };
+		2F2EF0F62010473200F16F33 /* IssueTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2EF0F52010473200F16F33 /* IssueTagView.swift */; };
 		2F300143200C7477000B2CBF /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F300142200C7477000B2CBF /* NSMutableAttributedString+.swift */; };
 		2F300145200C87D2000B2CBF /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F300144200C87D2000B2CBF /* UserDetailViewController.swift */; };
 		2F300147200C87EB000B2CBF /* UserDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F300146200C87EB000B2CBF /* UserDetailViewController.storyboard */; };
@@ -74,10 +79,15 @@
 /* Begin PBXFileReference section */
 		09306493ACF418F9E17AC3B6 /* GitHubClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GitHubClient.podspec; path = ../GitHubClient.podspec; sourceTree = "<group>"; };
 		2F00FEA2200DE65E00B6D4D2 /* RepositoryListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RepositoryListViewController.storyboard; sourceTree = "<group>"; };
+		2F0ACA5820107BAD00AFE403 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		2F0ACA5A2010868E00AFE403 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
+		2F0ACA5C201086A600AFE403 /* IssueDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueDetailViewController.storyboard; sourceTree = "<group>"; };
+		2F0ACA60201086D200AFE403 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewModel.swift; sourceTree = "<group>"; };
 		2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		2F182DFB1FFCB8C900414E3F /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		2F2EF0F120103BB500F16F33 /* NotificationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewModel.swift; sourceTree = "<group>"; };
 		2F2EF0F32010448B00F16F33 /* NotificationListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationListViewController.storyboard; sourceTree = "<group>"; };
+		2F2EF0F52010473200F16F33 /* IssueTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTagView.swift; sourceTree = "<group>"; };
 		2F300142200C7477000B2CBF /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		2F300144200C87D2000B2CBF /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		2F300146200C87EB000B2CBF /* UserDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -168,6 +178,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2F0ACA62201086D700AFE403 /* IssueDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2F0ACA5A2010868E00AFE403 /* IssueDetailViewController.swift */,
+				2F0ACA60201086D200AFE403 /* IssueDetailViewModel.swift */,
+				2F0ACA5C201086A600AFE403 /* IssueDetailViewController.storyboard */,
+			);
+			path = IssueDetail;
+			sourceTree = "<group>";
+		};
 		2F2EF0EF201039AD00F16F33 /* EventCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +257,7 @@
 				2F894B171FFF1921001F531E /* RepositoryList */,
 				2FA352231FA1C8C800D87553 /* ViewController.swift */,
 				2F300148200C87F5000B2CBF /* UserDetail */,
+				2F0ACA62201086D700AFE403 /* IssueDetail */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +276,7 @@
 				2F38F8B220059ABF00B27958 /* ReadMeView */,
 				B0DB5E41200E51B700CD76BF /* OptionMenu.swift */,
 				2F628116200F19FE00493141 /* DropDownMenu.swift */,
+				2F2EF0F52010473200F16F33 /* IssueTagView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -367,6 +389,7 @@
 				2F8725922008832000B5125E /* views */,
 				2F872591200882E700B5125E /* Controllers */,
 				2FA3522C1FA1C8E000D87553 /* Main.storyboard */,
+				2F0ACA5820107BAD00AFE403 /* iconfont.ttf */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -505,8 +528,10 @@
 				2FA352261FA1C8C800D87553 /* RepositoryCell.xib in Resources */,
 				2F894B1B1FFF52B5001F531E /* RepositoryDetailViewController.storyboard in Resources */,
 				2F2EF0F42010448B00F16F33 /* NotificationListViewController.storyboard in Resources */,
+				2F0ACA5920107BAD00AFE403 /* iconfont.ttf in Resources */,
 				2FBA6CEF201029D4008B9060 /* EventListViewController.storyboard in Resources */,
 				2F38F8BA20059AE200B27958 /* main.js in Resources */,
+				2F0ACA5D201086A600AFE403 /* IssueDetailViewController.storyboard in Resources */,
 				2F38F8B720059AE200B27958 /* vendor.js in Resources */,
 				2F38F8B820059AE200B27958 /* index.html in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
@@ -683,11 +708,13 @@
 				2F300145200C87D2000B2CBF /* UserDetailViewController.swift in Sources */,
 				2F30014A200C8876000B2CBF /* UserDetailViewModel.swift in Sources */,
 				2FBA6CF62010358D008B9060 /* IssueListViewModel.swift in Sources */,
+				2F0ACA61201086D200AFE403 /* IssueDetailViewModel.swift in Sources */,
 				2F2EF0F220103BB500F16F33 /* NotificationListViewModel.swift in Sources */,
 				B0A9A8662006323500F3CD27 /* Log.swift in Sources */,
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
 				2FB54BAB20036304008493F7 /* ReadMeView.swift in Sources */,
 				2FDDB0C01FAAFB3700CBCED3 /* NotificationCell.swift in Sources */,
+				2F0ACA5B2010868E00AFE403 /* IssueDetailViewController.swift in Sources */,
 				2F12B11D1FA9AC3800FAAFB9 /* EventViewModel.swift in Sources */,
 				2F182DFC1FFCB8C900414E3F /* RepositoryDetailViewController.swift in Sources */,
 				2F894B141FFF1735001F531E /* RepositoryListViewController.swift in Sources */,
@@ -697,6 +724,7 @@
 				2FD577022004BA2400C93DDF /* VerticalAlignmentLabel.swift in Sources */,
 				2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */,
 				2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */,
+				2F2EF0F62010473200F16F33 /* IssueTagView.swift in Sources */,
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,
 				2F628117200F19FE00493141 /* DropDownMenu.swift in Sources */,
 				2FDDB0BA1FAAEF4800CBCED3 /* NotificationListViewController.swift in Sources */,

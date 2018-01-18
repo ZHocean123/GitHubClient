@@ -16,7 +16,7 @@ public struct Issue: Codable {
     public let number: Int
     public let state: String
     public let title: String
-    public let body: String
+    public let body: String?
     public let user: User
     public struct Label: Codable {
         public let id: Int
@@ -47,6 +47,7 @@ public struct Issue: Codable {
     public let closedAt: String?
     public let createdAt: String
     public let updatedAt: String
+    public let authorAssociation: String
     public let repository: Repository?
     private enum CodingKeys: String, CodingKey {
         case id
@@ -71,6 +72,7 @@ public struct Issue: Codable {
         case closedAt = "closed_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case authorAssociation = "author_association"
         case repository
     }
 }

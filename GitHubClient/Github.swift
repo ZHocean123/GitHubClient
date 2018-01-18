@@ -116,7 +116,7 @@ public class Github {
             }
             if let data = data {
                 DispatchQueue.global(qos: .utility).async {
-//                    print(String(data: data, encoding: .utf8) ?? "no string data")
+                    print(String(data: data, encoding: .utf8) ?? "no string data")
                     // TODO: custom error
 
                     // decode object
@@ -191,7 +191,7 @@ public class Github {
                      failure: FailureHandler?) -> URLSessionTask {
         return request("users/\(loginName)", success: success, failure: failure)
     }
-    
+
     // MARK: - repository
 
     public func search(repo query: String,
@@ -219,24 +219,24 @@ public class Github {
     }
 
     public func repos(owner: String,
-                     success: SuccessHandler<[Repository]>?,
-                     failure: FailureHandler?) -> URLSessionTask {
+                      success: SuccessHandler<[Repository]>?,
+                      failure: FailureHandler?) -> URLSessionTask {
         return request("users/\(owner)/repos", success: success, failure: failure)
     }
-    
+
     public func repos(org: String,
                       success: SuccessHandler<[Repository]>?,
                       failure: FailureHandler?) -> URLSessionTask {
         return request("orgs/\(org)/repos", success: success, failure: failure)
     }
-    
+
     public func repo(owner: String,
                      name: String,
                      success: SuccessHandler<Repository>?,
                      failure: FailureHandler?) -> URLSessionTask {
         return request("repos/\(owner)/\(name)", success: success, failure: failure)
     }
-    
+
     public func tags(owner: String,
                      repo: String,
                      success: SuccessHandler<[String: Int]>?,
@@ -272,6 +272,29 @@ public class Github {
         var parameters = Parameters()
         parameters["all"] = true
         return request("notifications", parameters: parameters, success: success, failure: failure)
+    }
+
+    // MARK: - issues
+    public func issues(forRepo repo: String,
+                       owner: String,
+                       success: SuccessHandler<[Issue]>?,
+                       failure: FailureHandler?) -> URLSessionTask {
+        var parameters = Parameters()
+        parameters["all"] = true
+        return request("repos/\(owner)/\(repo)/issues", parameters: parameters, success: success, failure: failure)
+    }
+    public func issues(forOrg org: String,
+                       success: SuccessHandler<[Issue]>?,
+                       failure: FailureHandler?) -> URLSessionTask {
+        var parameters = Parameters()
+        parameters["all"] = true
+        return request("orgs/\(org)/issues", parameters: parameters, success: success, failure: failure)
+    }
+    public func issues(success: SuccessHandler<[Issue]>?,
+                       failure: FailureHandler?) -> URLSessionTask {
+        var parameters = Parameters()
+        parameters["all"] = true
+        return request("user/issues", parameters: parameters, success: success, failure: failure)
     }
 }
 

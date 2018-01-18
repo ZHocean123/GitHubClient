@@ -46,7 +46,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     }
 
     func setupConstraints() {
-
+        
     }
 
     func bindViewModel() {
@@ -100,6 +100,12 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
     var disposeBag = DisposeBag()
 
+    @IBAction func onBtnIssues(_ sender: Any) {
+        guard let repository = repository else {
+            return
+        }
+        navigator.push("app://repo/\(repository.owner.login)/\(repository.name)/issues")
+    }
     /*
     // MARK: - Navigation
 
