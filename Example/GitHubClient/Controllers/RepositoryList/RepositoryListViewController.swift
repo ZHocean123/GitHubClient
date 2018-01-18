@@ -29,7 +29,7 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
         return menu
     }()
     func bindViewModel() {
-        viewModel.loadingVariable.asObservable().subscribe(onNext: { [weak self] (state) in
+        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] (state) in
             switch state {
             case .loading:
                 self?.showProcess()
@@ -109,11 +109,11 @@ extension RepositoryListViewController: OptionMenuDelegate {
 
 extension RepositoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.layouts.count
+        return viewModel.layoutList.value.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RepositoryCell.self)
-        cell.cellLayout = viewModel.layouts[indexPath.row]
+        cell.cellLayout = viewModel.layoutList.value[indexPath.row]
         return cell
     }
 }
@@ -121,7 +121,7 @@ extension RepositoryListViewController: UITableViewDataSource {
 extension RepositoryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
-            (cell as? RepositoryCell)?.cellLayout = self.viewModel.layouts[indexPath.row]
+            (cell as? RepositoryCell)?.cellLayout = self.viewModel.layoutList.value[indexPath.row]
         })
     }
 

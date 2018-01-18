@@ -11,8 +11,13 @@ import UIKit
 @IBDesignable
 class DropDownMenu: UIView {
 
+    typealias OptionChanged = (MenuOption) -> Void
+    var optionChanged: OptionChanged?
+
     // 显示option选择
-    func showOptionSelect(_ options: [MenuOption], selectedOption option: MenuOption? = nil) {
+    func showOptionSelect(_ options: [MenuOption],
+                          selectedOption option: MenuOption? = nil,
+                          optionChanged: OptionChanged? = nil) {
         guard let superview = superview else {
             return
         }

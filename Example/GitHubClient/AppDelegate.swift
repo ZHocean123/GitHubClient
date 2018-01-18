@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.viewModel.repo = context as? Repository
             return controller
         }
-        navigator.register("app://repo/<:owner>/<:name>") { (_, values, _) in
+        navigator.register("app://repo/<owner>/<name>") { (_, values, _) in
             let controller = RepositoryDetailViewController.instantiate()
             controller.viewModel.owner = values["owner"] as? String
             controller.viewModel.name = values["name"] as? String

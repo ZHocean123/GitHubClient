@@ -1,38 +1,40 @@
 //
-//  NotificationsViewController.swift
+//  EventsViewController.swift
 //  GitHubClient_Example
 //
-//  Created by yang on 02/11/2017.
+//  Created by yang on 30/10/2017.
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import GitHubClient
+import Kingfisher
 import CFNotify
+import UITableView_FDTemplateLayoutCell
+import Reusable
 
-class NotificationsViewController: UIViewController {
+class EventListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var notifications = [GitHubClient.Notification]()
 
+    var models = [EventViewModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
-        tableView.dataSource = self
-        tableView.delegate = self
+        tableView.register(cellType: EventCell.self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadNotifications()
+        loadEvents()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 
     /*
     // MARK: - Navigation
@@ -44,20 +46,19 @@ class NotificationsViewController: UIViewController {
     }
     */
 
-    func loadNotifications() {
-        Github.shared.notifications(success: { [weak self] (result) in
+    func loadEvents() {
+        Github.shared.events("ZHocean123", success: { [weak self] (result) in
             DispatchQueue.global(qos: .utility).async {
-//                let models = result.filter({ (event) -> Bool in
-//                    switch event.type {
-//                    case .issuesEvent, .issueCommentEvent:
-//                        return false
-//                    default:
-//                        return true
-//                    }
-//                }).map({ EventViewModel($0) })
+                let models = result.filter({ (event) -> Bool in
+                    switch event.type {
+                    case .issuesEvent, .issueCommentEvent:
+                        return false
+                    default:
+                        return true
+                    }
+                }).map({ EventViewModel($0) })
                 DispatchQueue.main.async {
-                    self?.notifications = result
-//                    self?.models = models
+                    self?.models = models
                     self?.tableView.reloadData()
                 }
             }
@@ -80,26 +81,25 @@ class NotificationsViewController: UIViewController {
     }
 }
 
-extension NotificationsViewController: UITableViewDataSource, UITableViewDelegate {
+extension EventListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notifications.count
+        return models.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
-        cell.subjectLabel.text = notifications[indexPath.row].subject.title
-        cell.dateLabel.text = notifications[indexPath.row].updatedAt
-        cell.markButton.isHidden = !notifications[indexPath.row].unread
-        switch notifications[indexPath.row].subject.type {
-        case "Issue":
-            cell.typeImageView.image = #imageLiteral(resourceName: "issue-opened")
-        case "PullRequest":
-            cell.typeImageView.image = #imageLiteral(resourceName: "pull-request")
-        case "Release":
-            cell.typeImageView.image = #imageLiteral(resourceName: "tag")
-        default:
-            cell.typeImageView.image = nil
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EventCell.self)
+        cell.userImageView.kf.setImage(with: ImageResource(downloadURL: models[indexPath.row].event.actor.avatarUrl))
+        cell.dateLabel.text = models[indexPath.row].event.type.rawValue
+        cell.detailLabel.attributedText = models[indexPath.row].attributedString
         return cell
+    }
+}
+
+extension EventListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.fd_heightForCell(withIdentifier: EventCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
+            let cell = cell as! EventCell
+            cell.detailLabel.attributedText = self.models[indexPath.row].attributedString
+        })
     }
 }

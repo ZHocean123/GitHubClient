@@ -10,7 +10,7 @@ import Foundation
 import GitHubClient
 import RxSwift
 
-enum loadingState {
+enum LoadingState {
     case loading
     case error(error: Error)
     case loaded
@@ -55,11 +55,6 @@ class RepositoryListViewModel {
     private var orgName: String?
 
     var repositories = [Repository]()
-    var layouts = [CellLayout]() {
-        didSet {
-            layoutsVariable.value = layouts
-        }
-    }
     var pagination = Pagination()
     var repositoryType: RepositoryType = .all {
         didSet {
@@ -69,8 +64,8 @@ class RepositoryListViewModel {
 
     var loadingTask: URLSessionTask?
 
-    let layoutsVariable = Variable<[CellLayout]>([])
-    let loadingVariable = Variable<loadingState>(.loaded)
+    let layoutList = Variable<[CellLayout]>([])
+    let loadingState = Variable<LoadingState>(.loaded)
 
     func load() {
         switch sourceType {
@@ -92,17 +87,17 @@ class RepositoryListViewModel {
             return
         }
         loadingTask?.cancel()
-        loadingVariable.value = .loading
+        loadingState.value = .loading
         loadingTask = Github.shared.repos(owner: ownerLogin, success: { [weak self] (result) in
             DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                 self?.repositories = result
                 DispatchQueue.main.async {
-                    self?.layouts = result.map({ CellLayout($0) })
-                    self?.loadingVariable.value = .loaded
+                    self?.layoutList.value = result.map({ CellLayout($0) })
+                    self?.loadingState.value = .loaded
                 }
             }
         }, failure: { [weak self] (error) in
-            self?.loadingVariable.value = .error(error: error)
+            self?.loadingState.value = .error(error: error)
         })
     }
 
@@ -111,34 +106,34 @@ class RepositoryListViewModel {
             return
         }
         loadingTask?.cancel()
-        loadingVariable.value = .loading
+        loadingState.value = .loading
         loadingTask = Github.shared.repos(org: ownerLogin, success: { [weak self] (result) in
             DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                 self?.repositories = result
                 DispatchQueue.main.async {
-                    self?.layouts = result.map({ CellLayout($0) })
-                    self?.loadingVariable.value = .loaded
+                    self?.layoutList.value = result.map({ CellLayout($0) })
+                    self?.loadingState.value = .loaded
                 }
             }
         }, failure: { [weak self] (error) in
-            self?.loadingVariable.value = .error(error: error)
+            self?.loadingState.value = .error(error: error)
         })
     }
 
     func loadOwnerRepos() {
         loadingTask?.cancel()
-        loadingVariable.value = .loading
+        loadingState.value = .loading
         loadingTask = Github.shared.user(type: self.repositoryType, success: { [weak self] (result) in
             DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                 self?.repositories = result
                 let layouts = result.map({ CellLayout($0) })
                 DispatchQueue.main.async {
-                    self?.layouts = layouts
-                    self?.loadingVariable.value = .loaded
+                    self?.layoutList.value = layouts
+                    self?.loadingState.value = .loaded
                 }
             }
         }, failure: { [weak self] (error) in
-            self?.loadingVariable.value = .error(error: error)
+            self?.loadingState.value = .error(error: error)
         })
     }
 

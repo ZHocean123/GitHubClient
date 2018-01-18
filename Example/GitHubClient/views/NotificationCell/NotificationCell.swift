@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Reusable
 
-class NotificationCell: UITableViewCell {
+class NotificationCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var subjectLabel: UILabel!

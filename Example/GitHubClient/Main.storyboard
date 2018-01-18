@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Repos-->
         <scene sceneID="I43-Fd-kGO">
             <objects>
                 <navigationController id="Mfa-Yp-xZK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="JGo-cG-bQZ"/>
+                    <tabBarItem key="tabBarItem" title="Repos" image="icons8-bookmark" id="JGo-cG-bQZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iXB-1c-CUT">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,53 +31,18 @@
         <scene sceneID="CDS-OA-3mM">
             <objects>
                 <navigationController id="M9d-6i-JeU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="euh-6E-lVC"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-search_filled" id="euh-6E-lVC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ysk-x8-Jmx">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="XVy-Kf-Zty" kind="relationship" relationship="rootViewController" id="6aF-up-0vr"/>
+                        <segue destination="JtD-3o-uuS" kind="relationship" relationship="rootViewController" id="YFh-b0-S4r"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBH-tV-WY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2535" y="-551"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="y5z-CF-Eoo">
-            <objects>
-                <viewController id="XVy-Kf-Zty" customClass="NotificationsViewController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W1e-f8-hbf"/>
-                        <viewControllerLayoutGuide type="bottom" id="dLf-fm-BuY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZG1-py-jQZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q4y-lh-GQZ">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="dLf-fm-BuY" firstAttribute="top" secondItem="q4y-lh-GQZ" secondAttribute="bottom" id="F0s-SK-n3o"/>
-                            <constraint firstItem="q4y-lh-GQZ" firstAttribute="leading" secondItem="ZG1-py-jQZ" secondAttribute="leading" id="IYy-sX-Sxz"/>
-                            <constraint firstItem="q4y-lh-GQZ" firstAttribute="top" secondItem="W1e-f8-hbf" secondAttribute="bottom" id="Q9A-rN-qYA"/>
-                            <constraint firstAttribute="trailing" secondItem="q4y-lh-GQZ" secondAttribute="trailing" id="VXQ-JL-jAa"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="wI9-7m-s6k"/>
-                    <navigationItem key="navigationItem" id="A8z-Ti-0dw"/>
-                    <connections>
-                        <outlet property="tableView" destination="q4y-lh-GQZ" id="MHk-5Z-xI7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X77-M3-hc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2535" y="253"/>
         </scene>
         <!--RepositoryListViewController-->
         <scene sceneID="NSc-lV-AXu">
@@ -87,57 +52,39 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ce-MQ-vLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3303" y="-113"/>
+            <point key="canvasLocation" x="-3304" y="-160"/>
         </scene>
-        <!--Events-->
-        <scene sceneID="08B-ym-DU0">
+        <!--NotificationListViewController-->
+        <scene sceneID="PXF-KG-Qet">
             <objects>
-                <viewController title="Events" id="wPG-uP-8Au" customClass="EventsViewController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VsV-Mm-lHK"/>
-                        <viewControllerLayoutGuide type="bottom" id="TVZ-LY-joB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PJs-7u-ZY8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ste-xn-Hz4">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="wPG-uP-8Au" id="RYA-Tn-ISd"/>
-                                    <outlet property="delegate" destination="wPG-uP-8Au" id="tV2-aA-ciz"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Ste-xn-Hz4" firstAttribute="leading" secondItem="PJs-7u-ZY8" secondAttribute="leading" id="InC-6e-lZO"/>
-                            <constraint firstAttribute="trailing" secondItem="Ste-xn-Hz4" secondAttribute="trailing" id="PEx-xv-kqC"/>
-                            <constraint firstItem="TVZ-LY-joB" firstAttribute="top" secondItem="Ste-xn-Hz4" secondAttribute="bottom" id="UTT-yd-Iay"/>
-                            <constraint firstItem="Ste-xn-Hz4" firstAttribute="top" secondItem="VsV-Mm-lHK" secondAttribute="bottom" id="kHe-Rd-3B2"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Events" id="8R5-fK-xHt"/>
-                    <connections>
-                        <outlet property="tableView" destination="Ste-xn-Hz4" id="8Pd-gG-Q8w"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xXj-9W-qyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="NotificationListViewController" id="JtD-3o-uuS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3zp-9I-4RW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hhE-9h-SWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4130" y="273"/>
+            <point key="canvasLocation" x="-2536" y="-160"/>
         </scene>
-        <!--notification-->
+        <!--EventListViewController-->
+        <scene sceneID="eda-s2-OXc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventListViewController" id="59a-OO-Es4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zij-N2-EAH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmP-YL-P9k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4130" y="-160"/>
+        </scene>
+        <!--events-->
         <scene sceneID="xc4-m0-7t2">
             <objects>
                 <navigationController id="Gqx-cc-yMI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="notification" id="J2f-3U-pfn"/>
+                    <tabBarItem key="tabBarItem" title="events" image="icons8-appointment_reminders" id="J2f-3U-pfn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H14-5S-Fik">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="wPG-uP-8Au" kind="relationship" relationship="rootViewController" id="mwC-yz-Ib5"/>
+                        <segue destination="59a-OO-Es4" kind="relationship" relationship="rootViewController" id="GZi-x6-fCq"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOG-ha-37X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,11 +111,11 @@
             </objects>
             <point key="canvasLocation" x="-3726" y="-1323"/>
         </scene>
-        <!--Item-->
+        <!--user-->
         <scene sceneID="REN-FV-Mwg">
             <objects>
                 <navigationController id="JZ8-8p-ZvX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UN6-RF-liS"/>
+                    <tabBarItem key="tabBarItem" title="user" image="icons8-guest" id="UN6-RF-liS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yys-aM-7GR">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -272,4 +219,10 @@
             <point key="canvasLocation" x="-4980" y="253"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-appointment_reminders" width="25" height="25"/>
+        <image name="icons8-bookmark" width="26" height="26"/>
+        <image name="icons8-guest" width="26" height="26"/>
+        <image name="icons8-search_filled" width="25" height="25"/>
+    </resources>
 </document>
