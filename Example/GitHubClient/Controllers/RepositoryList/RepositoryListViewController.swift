@@ -40,7 +40,7 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
                 self?.showError(error.localizedDescription)
             }
         }).disposed(by: disposeBag)
-        
+
         viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { [weak self] (types) in
             self?.dropDownMenu.options = types
         }).disposed(by: disposeBag)
@@ -65,7 +65,7 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-mail_filter"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(onBtnFilter))
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

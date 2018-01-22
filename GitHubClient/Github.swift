@@ -20,6 +20,8 @@ public class Github {
     private let keychain = KeychainSwift()
     private let decoder = JSONDecoder()
 
+    public static var showLog: Bool = false
+
     public static var clientSecret: String = ""
 
     private var client: GithubClient?
@@ -116,7 +118,9 @@ public class Github {
             }
             if let data = data {
                 DispatchQueue.global(qos: .utility).async {
-                    print(String(data: data, encoding: .utf8) ?? "no string data")
+                    if Github.showLog {
+                        print(String(data: data, encoding: .utf8) ?? "no string data")
+                    }
                     // TODO: custom error
 
                     // decode object
