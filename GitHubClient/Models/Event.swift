@@ -5,6 +5,8 @@
 //  Created by yang on 30/10/2017.
 //
 
+import Foundation
+
 public struct Event: Decodable {
     public let id: String
     public enum `Type`: String, Codable {

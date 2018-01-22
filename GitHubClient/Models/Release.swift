@@ -5,6 +5,8 @@
 //  Created by yang on 02/11/2017.
 //
 
+import Foundation
+
 public struct Release: Codable {
     public let url: URL
     public let htmlUrl: URL

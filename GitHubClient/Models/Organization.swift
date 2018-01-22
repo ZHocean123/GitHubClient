@@ -5,6 +5,8 @@
 //  Created by yang on 31/10/2017.
 //
 
+import Foundation
+
 public struct Organization: Codable {
     public let login: String
     public let id: Int

@@ -5,6 +5,14 @@
 //  Created by yang on 30/10/2017.
 //
 
+import Foundation
+
+public enum IssueState: String {
+    case open
+    case cloased
+    case all
+}
+
 public struct Issue: Codable {
     public let id: Int
     public let url: URL

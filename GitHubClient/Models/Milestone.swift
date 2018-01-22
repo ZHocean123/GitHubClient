@@ -5,6 +5,8 @@
 //  Created by yang on 31/10/2017.
 //
 
+import Foundation
+
 public struct Milestone: Codable {
     public let url: URL
     public let htmlUrl: URL

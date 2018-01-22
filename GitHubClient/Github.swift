@@ -5,7 +5,7 @@
 //  Created by yang on 26/10/2017.
 //
 
-import Foundation
+import UIKit
 
 public class Github {
     // MARK: - Types
@@ -277,6 +277,8 @@ public class Github {
     // MARK: - issues
     public func issues(forRepo repo: String,
                        owner: String,
+                       state: IssueState = .open,
+                       creator: String? = nil,
                        success: SuccessHandler<[Issue]>?,
                        failure: FailureHandler?) -> URLSessionTask {
         var parameters = Parameters()

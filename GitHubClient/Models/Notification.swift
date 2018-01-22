@@ -5,6 +5,8 @@
 //  Created by yang on 02/11/2017.
 //
 
+import Foundation
+
 public struct Notification: Codable {
     public let id: String
     public let unread: Bool

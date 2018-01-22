@@ -5,6 +5,8 @@
 //  Created by yang on 26/10/2017.
 //
 
+import Foundation
+
 public struct GithubError: Error {
     enum ErrorKind: CustomStringConvertible {
         case invalidRequest

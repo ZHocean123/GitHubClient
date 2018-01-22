@@ -30,6 +30,7 @@
 		2F38F8BD2005C03A00B27958 /* LanguageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38F8BC2005C03A00B27958 /* LanguageBar.swift */; };
 		2F38F8C12005FBB200B27958 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38F8C02005FBB200B27958 /* RepositoryDetailViewModel.swift */; };
 		2F4707201FA6B40900BD9328 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47071F1FA6B40900BD9328 /* EventListViewController.swift */; };
+		2F528BE82015CA46006D6785 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F528BE72015CA46006D6785 /* EventListViewModel.swift */; };
 		2F628117200F19FE00493141 /* DropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F628116200F19FE00493141 /* DropDownMenu.swift */; };
 		2F8725942008836900B5125E /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8725932008836900B5125E /* BorderView.swift */; };
 		2F894B141FFF1735001F531E /* RepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B131FFF1735001F531E /* RepositoryListViewController.swift */; };
@@ -50,6 +51,8 @@
 		2FBA6CF2201032F7008B9060 /* IssueListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FBA6CF1201032F7008B9060 /* IssueListViewController.storyboard */; };
 		2FBA6CF420103383008B9060 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA6CF320103383008B9060 /* IssueListViewController.swift */; };
 		2FBA6CF62010358D008B9060 /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA6CF52010358D008B9060 /* IssueListViewModel.swift */; };
+		2FBC7CB92011CA31006638BF /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7CB72011CA31006638BF /* IssueCell.swift */; };
+		2FBC7CBA2011CA31006638BF /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FBC7CB82011CA31006638BF /* IssueCell.xib */; };
 		2FBD3D301FFE085A003FD6D6 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */; };
 		2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */; };
 		2FD577002004B6C500C93DDF /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD576FF2004B6C400C93DDF /* ControlButton.swift */; };
@@ -101,6 +104,7 @@
 		2F38F8BC2005C03A00B27958 /* LanguageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBar.swift; sourceTree = "<group>"; };
 		2F38F8C02005FBB200B27958 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		2F47071F1FA6B40900BD9328 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		2F528BE72015CA46006D6785 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
 		2F628116200F19FE00493141 /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
 		2F8725932008836900B5125E /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		2F894B131FFF1735001F531E /* RepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 		2FBA6CF1201032F7008B9060 /* IssueListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueListViewController.storyboard; sourceTree = "<group>"; };
 		2FBA6CF320103383008B9060 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		2FBA6CF52010358D008B9060 /* IssueListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewModel.swift; sourceTree = "<group>"; };
+		2FBC7CB72011CA31006638BF /* IssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
+		2FBC7CB82011CA31006638BF /* IssueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
 		2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
 		2FD576FF2004B6C400C93DDF /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
@@ -277,6 +283,7 @@
 				B0DB5E41200E51B700CD76BF /* OptionMenu.swift */,
 				2F628116200F19FE00493141 /* DropDownMenu.swift */,
 				2F2EF0F52010473200F16F33 /* IssueTagView.swift */,
+				2FBC7CBB2011CA48006638BF /* IssueCell */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -299,6 +306,15 @@
 				2FBA6CF52010358D008B9060 /* IssueListViewModel.swift */,
 			);
 			path = IssueList;
+			sourceTree = "<group>";
+		};
+		2FBC7CBB2011CA48006638BF /* IssueCell */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC7CB72011CA31006638BF /* IssueCell.swift */,
+				2FBC7CB82011CA31006638BF /* IssueCell.xib */,
+			);
+			path = IssueCell;
 			sourceTree = "<group>";
 		};
 		2FBD3D311FFE0864003FD6D6 /* Protocols */ = {
@@ -333,6 +349,7 @@
 			children = (
 				2F47071F1FA6B40900BD9328 /* EventListViewController.swift */,
 				2FBA6CEE201029D4008B9060 /* EventListViewController.storyboard */,
+				2F528BE72015CA46006D6785 /* EventListViewModel.swift */,
 				2F12B11C1FA9AC3800FAAFB9 /* EventViewModel.swift */,
 			);
 			path = EventList;
@@ -492,6 +509,7 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = XQJ6Y5LCMF;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -543,6 +561,7 @@
 				2F00FEA3200DE65E00B6D4D2 /* RepositoryListViewController.storyboard in Resources */,
 				2F300147200C87EB000B2CBF /* UserDetailViewController.storyboard in Resources */,
 				2FA3522D1FA1C8E000D87553 /* Main.storyboard in Resources */,
+				2FBC7CBA2011CA31006638BF /* IssueCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,9 +581,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubClient_Example/Pods-GitHubClient_Example-resources.sh",
+				"${PODS_ROOT}/XCGLogger/.swift-version",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/.swift-version",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -624,18 +646,7 @@
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/EFCMark/EFCMark.framework",
 				"${BUILT_PRODUCTS_DIR}/EFMarkdown/EFMarkdown.framework",
-				"${BUILT_PRODUCTS_DIR}/GitHubClient/GitHubClient.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
-				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyImage/SwiftyImage.framework",
-				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
-				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
-				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -644,18 +655,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFCMark.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFMarkdown.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,6 +710,7 @@
 				2FBA6CF62010358D008B9060 /* IssueListViewModel.swift in Sources */,
 				2F0ACA61201086D200AFE403 /* IssueDetailViewModel.swift in Sources */,
 				2F2EF0F220103BB500F16F33 /* NotificationListViewModel.swift in Sources */,
+				2FBC7CB92011CA31006638BF /* IssueCell.swift in Sources */,
 				B0A9A8662006323500F3CD27 /* Log.swift in Sources */,
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
 				2FB54BAB20036304008493F7 /* ReadMeView.swift in Sources */,
@@ -739,6 +740,7 @@
 				2F38F8BD2005C03A00B27958 /* LanguageBar.swift in Sources */,
 				2FBD3D301FFE085A003FD6D6 /* ViewModelBased.swift in Sources */,
 				2F894B161FFF1903001F531E /* RepositoryListViewModel.swift in Sources */,
+				2F528BE82015CA46006D6785 /* EventListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,6 +822,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -865,6 +868,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -877,12 +881,58 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XQJ6Y5LCMF;
 				INFOPLIST_FILE = GitHubClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CFNotify\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"DynamicColor\"",
+					"-framework",
+					"\"EFCMark\"",
+					"-framework",
+					"\"EFMarkdown\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GitHubClient\"",
+					"-framework",
+					"\"Kingfisher\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"ObjcExceptionBridging\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reusable\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"UITableView_FDTemplateLayoutCell\"",
+					"-framework",
+					"\"URLNavigator\"",
+					"-framework",
+					"\"XCGLogger\"",
+					"-framework",
+					"\"YYText\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -895,12 +945,58 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XQJ6Y5LCMF;
 				INFOPLIST_FILE = GitHubClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CFNotify\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"DynamicColor\"",
+					"-framework",
+					"\"EFCMark\"",
+					"-framework",
+					"\"EFMarkdown\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GitHubClient\"",
+					"-framework",
+					"\"Kingfisher\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"ObjcExceptionBridging\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reusable\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"UITableView_FDTemplateLayoutCell\"",
+					"-framework",
+					"\"URLNavigator\"",
+					"-framework",
+					"\"XCGLogger\"",
+					"-framework",
+					"\"YYText\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

@@ -5,6 +5,8 @@
 //  Created by yang on 30/10/2017.
 //
 
+import Foundation
+
 public struct PullRequest: Codable {
     public let url: URL
     public let id: Int
