@@ -12,6 +12,7 @@ PODS:
   - GitHubClient (0.1.0)
   - Kingfisher (4.6.1)
   - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.15.1)
   - Nimble (7.0.3)
   - Nimble-Snapshots (6.3.0):
     - Nimble-Snapshots/Core (= 6.3.0)
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - GitHubClient (from `../`)
   - Kingfisher
   - MBProgressHUD
+  - MJRefresh
   - Nimble (~> 7.0.2)
   - Nimble-Snapshots (~> 6.3.0)
   - Quick (~> 1.2.0)
@@ -69,6 +71,7 @@ SPEC CHECKSUMS:
   GitHubClient: 131ad1f95394030e14b6b011be53ee1a4a33d092
   Kingfisher: 6324ff74b34238c548bf00633845642640c14c8f
   MBProgressHUD: b6823db736898d5d6d84546af399093c27180bbc
+  MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
@@ -81,6 +84,6 @@ SPEC CHECKSUMS:
   XCGLogger: ee201a9a6f7b40055852467ba60a7f7943b24163
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 3b436fc1f29ab321d2f6e23b3fc27e0b07daa468
+PODFILE CHECKSUM: a75c0ee0b7ef49c13cfc3fd1fc94b5870c6ccbce
 
 COCOAPODS: 1.4.0

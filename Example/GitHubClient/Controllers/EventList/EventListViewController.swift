@@ -13,6 +13,7 @@ import CFNotify
 import UITableView_FDTemplateLayoutCell
 import Reusable
 import RxSwift
+import MJRefresh
 
 class EventListViewController: UIViewController {
 
@@ -30,8 +31,10 @@ class EventListViewController: UIViewController {
             case .loaded:
                 self?.hideAllHUD()
                 self?.tableView.reloadData()
+                self?.tableView.mj_header.endRefreshing()
             case .error(let error):
                 self?.showError(error.localizedDescription)
+                self?.tableView.mj_header.endRefreshing()
             }
         }).disposed(by: disposeBag)
     }
@@ -41,6 +44,9 @@ class EventListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tableView.register(cellType: EventCell.self)
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            self?.viewModel.loadEvents()
+        })
         bindViewModel()
         viewModel.loadEvents()
     }

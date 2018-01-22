@@ -19,6 +19,7 @@ target 'GitHubClient_Example' do
   pod 'EFMarkdown'
   pod 'YYText'
   pod 'URLNavigator'
+  pod 'MJRefresh'
 
   target 'GitHubClient_Tests' do
     inherit! :search_paths
