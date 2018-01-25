@@ -6,8 +6,8 @@
 //  Copyright (c) 2017 ZHocean123. All rights reserved.
 //
 
-import UIKit
 import GitHubClient
+import UIKit
 import URLNavigator
 
 let navigator = Navigator()
@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         Github.clientSecret = "b560271b6af28686bdc92554296a4f88249a7871"
@@ -83,6 +84,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-

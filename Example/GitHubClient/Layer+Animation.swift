@@ -8,8 +8,8 @@
 
 import UIKit
 
-public extension CALayer {
-    public func resumeAnimation() {
+extension CALayer {
+    open func resumeAnimation() {
         let pausedTime = timeOffset
         self.speed = 1
         self.timeOffset = 0
@@ -18,7 +18,7 @@ public extension CALayer {
         self.beginTime = timeSincePause
     }
 
-    public func pauseAnimation() {
+    open func pauseAnimation() {
         let pausedTime = self.convertTime(CACurrentMediaTime(), from: nil)
         self.speed = 0
         self.timeOffset = pausedTime

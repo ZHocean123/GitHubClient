@@ -19,12 +19,12 @@ class NotificationListViewModel {
     func loadNotifications() {
         loadingTask?.cancel()
         loadingState.value = .loading
-        loadingTask = Github.shared.notifications(success: { [weak self] (result) in
+        loadingTask = Github.shared.notifications(success: { [weak self] result in
             self?.notifications.value = result
             self?.loadingState.value = .loaded
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loadingState.value = .error(error: error)
-        }
+        })
     }
 
     deinit {

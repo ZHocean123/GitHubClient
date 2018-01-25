@@ -6,8 +6,8 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
 import DynamicColor
+import UIKit
 
 @IBDesignable
 class IssueTagView: UIView {

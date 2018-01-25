@@ -6,8 +6,8 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 @IBDesignable
 class ControlButton: UIButton {
@@ -39,12 +39,12 @@ class ControlButton: UIButton {
 
         addSubview(countLabel)
         addSubview(nameLabel)
-        countLabel.snp.makeConstraints { (make) in
+        countLabel.snp.makeConstraints { make in
             make.top.equalTo(self).offset(4)
             make.left.equalTo(self).offset(4)
             make.right.equalTo(self).offset(-4)
         }
-        nameLabel.snp.makeConstraints { (make) in
+        nameLabel.snp.makeConstraints { make in
             make.top.equalTo(countLabel.snp.bottom).offset(4)
             make.left.equalTo(self).offset(4)
             make.right.equalTo(self).offset(-4)
@@ -53,9 +53,9 @@ class ControlButton: UIButton {
         }
     }
 
-    @IBInspectable var count: Int = 0 {
+    @IBInspectable var countNum: Int = 0 {
         didSet {
-            countLabel.text = "\(count)"
+            countLabel.text = "\(countNum)"
             setNeedsLayout()
         }
     }

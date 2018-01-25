@@ -6,17 +6,17 @@
 //  Copyright © 2017 ocean. All rights reserved.
 //
 
-import UIKit
-import UITableView_FDTemplateLayoutCell
 import GitHubClient
 import Reusable
 import RxSwift
+import UIKit
+import UITableView_FDTemplateLayoutCell
 
 class RepositorySearchViewController: UIViewController, StoryboardBased, ViewModelBased {
 
     var viewModel = RepositorySearchViewModel()
 
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet private weak var tableview: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,6 @@ class RepositorySearchViewController: UIViewController, StoryboardBased, ViewMod
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     /*
     // MARK: - Navigation
@@ -91,7 +90,8 @@ extension RepositorySearchViewController: UITableViewDataSource {
 
 extension RepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
+        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier,
+                                          cacheBy: indexPath, configuration: { cell in
             (cell as? RepositoryCell)?.cellLayout = self.viewModel.layouts[indexPath.row]
         })
     }

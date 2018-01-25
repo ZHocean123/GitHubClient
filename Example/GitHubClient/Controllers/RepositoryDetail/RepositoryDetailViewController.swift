@@ -6,12 +6,12 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
-import GitHubClient
-import SnapKit
-import Reusable
 import EFMarkdown
+import GitHubClient
+import Reusable
 import RxSwift
+import SnapKit
+import UIKit
 
 class RepositoryDetailViewController: UIViewController, StoryboardBased {
 
@@ -27,17 +27,17 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     let viewModel = RepositoryDetailViewModel()
 
     // MARK: - subviews
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var topicsView: TopicsView!
-    @IBOutlet weak var starBtn: ControlButton!
-    @IBOutlet weak var issueBtn: ControlButton!
-    @IBOutlet weak var forkBtn: ControlButton!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var readMeView: ReadMeView!
-    @IBOutlet weak var languagesBar: LanguageBar!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var avatar: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var topicsView: TopicsView!
+    @IBOutlet private weak var starBtn: ControlButton!
+    @IBOutlet private weak var issueBtn: ControlButton!
+    @IBOutlet private weak var forkBtn: ControlButton!
+    @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var readMeView: ReadMeView!
+    @IBOutlet private weak var languagesBar: LanguageBar!
 
     func setupSubviews() {
         descriptionLabel.superview?.isHidden = true
@@ -46,40 +46,40 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
     }
 
     func setupConstraints() {
-        
+
     }
 
     func bindViewModel() {
-        viewModel.repository.asObservable().subscribe(onNext: { [weak self] (repository) in
+        viewModel.repository.asObservable().subscribe(onNext: { [weak self] repository in
             self?.titleLabel.text = repository?.name
             self?.descriptionLabel.text = repository?.description
             self?.descriptionLabel.superview?.isHidden = repository?.description == nil
             self?.languageLabel.text = repository?.language
             self?.languageLabel.superview?.isHidden = repository?.language == nil
             self?.readMeView.loadReadMe(url: repository?.readMeUrlStr)
-            self?.starBtn.count = repository?.stargazersCount ?? 0
-            self?.forkBtn.count = repository?.forks ?? 0
-            self?.issueBtn.count = repository?.openIssuesCount ?? 0
+            self?.starBtn.countNum = repository?.stargazersCount ?? 0
+            self?.forkBtn.countNum = repository?.forks ?? 0
+            self?.issueBtn.countNum = repository?.openIssuesCount ?? 0
             UIView.animate(withDuration: 0.25, animations: {
                 self?.languageLabel.superview?.superview?.layoutIfNeeded()
             })
         }).disposed(by: disposeBag)
-        viewModel.languages.asObservable().subscribe(onNext: { [weak self] (languages) in
+        viewModel.languages.asObservable().subscribe(onNext: { [weak self] languages in
             self?.languagesBar.languages = languages
-            self?.languagesBar.isHidden = languages.count == 0
+            self?.languagesBar.isHidden = languages.isEmpty
             UIView.animate(withDuration: 0.25, animations: {
                 self?.languagesBar.superview?.layoutIfNeeded()
             })
         }).disposed(by: disposeBag)
-        viewModel.topics.asObservable().subscribe(onNext: { [weak self] (topics) in
+        viewModel.topics.asObservable().subscribe(onNext: { [weak self] topics in
             self?.topicsView.topics = topics
-            self?.topicsView.superview?.isHidden = topics.count == 0
+            self?.topicsView.superview?.isHidden = topics.isEmpty
             UIView.animate(withDuration: 0.25, animations: {
                 self?.languageLabel.superview?.superview?.layoutIfNeeded()
             })
         }).disposed(by: disposeBag)
     }
-    
+
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +88,7 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         view.backgroundColor = .white
         setupSubviews()
         setupConstraints()
-        
+
         bindViewModel()
         viewModel.loadRepoDetails()
     }

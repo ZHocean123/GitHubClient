@@ -6,8 +6,8 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
 import DynamicColor
+import UIKit
 
 class LanguageBar: UIView {
     struct LanguageInfo {
@@ -19,17 +19,17 @@ class LanguageBar: UIView {
 
     var languages: [String: Int] = [:] {
         didSet {
-            totalCount = languages.reduce(0) { (pre, element) in
+            totalCount = languages.reduce(0) { pre, element in
                 let (_, value) = element
                 return pre + value
             }
-            list = languages.map { (element) in
+            list = languages.map { element in
                 let (key, value) = element
                 return LanguageInfo(name: key,
                                     number: value,
                                     percent: totalCount == 0 ? 0 : CGFloat(value) / CGFloat(totalCount),
                                     color: UIColor(hex: colorSchemes[key] ?? otherColor))
-                }.sorted(by: { $0.number > $1.number })
+            }.sorted(by: { $0.number > $1.number })
             setupSubViews()
         }
     }
@@ -39,7 +39,7 @@ class LanguageBar: UIView {
 
     func setupSubViews() {
         self.subviews.forEach({ $0.removeFromSuperview() })
-        list.forEach { (info) in
+        list.forEach { info in
             let label = UILabel()
             label.backgroundColor = info.color
             addSubview(label)
@@ -92,4 +92,3 @@ let colorSchemes: [String: UInt32] = [
     "CSS": 0x563d7c,
     "other": otherColor
 ]
-

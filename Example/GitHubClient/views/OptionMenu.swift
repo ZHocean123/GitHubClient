@@ -45,7 +45,8 @@ class OptionMenu: UIView {
         isShow = true
         if animated {
             backgroundView.alpha = 0
-            tableView.transform = CGAffineTransform(translationX: 0, y: -min(CGFloat(options.count) * optionHeight, bounds.height))
+            tableView.transform = CGAffineTransform(translationX: 0,
+                                                    y: -min(CGFloat(options.count) * optionHeight, bounds.height))
             UIView.animate(withDuration: 0.3, animations: {
                 self.tableView.transform = CGAffineTransform.identity
                 self.backgroundView.alpha = 1
@@ -55,7 +56,8 @@ class OptionMenu: UIView {
 
     private func setSelectedOption(_ option: MenuOption?, animated: Bool = true) {
         if let selectedOption = option, let index = options.index(where: { selectedOption.title == $0.title }) {
-            tableView.selectRow(at: IndexPath(row: 0, section: index), animated: animated, scrollPosition: UITableViewScrollPosition.top)
+            tableView.selectRow(at: IndexPath(row: 0, section: index),
+                                animated: animated, scrollPosition: UITableViewScrollPosition.top)
         } else {
             tableView.indexPathsForSelectedRows?.forEach({ tableView.deselectRow(at: $0, animated: animated) })
         }
@@ -80,7 +82,8 @@ class OptionMenu: UIView {
         isShow = true
         if animated {
             backgroundView.alpha = 0
-            tableView.transform = CGAffineTransform(translationX: 0, y: -min(CGFloat(options.count) * 44, bounds.height))
+            tableView.transform = CGAffineTransform(translationX: 0,
+                                                    y: -min(CGFloat(options.count) * 44, bounds.height))
             UIView.animate(withDuration: 0.3, animations: {
                 self.tableView.transform = CGAffineTransform.identity
                 self.backgroundView.alpha = 1
@@ -94,8 +97,10 @@ class OptionMenu: UIView {
             UIView.animate(withDuration: 0.3, animations: {
                 self.tableView.transform = CGAffineTransform(translationX: 0, y: -self.tableView.frame.height)
                 self.backgroundView.alpha = 0
-            }, completion: { (stop) in
-                self.removeFromSuperview()
+            }, completion: { finished in
+                if finished {
+                    self.removeFromSuperview()
+                }
             })
         } else {
             self.removeFromSuperview()
@@ -113,7 +118,7 @@ class OptionMenu: UIView {
         addSubview(backgroundView)
         backgroundView.addSubview(tableView)
 
-        backgroundView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        backgroundView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
         tableView.bounces = false
         tableView.rowHeight = optionHeight
 
@@ -123,7 +128,7 @@ class OptionMenu: UIView {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     override func didMoveToSuperview() {
@@ -137,7 +142,7 @@ class OptionMenu: UIView {
         var tempFrame = bounds
         if #available(iOS 11.0, *) {
             tempFrame.origin.x = self.safeAreaInsets.left
-            tempFrame.size.width = tempFrame.size.width - (self.safeAreaInsets.left + self.safeAreaInsets.right)
+            tempFrame.size.width -= (self.safeAreaInsets.left + self.safeAreaInsets.right)
         }
         tempFrame.size.height = min(CGFloat(options.count) * optionHeight, bounds.height)
         tableView.frame = tempFrame
@@ -189,6 +194,6 @@ class OptionCell: UITableViewCell {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 }

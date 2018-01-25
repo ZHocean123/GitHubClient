@@ -6,12 +6,13 @@
 //  Copyright (c) 2017 ZHocean123. All rights reserved.
 //
 
-import UIKit
 import GitHubClient
+import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var logSwitch: UISwitch!
+    @IBOutlet private weak var logSwitch: UISwitch!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,4 +32,3 @@ class ViewController: UIViewController {
         Github.shared.login(navController: self.navigationController!, success: nil, failure: nil)
     }
 }
-

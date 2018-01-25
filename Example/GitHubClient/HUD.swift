@@ -6,8 +6,8 @@
 //  Copyright © 2017 ocean. All rights reserved.
 //
 
-import UIKit
 import MBProgressHUD
+import UIKit
 
 extension UIViewController {
     func showProcess() {
@@ -23,7 +23,7 @@ extension UIViewController {
         hud.label.text = message
         hud.hide(animated: true, afterDelay: 2)
     }
-    
+
     func showError(_ message: String, autoHide: Bool = true) {
         let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
         hud.mode = .text

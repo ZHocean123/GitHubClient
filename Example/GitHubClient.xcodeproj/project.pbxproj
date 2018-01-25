@@ -55,6 +55,8 @@
 		2FBC7CBA2011CA31006638BF /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FBC7CB82011CA31006638BF /* IssueCell.xib */; };
 		2FBD3D301FFE085A003FD6D6 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */; };
 		2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */; };
+		2FC336A12019A9860090CC2B /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC336A02019A9860090CC2B /* ViewController.storyboard */; };
+		2FC336A32019A9C70090CC2B /* RepositorySearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC336A22019A9C70090CC2B /* RepositorySearchViewController.storyboard */; };
 		2FD577002004B6C500C93DDF /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD576FF2004B6C400C93DDF /* ControlButton.swift */; };
 		2FD577022004BA2400C93DDF /* VerticalAlignmentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */; };
 		2FDDB0BA1FAAEF4800CBCED3 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDB0B91FAAEF4800CBCED3 /* NotificationListViewController.swift */; };
@@ -129,6 +131,9 @@
 		2FBC7CB82011CA31006638BF /* IssueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
 		2FBD3D2F1FFE085A003FD6D6 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 		2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
+		2FC3369E2019A6860090CC2B /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2FC336A02019A9860090CC2B /* ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewController.storyboard; sourceTree = "<group>"; };
+		2FC336A22019A9C70090CC2B /* RepositorySearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RepositorySearchViewController.storyboard; sourceTree = "<group>"; };
 		2FD576FF2004B6C400C93DDF /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		2FD577012004BA2400C93DDF /* VerticalAlignmentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalAlignmentLabel.swift; sourceTree = "<group>"; };
 		2FDDB0B91FAAEF4800CBCED3 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
@@ -261,9 +266,10 @@
 				2FBD3D341FFE0B40003FD6D6 /* RepositorySearch */,
 				2F38F8BF2005FB7900B27958 /* RepositoryDetail */,
 				2F894B171FFF1921001F531E /* RepositoryList */,
-				2FA352231FA1C8C800D87553 /* ViewController.swift */,
 				2F300148200C87F5000B2CBF /* UserDetail */,
 				2F0ACA62201086D700AFE403 /* IssueDetail */,
+				2FA352231FA1C8C800D87553 /* ViewController.swift */,
+				2FC336A02019A9860090CC2B /* ViewController.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA352251FA1C8C800D87553 /* RepositorySearchViewController.swift */,
+				2FC336A22019A9C70090CC2B /* RepositorySearchViewController.storyboard */,
 				2FBD3D321FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift */,
 			);
 			path = RepositorySearch;
@@ -377,6 +384,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				2FC3369E2019A6860090CC2B /* .swiftlint.yml */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for GitHubClient */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -464,6 +472,8 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				445BD34F5B1BEAB303C1FC54 /* [CP] Embed Pods Frameworks */,
 				02DE851AD4A7523737E775E7 /* [CP] Copy Pods Resources */,
+				2FC3369B2019A5E90090CC2B /* iblinter */,
+				2FC3369C2019A6100090CC2B /* swiftlint */,
 			);
 			buildRules = (
 			);
@@ -554,11 +564,13 @@
 				2F38F8B820059AE200B27958 /* index.html in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				2FBA6CF2201032F7008B9060 /* IssueListViewController.storyboard in Resources */,
+				2FC336A12019A9860090CC2B /* ViewController.storyboard in Resources */,
 				2FDDB0C11FAAFB3700CBCED3 /* NotificationCell.xib in Resources */,
 				2F38F8B920059AE200B27958 /* main.css in Resources */,
 				2F3065151FA32AB0005A6E5A /* EventCell.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				2F00FEA3200DE65E00B6D4D2 /* RepositoryListViewController.storyboard in Resources */,
+				2FC336A32019A9C70090CC2B /* RepositorySearchViewController.storyboard in Resources */,
 				2F300147200C87EB000B2CBF /* UserDetailViewController.storyboard in Resources */,
 				2FA3522D1FA1C8E000D87553 /* Main.storyboard in Resources */,
 				2FBC7CBA2011CA31006638BF /* IssueCell.xib in Resources */,
@@ -634,6 +646,34 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitHubClient_Tests/Pods-GitHubClient_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		2FC3369B2019A5E90090CC2B /* iblinter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = iblinter;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which iblinter >/dev/null; then\n    iblinter lint\nelse\n    echo \"warning: IBLinter not installed, download from https://github.com/kateinoigakukun/IBLinter\"\nfi";
+		};
+		2FC3369C2019A6100090CC2B /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		445BD34F5B1BEAB303C1FC54 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

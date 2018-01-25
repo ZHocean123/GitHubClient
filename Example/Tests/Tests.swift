@@ -1,8 +1,8 @@
 // https://github.com/Quick/Quick
 
-import Quick
-import Nimble
 import GitHubClient
+import Nimble
+import Quick
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
@@ -17,9 +17,9 @@ class TableOfContentsSpec: QuickSpec {
             }
 
             it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
+                expect("time").toEventually( equal("done"))
             }
-            
+
             context("these will pass") {
 
                 it("can do maths") {

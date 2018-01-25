@@ -25,11 +25,11 @@ class UserDetailViewModel {
         guard let loginName = loginName else {
             return
         }
-        task = Github.shared.user(loginName, success: { [weak self] (user) in
+        task = Github.shared.user(loginName, success: { [weak self] user in
             self?.userVariable.value = user
-        }) { (error) in
+        }, failure: { error in
             log.error(error)
-        }
+        })
     }
 
     deinit {

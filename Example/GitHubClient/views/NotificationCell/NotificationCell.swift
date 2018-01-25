@@ -6,15 +6,15 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-import UIKit
 import Reusable
+import UIKit
 
 class NotificationCell: UITableViewCell, NibReusable {
 
-    @IBOutlet weak var typeImageView: UIImageView!
-    @IBOutlet weak var subjectLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var markButton: UIButton!
+    @IBOutlet private weak var typeImageView: UIImageView!
+    @IBOutlet private weak var subjectLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var markButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

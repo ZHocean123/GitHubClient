@@ -24,7 +24,7 @@ class IssueListViewModel {
     var sourceType: SourceType = .none {
         didSet {
             switch sourceType {
-            case .repo(let owner, let name):
+            case let .repo(owner, name):
                 self.loadRepoIssues(owner: owner, name: name)
             case .owner:
                 break
@@ -41,12 +41,12 @@ class IssueListViewModel {
     func loadRepoIssues(owner: String, name: String) {
         loadingTask?.cancel()
         loadingState.value = .loading
-        loadingTask = Github.shared.issues(forRepo: name, owner: owner, success: { [weak self] (result) in
+        loadingTask = Github.shared.issues(forRepo: name, owner: owner, success: { [weak self] result in
             self?.issues.value = result
             self?.loadingState.value = .loaded
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loadingState.value = .error(error: error)
-        }
+        })
     }
 
     deinit {

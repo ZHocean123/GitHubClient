@@ -6,10 +6,10 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
-import Reusable
 import GitHubClient
+import Reusable
 import RxSwift
+import UIKit
 import UITableView_FDTemplateLayoutCell
 import URLNavigator
 
@@ -19,17 +19,18 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak var dropDownMenu: DropDownMenu!
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet private weak var dropDownMenu: DropDownMenu!
+    @IBOutlet private weak var tableview: UITableView!
     lazy var filterMenu: OptionMenu = {
         let menu = OptionMenu()
-        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { (types) in
+        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { types in
             menu.options = types
         }).disposed(by: disposeBag)
         return menu
     }()
+
     func bindViewModel() {
-        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] (state) in
+        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] state in
             switch state {
             case .loading:
                 self?.showProcess()
@@ -41,7 +42,7 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
             }
         }).disposed(by: disposeBag)
 
-        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { [weak self] (types) in
+        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { [weak self] types in
             self?.dropDownMenu.options = types
         }).disposed(by: disposeBag)
     }
@@ -63,14 +64,16 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
             break
         }
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-mail_filter"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(onBtnFilter))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-mail_filter"),
+                                                            style: UIBarButtonItemStyle.plain,
+                                                            target: self,
+                                                            action: #selector(onBtnFilter))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     /*
     // MARK: - Navigation
@@ -82,7 +85,8 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
     }
     */
     @IBAction func onBtnType(_ sender: Any) {
-        dropDownMenu.showOptionSelect(viewModel.repositoryTypesVariable.value, selectedOption: viewModel.repositoryTypesVariable.value.last)
+        dropDownMenu.showOptionSelect(viewModel.repositoryTypesVariable.value,
+                                      selectedOption: viewModel.repositoryTypesVariable.value.last)
     }
     @IBAction func onBtnSortType(_ sender: Any) {
         dropDownMenu.hideMenu()
@@ -103,7 +107,7 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 extension RepositoryListViewController: OptionMenuDelegate {
     func didSelect(option: MenuOption) {
         filterMenu.hide()
-        viewModel.repositoryType = option as! RepositoryType
+        viewModel.repositoryType = option as? RepositoryType ?? .all
     }
 }
 
@@ -120,7 +124,8 @@ extension RepositoryListViewController: UITableViewDataSource {
 
 extension RepositoryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier, cacheBy: indexPath, configuration: { (cell) in
+        return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier,
+                                          cacheBy: indexPath, configuration: { cell in
             (cell as? RepositoryCell)?.cellLayout = self.viewModel.layoutList.value[indexPath.row]
         })
     }

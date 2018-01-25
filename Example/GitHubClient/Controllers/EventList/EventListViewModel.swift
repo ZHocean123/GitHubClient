@@ -19,9 +19,9 @@ class EventListViewModel {
     func loadEvents() {
         loadingTask?.cancel()
         loadingState.value = .loading
-        loadingTask = Github.shared.events("ZHocean123", success: { [weak self] (result) in
+        loadingTask = Github.shared.events("ZHocean123", success: { [weak self] result in
             DispatchQueue.global(qos: .utility).async {
-                let models = result.filter({ (event) -> Bool in
+                let models = result.filter({ event -> Bool in
                     switch event.type {
                     case .issuesEvent, .issueCommentEvent:
                         return false
@@ -34,9 +34,9 @@ class EventListViewModel {
                     self?.loadingState.value = .loaded
                 }
             }
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loadingState.value = .error(error: error)
-        }
+        })
     }
 
     deinit {

@@ -6,29 +6,29 @@
 //  Copyright © 2017 ocean. All rights reserved.
 //
 
-import UIKit
 import DynamicColor
 import GitHubClient
 import Reusable
 import SnapKit
+import UIKit
 import YYText
 
 class RepositoryCell: UITableViewCell, NibReusable {
 
     // repo图标
-    @IBOutlet weak var repoImageView: UIImageView!
+    @IBOutlet private weak var repoImageView: UIImageView!
     // repo名称
-    @IBOutlet weak var repoNameLabel: YYLabel!
+    @IBOutlet private weak var repoNameLabel: YYLabel!
     // language
-    @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet private weak var languageLabel: UILabel!
     // stars
-    @IBOutlet weak var starsLabel: UILabel!
+    @IBOutlet private weak var starsLabel: UILabel!
     // forks
-    @IBOutlet weak var forkLabel: UILabel!
+    @IBOutlet private weak var forkLabel: UILabel!
     // 更新时间
-    @IBOutlet weak var updateLabel: UILabel!
+    @IBOutlet private weak var updateLabel: UILabel!
     // topics
-    @IBOutlet weak var topicsView: TopicsView!
+    @IBOutlet private weak var topicsView: TopicsView!
 
     var cellLayout: CellLayout? {
         didSet {

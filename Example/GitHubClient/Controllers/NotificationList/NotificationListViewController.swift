@@ -6,20 +6,20 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-import UIKit
-import GitHubClient
 import CFNotify
+import GitHubClient
 import RxSwift
+import UIKit
 
 class NotificationListViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     private let disposeBag = DisposeBag()
     private let viewModel = NotificationListViewModel()
 
     func bindViewModel() {
-        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] (state) in
+        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] state in
             switch state {
             case .loading:
                 self?.showProcess()
@@ -83,19 +83,19 @@ extension NotificationListViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: NotificationCell.self)
         let notification = viewModel.notifications.value[indexPath.row]
-        cell.subjectLabel.text = notification.subject.title
-        cell.dateLabel.text = notification.updatedAt
-        cell.markButton.isHidden = !notification.unread
-        switch notification.subject.type {
-        case "Issue":
-            cell.typeImageView.image = #imageLiteral(resourceName: "issue-opened")
-        case "PullRequest":
-            cell.typeImageView.image = #imageLiteral(resourceName: "pull-request")
-        case "Release":
-            cell.typeImageView.image = #imageLiteral(resourceName: "tag")
-        default:
-            cell.typeImageView.image = nil
-        }
+//        cell.subjectLabel.text = notification.subject.title
+//        cell.dateLabel.text = notification.updatedAt
+//        cell.markButton.isHidden = !notification.unread
+//        switch notification.subject.type {
+//        case "Issue":
+//            cell.typeImageView.image = #imageLiteral(resourceName: "issue-opened")
+//        case "PullRequest":
+//            cell.typeImageView.image = #imageLiteral(resourceName: "pull-request")
+//        case "Release":
+//            cell.typeImageView.image = #imageLiteral(resourceName: "tag")
+//        default:
+//            cell.typeImageView.image = nil
+//        }
         return cell
     }
 }

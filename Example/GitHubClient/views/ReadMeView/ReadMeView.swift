@@ -6,13 +6,14 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
+import EFMarkdown
 import UIKit
 import WebKit
-import EFMarkdown
 
-@objcMembers class ReadMeView: UIView {
+@objcMembers
+class ReadMeView: UIView {
 
-    let loadingBgView:UIView = {
+    let loadingBgView: UIView = {
         let bgView = UIView()
 //        bgView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         bgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -24,7 +25,7 @@ import EFMarkdown
         indicatorView.autoresizingMask = []
         return indicatorView
     }()
-    
+
     let webView = WKWebView(frame: CGRect.zero, configuration: WKWebViewConfiguration())
     let session = URLSession(configuration: .default)
     var sessionTask: URLSessionTask?
@@ -43,7 +44,9 @@ import EFMarkdown
             invalidateIntrinsicContentSize()
         }
     }
-    
+
+    private var observation: NSKeyValueObservation?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -60,24 +63,17 @@ import EFMarkdown
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(webView)
 
-        addObserver(self, forKeyPath: "webView.scrollView.contentSize", options: .new, context: nil)
-        
         loadingBgView.addSubview(indicatorView)
+
+        observation = webView.scrollView.observe(\.contentSize) { [weak self] _, change in
+            if let size = change.newValue, self?.frame.height != size.height {
+                self?.invalidateIntrinsicContentSize()
+            }
+        }
     }
 
     deinit {
-        removeObserver(self, forKeyPath: "webView.scrollView.contentSize")
         session.invalidateAndCancel()
-    }
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if let change = change, keyPath == "webView.scrollView.contentSize" {
-            if let newSize = change[NSKeyValueChangeKey.newKey] as? NSValue {
-                if self.frame.height != newSize.cgSizeValue.height {
-                    invalidateIntrinsicContentSize()
-                }
-            }
-        }
     }
 
     override var intrinsicContentSize: CGSize {
@@ -92,24 +88,15 @@ import EFMarkdown
         }
         isLoading = true
         let readMeRequest = URLRequest(url: URL(string: url)!)
-        let task = session.dataTask(with: readMeRequest) { [weak self] (data, response, error) in
+        let task = session.dataTask(with: readMeRequest) { [weak self] data, _, error in
             if error == nil, let data = data, let markDown = String(data: data, encoding: .utf8) {
                 do {
                     let markdownHTML = try EFMarkdown().markdownToHTML(markDown)
                     let templateURL = Bundle.main.url(forResource: "index", withExtension: "html")!
                     let templateContent = try String(contentsOf: templateURL, encoding: String.Encoding.utf8)
-                    let html = """
-                    <html lang=\"en\">
-                        <head>
-                            <meta name=\"viewport\" content=\"initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width\">
-                        </head>
-                        <body>
-                            \(markdownHTML)
-                        </body>
-                    </html>
-                    """
+                    let htmlStr = templateContent.replacingOccurrences(of: "$PLACEHOLDER", with: markdownHTML)
                     DispatchQueue.main.async {
-                        self?.webView.loadHTMLString(templateContent.replacingOccurrences(of: "$PLACEHOLDER", with: markdownHTML),
+                        self?.webView.loadHTMLString(htmlStr,
                                                      baseURL: templateURL)
                     }
                 } catch let error {
@@ -153,4 +140,3 @@ extension ReadMeView: WKNavigationDelegate {
 //        }
     }
 }
-

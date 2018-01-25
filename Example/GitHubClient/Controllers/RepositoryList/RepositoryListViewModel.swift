@@ -88,7 +88,7 @@ class RepositoryListViewModel {
         }
         loadingTask?.cancel()
         loadingState.value = .loading
-        loadingTask = Github.shared.repos(owner: ownerLogin, success: { [weak self] (result) in
+        loadingTask = Github.shared.repos(owner: ownerLogin, success: { [weak self] result in
             DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                 self?.repositories = result
                 DispatchQueue.main.async {
@@ -96,7 +96,7 @@ class RepositoryListViewModel {
                     self?.loadingState.value = .loaded
                 }
             }
-        }, failure: { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loadingState.value = .error(error: error)
         })
     }
@@ -107,7 +107,7 @@ class RepositoryListViewModel {
         }
         loadingTask?.cancel()
         loadingState.value = .loading
-        loadingTask = Github.shared.repos(org: ownerLogin, success: { [weak self] (result) in
+        loadingTask = Github.shared.repos(org: ownerLogin, success: { [weak self] result in
             DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                 self?.repositories = result
                 DispatchQueue.main.async {
@@ -115,7 +115,7 @@ class RepositoryListViewModel {
                     self?.loadingState.value = .loaded
                 }
             }
-        }, failure: { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loadingState.value = .error(error: error)
         })
     }
@@ -123,7 +123,7 @@ class RepositoryListViewModel {
     func loadOwnerRepos() {
         loadingTask?.cancel()
         loadingState.value = .loading
-        loadingTask = Github.shared.user(type: self.repositoryType, success: { [weak self] (result) in
+        loadingTask = Github.shared.user(type: self.repositoryType, success: { [weak self] result in
             DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                 self?.repositories = result
                 let layouts = result.map({ CellLayout($0) })
@@ -132,7 +132,7 @@ class RepositoryListViewModel {
                     self?.loadingState.value = .loaded
                 }
             }
-        }, failure: { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loadingState.value = .error(error: error)
         })
     }

@@ -6,12 +6,12 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
 import Reusable
+import UIKit
 
 protocol ViewModelBased: class {
     associatedtype ViewModel
-    
+
     var viewModel: ViewModel { get set }
 }
 

@@ -12,6 +12,7 @@ import UIKit
 class DropDownMenu: UIView {
 
     typealias OptionChanged = (MenuOption) -> Void
+
     var optionChanged: OptionChanged?
 
     // 显示option选择
@@ -66,10 +67,10 @@ class DropDownMenu: UIView {
     }
 
     func commonInit() {
-        bottomLine.backgroundColor = UIColor(white: 0, alpha: 0.8).cgColor
+        bottomLine.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor
         layer.addSublayer(bottomLine)
 
-        optionDropDownView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        optionDropDownView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
 
         showMenu()
     }
@@ -160,7 +161,7 @@ class OptionDropDownView: UIView {
     }
 
     func commonInit() {
-        backgroundColor = UIColor(white: 0, alpha: 0.8)
+        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
         addSubview(tableView)
 
         tableView.register(OptionCell.self, forCellReuseIdentifier: "OptionCell")
@@ -188,8 +189,10 @@ class OptionDropDownView: UIView {
             UIView.animate(withDuration: 0.25, animations: {
                 self.alpha = 0
                 self.tableView.frame = frame
-            }, completion: { (stop) in
-                self.isHidden = true
+            }, completion: { finished in
+                if finished {
+                    self.isHidden = true
+                }
             })
         } else {
             self.isHidden = true
@@ -216,7 +219,8 @@ class OptionDropDownView: UIView {
 
     private func setSelectedOption(_ option: MenuOption?, animated: Bool = true) {
         if let selectedOption = option, let index = options.index(where: { selectedOption.title == $0.title }) {
-            tableView.selectRow(at: IndexPath(row: index, section: 0), animated: animated, scrollPosition: UITableViewScrollPosition.top)
+            tableView.selectRow(at: IndexPath(row: index, section: 0),
+                                animated: animated, scrollPosition: UITableViewScrollPosition.top)
         } else {
             tableView.indexPathsForSelectedRows?.forEach({ tableView.deselectRow(at: $0, animated: animated) })
         }

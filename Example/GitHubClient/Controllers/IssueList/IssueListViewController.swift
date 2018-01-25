@@ -6,20 +6,20 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
 import Reusable
 import RxSwift
+import UIKit
 
 class IssueListViewController: UIViewController, StoryboardBased {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     let viewModel = IssueListViewModel()
 
     private let disposeBag = DisposeBag()
 
     func bindViewModel() {
-        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] (state) in
+        viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] state in
             switch state {
             case .loading:
                 self?.showProcess()
@@ -46,7 +46,6 @@ class IssueListViewController: UIViewController, StoryboardBased {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     /*
     // MARK: - Navigation

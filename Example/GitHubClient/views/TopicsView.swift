@@ -51,7 +51,7 @@ class TopicsView: UIView {
         layoutTopicLabels()
     }
 
-    @IBInspectable var topics: [String] = ["topic"] {
+    var topics: [String] = ["topic"] {
         didSet {
             setupSubviews()
         }
@@ -70,14 +70,12 @@ class TopicsView: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        get {
-            var newSize = CGSize(width: self.frame.width,
-                                 height: 0)
-            if let lastview = subviews.last {
-                newSize.height = lastview.frame.maxY + padding
-            }
-            return newSize
+        var newSize = CGSize(width: self.frame.width,
+                             height: 0)
+        if let lastview = subviews.last {
+            newSize.height = lastview.frame.maxY + padding
         }
+        return newSize
     }
 
     override func layoutSubviews() {
@@ -152,7 +150,8 @@ class TopicLabel: UILabel {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width + padding, height: super.intrinsicContentSize.height + padding)
+        return CGSize(width: super.intrinsicContentSize.width + padding,
+                      height: super.intrinsicContentSize.height + padding)
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {

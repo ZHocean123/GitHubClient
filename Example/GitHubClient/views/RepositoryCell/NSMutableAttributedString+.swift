@@ -6,20 +6,20 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
+import DynamicColor
 import Foundation
 import YYText
-import DynamicColor
 
 extension NSMutableAttributedString {
     func addLink(_ tap: ((UIView, NSAttributedString, _NSRange, CGRect) -> Void)?) {
-        guard string.count > 0 else {
+        guard string.isEmpty else {
             return
         }
-        
+
         yy_color = UIColor(hex: 0xB4D6FE)
-        
+
         let highlight = YYTextHighlight()
-        let border = YYTextBorder(fill: UIColor(white: 1, alpha: 0.15), cornerRadius: 3)
+        let border = YYTextBorder(fill: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8), cornerRadius: 3)
         highlight.setBackgroundBorder(border)
         highlight.tapAction = tap
 

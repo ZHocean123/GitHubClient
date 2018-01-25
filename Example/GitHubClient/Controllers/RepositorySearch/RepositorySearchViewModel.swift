@@ -17,7 +17,7 @@ class RepositorySearchViewModel {
 
     func search(key: String) -> Observable<Any> {
         return Observable.create({ observer in
-            let task = Github.shared.search(repo: key, success: { [weak self] (result) in
+            let task = Github.shared.search(repo: key, success: { [weak self] result in
                 DispatchQueue(label: "json", qos: DispatchQoS.background).async {
                     self?.repositories = result.items
                     DispatchQueue.main.async {
@@ -26,7 +26,7 @@ class RepositorySearchViewModel {
                         observer.on(.completed)
                     }
                 }
-            }, failure: { (error) in
+            }, failure: { error in
                 observer.on(.error(error))
             })
             return Disposables.create(with: task.cancel)

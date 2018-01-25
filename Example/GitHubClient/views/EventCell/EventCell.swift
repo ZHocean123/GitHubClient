@@ -6,16 +6,16 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+import Reusable
 import UIKit
 import YYText
-import Reusable
 
 class EventCell: UITableViewCell, NibReusable {
 
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var detailLabel: YYLabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    
+    @IBOutlet private weak var userImageView: UIImageView!
+    @IBOutlet private weak var detailLabel: YYLabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,11 +26,11 @@ class EventCell: UITableViewCell, NibReusable {
         detailLabel.preferredMaxLayoutWidth = detailLabel.frame.width
         super.layoutSubviews()
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
+
 }

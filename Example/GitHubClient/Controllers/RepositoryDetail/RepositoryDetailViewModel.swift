@@ -16,13 +16,13 @@ class RepositoryDetailViewModel {
             loadRepo()
         }
     }
-    
+
     var name: String? {
         didSet {
             loadRepo()
         }
     }
-    
+
     var repo: Repository? {
         didSet {
             languages.value = [:]
@@ -48,13 +48,13 @@ class RepositoryDetailViewModel {
             return
         }
         repoTask?.cancel()
-        repoTask = Github.shared.repo(owner: owner, name: name, success: { [weak self] (repo) in
+        repoTask = Github.shared.repo(owner: owner, name: name, success: { [weak self] repo in
             self?.repo = repo
-        }, failure: { (error) in
+        }, failure: { error in
             log.error(error)
         })
     }
-    
+
     func loadRepoDetails() {
         loadRepoLanguages()
         loadRepoTopics()
@@ -63,23 +63,24 @@ class RepositoryDetailViewModel {
     func loadRepoLanguages() {
         languagesTask?.cancel()
         guard let repo = repo else { return }
-        languagesTask = Github.shared.languages(owner: repo.owner.login, repo: repo.name, success: { [weak self] (languages) in
+        languagesTask = Github.shared.languages(owner: repo.owner.login,
+                                                repo: repo.name, success: { [weak self] languages in
             self?.languages.value = languages
             log.debug(languages)
-        }) { (error) in
+        }, failure: { error in
             log.error(error)
-        }
+        })
     }
 
     func loadRepoTopics() {
         topicsTask?.cancel()
         guard let repo = repo else { return }
-        topicsTask = Github.shared.topics(owner: repo.owner.login, repo: repo.name, success: { [weak self] (topics) in
+        topicsTask = Github.shared.topics(owner: repo.owner.login, repo: repo.name, success: { [weak self] topics in
             self?.topics.value = topics.names
             log.debug(topics.names)
-        }) { (error) in
+        }, failure: { error in
             log.error(error)
-        }
+        })
     }
 
     func loadRepoTags() {
@@ -98,4 +99,3 @@ class RepositoryDetailViewModel {
         topicsTask?.cancel()
     }
 }
-
