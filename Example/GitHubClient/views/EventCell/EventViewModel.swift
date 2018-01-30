@@ -27,7 +27,7 @@ struct EventViewModel {
 
     mutating func buildViews() {
 
-        let attributedString = NSMutableAttributedString()
+        let text = NSMutableAttributedString()
 
         // actor
         let actor = event.actor
@@ -35,25 +35,26 @@ struct EventViewModel {
         actorStr.addLink { (_, _, _, _) in
             navigator.push("app://user/\(actor.login)")
         }
-        attributedString.append(actorStr)
+        actorStr.yy_font = .semiboldFont
+        text.append(actorStr)
 
         switch event.payload {
         case .forkEvent(let forkEvent):
             let repo = event.repo
             let forkee = forkEvent.forkee
-            attributedString
+            text
                 .append(NSMutableAttributedString(string: " forked ")
                     .addNormalAttribut())
-            attributedString
+            text
                 .append(NSMutableAttributedString(string: repo.name)
                     .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
-            attributedString
+            text
                 .append(NSMutableAttributedString(string: " from ").addNormalAttribut())
-            attributedString
+            text
                 .append(NSMutableAttributedString(string: "\(forkee.owner.login)/\(forkee.name)")
                     .addRepoAttribut(URL(string: "repo://\(forkee.url)")!))
         case .watchEvent:
-            attributedString
+            text
                 .append(NSMutableAttributedString(string: " stared ")
                     .addNormalAttribut())
             let repo = event.repo
@@ -61,7 +62,7 @@ struct EventViewModel {
             repoStr.addLink { (_, _, _, _) in
                 navigator.push("app://repo/\(repo.name)")
             }
-            attributedString.append(repoStr)
+            text.append(repoStr)
         case .issueCommentEvent(let issueCommentEvent):
             let repo = event.repo
         case .issuesEvent(let issuesEvent):
@@ -69,7 +70,6 @@ struct EventViewModel {
         case .pushEvent(let pushEvent):
             let repo = event.repo
             let branchName = String(pushEvent.ref.split(separator: "/").last ?? "")
-
             let components = [" pushed to ", branchName, " in ", repo.name]
                 .map({ NSMutableAttributedString(string: $0) })
             components[0].addNormalAttribut()
@@ -81,11 +81,12 @@ struct EventViewModel {
             components[3].addLink { (_, _, _, _) in
                 navigator.push("app://repo/\(repo.name)")
             }
-            components.forEach({ attributedString.append($0) })
+            components.forEach({ text.append($0) })
 
-            attributedString.add(spacing: 4)
+            text.add(spacing: 4)
             for commit in pushEvent.commits {
-                let components = [String(commit.sha.prefix(6)), " - ", commit.message, "\n"]
+                let commitId = String(commit.sha.prefix(6))
+                let components = [commitId, " - ", commit.message, "\n"]
                     .map({ NSMutableAttributedString(string: $0) })
                 components[0].addLink { (_, _, _, _) in
                     navigator.push("app://repo/\(repo.name)")
@@ -93,55 +94,35 @@ struct EventViewModel {
                 components[1].addSmallSepAttribut()
                 components[2].addSmallAttribut()
                 components[3].addSmallAttribut()
-                components.forEach({ attributedString.append($0) })
+                components.forEach({ text.append($0) })
             }
         case .createEvent(let createEvent):
             let repo = event.repo
             switch createEvent.refType {
             case .repository:
-                attributedString
-                    .append(NSMutableAttributedString(string: " created a repository ")
-                        .addNormalAttribut())
-                attributedString
-                    .append(NSMutableAttributedString(string: repo.name)
-                        .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+                text.append(" created a repository ".attributed.addNormalAttribut())
+                text.append(repo.name.attributed.addRepoAttribut(URL(string: "repo://\(repo.url)")!))
             case .branch:
-                attributedString
-                    .append(NSMutableAttributedString(string: " created a branch ")
-                        .addNormalAttribut())
-                attributedString
-                    .append(NSMutableAttributedString(string: repo.name)
-                        .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+                text.append(" created a branch ".attributed.addNormalAttribut())
+                text.append(repo.name.attributed.addRepoAttribut(URL(string: "repo://\(repo.url)")!))
             case .tag:
-                attributedString
-                    .append(NSMutableAttributedString(string: " created a tag ")
-                        .addNormalAttribut())
-                attributedString
-                    .append(NSMutableAttributedString(string: repo.name)
-                        .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+                text.append(" created a tag ".attributed.addNormalAttribut())
+                text.append(repo.name.attributed.addRepoAttribut(URL(string: "repo://\(repo.url)")!))
             }
         case .releaseEvent(let releaseEvent):
             let repo = event.repo
-            attributedString
-                .append(NSMutableAttributedString(string: " released ")
-                    .addNormalAttribut())
-            attributedString
-                .append(NSMutableAttributedString(string: releaseEvent.release.tagName)
-                    .addRepoAttribut(URL(string: "release://\(releaseEvent.release.url)")!))
-            attributedString
-                .append(NSMutableAttributedString(string: " at ")
-                    .addNormalAttribut())
-            attributedString
-                .append(NSMutableAttributedString(string: repo.name)
-                    .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+            text.append(" released ".attributed.addNormalAttribut())
+            text.append(releaseEvent.release.tagName.attributed.addRepoAttribut(URL(string: "release://\(releaseEvent.release.url)")!))
+            text.append(" at ".attributed.addNormalAttribut())
+            text.append(repo.name.attributed.addRepoAttribut(URL(string: "repo://\(repo.url)")!))
         default:
             break
         }
         var size = ContainerSize
         size.width -= (48 + 8)
-        self.attributedString = attributedString
+        self.attributedString = text
         let container = YYTextContainer(size: size)
-        let textLayout = YYTextLayout(container: container, text: attributedString)
+        let textLayout = YYTextLayout(container: container, text: text)
         self.cellHeight = max((textLayout?.textBoundingSize.height ?? 0) + 38.5, 48)
         self.layout = textLayout
     }
@@ -151,26 +132,14 @@ extension NSAttributedStringKey {
     static let URLLinkKey = NSAttributedStringKey("URLLinkKey")
 }
 
-let semiboldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
-let regularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-let smallregularFont = UIFont.systemFont(ofSize: 12, weight: .regular)
-let commitColor = UIColor(hex: 0x586069)
-
 extension NSMutableAttributedString {
     func addNormalAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: regularFont],
-                           range: NSRange(location: 0, length: self.length))
-        return self
-    }
-
-    func addActorAttribut(_ link: URL) -> NSMutableAttributedString {
-        self.addAttributes([.URLLinkKey: link, .font: semiboldFont, .foregroundColor: UIColor.blue],
-                           range: NSRange(location: 0, length: self.length))
+        self.yy_font = .regularFont
         return self
     }
 
     func addRepoAttribut(_ link: URL) -> NSMutableAttributedString {
-        self.addAttributes([.URLLinkKey: link, .font: semiboldFont, .foregroundColor: UIColor.blue],
+        self.addAttributes([.URLLinkKey: link, .font: UIFont.semiboldFont, .foregroundColor: UIColor.blue],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
@@ -187,26 +156,34 @@ extension NSMutableAttributedString {
     }
 
     func addBranchAttribut(_ link: URL) -> NSMutableAttributedString {
-        self.addAttributes([.URLLinkKey: link, .font: regularFont, .foregroundColor: UIColor.blue],
+        self.addAttributes([.URLLinkKey: link, .font: UIFont.regularFont, .foregroundColor: UIColor.blue],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
 
     func addCommitAttribut(_ link: URL) -> NSMutableAttributedString {
-        self.addAttributes([.URLLinkKey: link, .font: smallregularFont, .foregroundColor: UIColor.blue],
+        self.addAttributes([.URLLinkKey: link, .font: UIFont.smallregularFont, .foregroundColor: UIColor.blue],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
 
     func addSmallAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: smallregularFont, .foregroundColor: commitColor],
+        self.addAttributes([.font: UIFont.smallregularFont, .foregroundColor: UIColor.commitColor],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
 
     func addSmallSepAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: smallregularFont, .foregroundColor: UIColor.black],
+        self.addAttributes([.font: UIFont.smallregularFont, .foregroundColor: UIColor.black],
                            range: NSRange(location: 0, length: self.length))
         return self
+    }
+}
+
+extension String {
+    var attributed: NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: self)
+        attributedString.yy_color = .normalColor
+        return attributedString
     }
 }

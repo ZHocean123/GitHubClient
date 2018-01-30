@@ -67,6 +67,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9672545F2E4D4ABB1C06F8FF /* Pods_GitHubClient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D536D2C33452F879DB31BEFE /* Pods_GitHubClient_Tests.framework */; };
 		AC90611EF9199EB2576CF361 /* Pods_GitHubClient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADBC4B850F7F3DEFD085C49 /* Pods_GitHubClient_Example.framework */; };
+		B092415D202053A500EBE7FC /* UIConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092415C202053A500EBE7FC /* UIConsts.swift */; };
 		B0A9A8662006323500F3CD27 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9A8652006323500F3CD27 /* Log.swift */; };
 		B0DB5E42200E51B700CD76BF /* OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DB5E41200E51B700CD76BF /* OptionMenu.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,7 @@
 		607FACE51AFB9204008FA782 /* GitHubClient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubClient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		B092415C202053A500EBE7FC /* UIConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConsts.swift; sourceTree = "<group>"; };
 		B0A9A8652006323500F3CD27 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		B0DB5E41200E51B700CD76BF /* OptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenu.swift; sourceTree = "<group>"; };
 		B74DFD72A60237B34521096A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				B0A9A8652006323500F3CD27 /* Log.swift */,
+				B092415C202053A500EBE7FC /* UIConsts.swift */,
 				2FBD3D311FFE0864003FD6D6 /* Protocols */,
 				2FA3525C1FA1CB0500D87553 /* HUD.swift */,
 				2FA3525A1FA1CA5F00D87553 /* DateString.swift */,
@@ -769,6 +772,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B092415D202053A500EBE7FC /* UIConsts.swift in Sources */,
 				2FB576E11FB961390019BF56 /* Layer+Animation.swift in Sources */,
 				2FBA6CF420103383008B9060 /* IssueListViewController.swift in Sources */,
 				2F300145200C87D2000B2CBF /* UserDetailViewController.swift in Sources */,

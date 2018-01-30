@@ -12,11 +12,11 @@ import YYText
 
 extension NSMutableAttributedString {
     func addLink(_ tap: ((UIView, NSAttributedString, _NSRange, CGRect) -> Void)?) {
-        guard string.isEmpty else {
+        guard !string.isEmpty else {
             return
         }
 
-        yy_color = UIColor(hex: 0xB4D6FE)
+        yy_color = .linkColor
 
         let highlight = YYTextHighlight()
         let border = YYTextBorder(fill: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8), cornerRadius: 3)
