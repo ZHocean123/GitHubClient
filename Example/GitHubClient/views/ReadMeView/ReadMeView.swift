@@ -58,6 +58,7 @@ class ReadMeView: UIView {
     }
 
     func commonInit() {
+        webView.scrollView.isScrollEnabled = false
         webView.navigationDelegate = self
         webView.frame = self.bounds
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

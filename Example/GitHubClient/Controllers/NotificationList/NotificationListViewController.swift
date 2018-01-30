@@ -82,20 +82,7 @@ extension NotificationListViewController: UITableViewDataSource, UITableViewDele
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: NotificationCell.self)
-        let notification = viewModel.notifications.value[indexPath.row]
-//        cell.subjectLabel.text = notification.subject.title
-//        cell.dateLabel.text = notification.updatedAt
-//        cell.markButton.isHidden = !notification.unread
-//        switch notification.subject.type {
-//        case "Issue":
-//            cell.typeImageView.image = #imageLiteral(resourceName: "issue-opened")
-//        case "PullRequest":
-//            cell.typeImageView.image = #imageLiteral(resourceName: "pull-request")
-//        case "Release":
-//            cell.typeImageView.image = #imageLiteral(resourceName: "tag")
-//        default:
-//            cell.typeImageView.image = nil
-//        }
+        cell.notification = viewModel.notifications.value[indexPath.row]
         return cell
     }
 }

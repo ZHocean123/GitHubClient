@@ -53,29 +53,27 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         viewModel.repository.asObservable().subscribe(onNext: { [weak self] repository in
             self?.titleLabel.text = repository?.name
             self?.descriptionLabel.text = repository?.description
-            self?.descriptionLabel.superview?.isHidden = repository?.description == nil
             self?.languageLabel.text = repository?.language
-            self?.languageLabel.superview?.isHidden = repository?.language == nil
             self?.readMeView.loadReadMe(url: repository?.readMeUrlStr)
             self?.starBtn.countNum = repository?.stargazersCount ?? 0
             self?.forkBtn.countNum = repository?.forks ?? 0
             self?.issueBtn.countNum = repository?.openIssuesCount ?? 0
-            UIView.animate(withDuration: 0.25, animations: {
-                self?.languageLabel.superview?.superview?.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3, animations: {
+                self?.descriptionLabel.superview?.isHidden = repository?.description == nil
+                self?.languageLabel.superview?.isHidden = repository?.language == nil
             })
         }).disposed(by: disposeBag)
         viewModel.languages.asObservable().subscribe(onNext: { [weak self] languages in
             self?.languagesBar.languages = languages
             self?.languagesBar.isHidden = languages.isEmpty
-            UIView.animate(withDuration: 0.25, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self?.languagesBar.superview?.layoutIfNeeded()
             })
         }).disposed(by: disposeBag)
         viewModel.topics.asObservable().subscribe(onNext: { [weak self] topics in
             self?.topicsView.topics = topics
-            self?.topicsView.superview?.isHidden = topics.isEmpty
-            UIView.animate(withDuration: 0.25, animations: {
-                self?.languageLabel.superview?.superview?.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3, animations: {
+                self?.topicsView.superview?.isHidden = topics.isEmpty
             })
         }).disposed(by: disposeBag)
     }

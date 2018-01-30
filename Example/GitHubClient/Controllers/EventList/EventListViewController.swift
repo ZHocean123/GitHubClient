@@ -13,7 +13,6 @@ import MJRefresh
 import Reusable
 import RxSwift
 import UIKit
-import UITableView_FDTemplateLayoutCell
 
 class EventListViewController: UIViewController {
 
@@ -27,7 +26,9 @@ class EventListViewController: UIViewController {
         viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] state in
             switch state {
             case .loading:
-                self?.showProcess()
+                if self?.viewModel.layoutList.value.count == 0 {
+                    self?.showProcess()
+                }
             case .loaded:
                 self?.hideAllHUD()
                 self?.tableView.reloadData()
@@ -43,6 +44,9 @@ class EventListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
         tableView.register(cellType: EventCell.self)
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             self?.viewModel.loadEvents()
@@ -78,20 +82,13 @@ extension EventListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EventCell.self)
-//        let layout = viewModel.layoutList.value[indexPath.row]
-//        cell.userImageView.kf.setImage(with: ImageResource(downloadURL: layout.event.actor.avatarUrl))
-//        cell.dateLabel.text = layout.event.type.rawValue
-//        cell.detailLabel.attributedText = layout.attributedString
+        cell.layout = viewModel.layoutList.value[indexPath.row]
         return cell
     }
 }
 
 extension EventListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.fd_heightForCell(withIdentifier: EventCell.reuseIdentifier,
-                                          cacheBy: indexPath, configuration: { cell in
-//            let cell = cell as? EventCell
-//            cell?.detailLabel.attributedText = self.viewModel.layoutList.value[indexPath.row].attributedString
-        })
+        return viewModel.layoutList.value[indexPath.row].cellHeight
     }
 }

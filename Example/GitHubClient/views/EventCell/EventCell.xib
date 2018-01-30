@@ -28,22 +28,21 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agp-hm-dNg">
                         <rect key="frame" x="48" y="74" width="31" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14.5" id="eO8-Ut-leI"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aia-zW-XVe" customClass="YYLabel">
                         <rect key="frame" x="48" y="8" width="336" height="58"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
                                 <integer key="value" value="0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="fontSize_">
                                 <real key="value" value="17"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="detail"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="textVerticalAlignment">
@@ -52,7 +51,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="agp-hm-dNg" secondAttribute="bottom" constant="8" id="0w3-Jk-mDP"/>
                     <constraint firstItem="Aia-zW-XVe" firstAttribute="leading" secondItem="cMX-Q9-PRP" secondAttribute="trailing" constant="8" id="4Zr-rD-Wz2"/>

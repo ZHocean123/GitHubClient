@@ -10,11 +10,15 @@ import GitHubClient
 import UIKit
 import YYText
 
+let ContainerSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+
 struct EventViewModel {
 
     let event: Event
 
     var attributedString: NSMutableAttributedString?
+    var layout: YYTextLayout?
+    var cellHeight: CGFloat = 0
 
     init(_ event: Event) {
         self.event = event
@@ -38,7 +42,8 @@ struct EventViewModel {
             let repo = event.repo
             let forkee = forkEvent.forkee
             attributedString
-                .append(NSMutableAttributedString(string: " forked ").addNormalAttribut())
+                .append(NSMutableAttributedString(string: " forked ")
+                    .addNormalAttribut())
             attributedString
                 .append(NSMutableAttributedString(string: repo.name)
                     .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
@@ -99,7 +104,7 @@ struct EventViewModel {
                         .addNormalAttribut())
                 attributedString
                     .append(NSMutableAttributedString(string: repo.name)
-                    .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
+                        .addRepoAttribut(URL(string: "repo://\(repo.url)")!))
             case .branch:
                 attributedString
                     .append(NSMutableAttributedString(string: " created a branch ")
@@ -132,7 +137,13 @@ struct EventViewModel {
         default:
             break
         }
+        var size = ContainerSize
+        size.width -= (48 + 8)
         self.attributedString = attributedString
+        let container = YYTextContainer(size: size)
+        let textLayout = YYTextLayout(container: container, text: attributedString)
+        self.cellHeight = max((textLayout?.textBoundingSize.height ?? 0) + 38.5, 48)
+        self.layout = textLayout
     }
 }
 
@@ -147,7 +158,7 @@ let commitColor = UIColor(hex: 0x586069)
 
 extension NSMutableAttributedString {
     func addNormalAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: regularFont, .foregroundColor: UIColor.white],
+        self.addAttributes([.font: regularFont],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
@@ -194,7 +205,7 @@ extension NSMutableAttributedString {
     }
 
     func addSmallSepAttribut() -> NSMutableAttributedString {
-        self.addAttributes([.font: smallregularFont, .foregroundColor: UIColor.white],
+        self.addAttributes([.font: smallregularFont, .foregroundColor: UIColor.black],
                            range: NSRange(location: 0, length: self.length))
         return self
     }

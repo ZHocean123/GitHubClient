@@ -62,10 +62,10 @@
                                                                 <state key="normal" backgroundImage="btn_bg_normal"/>
                                                                 <state key="highlighted" backgroundImage="btn_bg_highlight"/>
                                                                 <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
-                                                                        <real key="value" value="0.0"/>
-                                                                    </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="name" value="Stars"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="countNum">
+                                                                        <integer key="value" value="0"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" userLabel="Issues" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
@@ -73,10 +73,10 @@
                                                                 <state key="normal" backgroundImage="btn_bg_normal"/>
                                                                 <state key="highlighted" backgroundImage="btn_bg_highlight"/>
                                                                 <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Forking"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="countNum">
                                                                         <integer key="value" value="0"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Forking"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
@@ -84,10 +84,10 @@
                                                                 <state key="normal" backgroundImage="btn_bg_normal"/>
                                                                 <state key="highlighted" backgroundImage="btn_bg_highlight"/>
                                                                 <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="countNum">
                                                                         <integer key="value" value="0"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="onBtnIssues:" destination="0Qg-ue-VN0" eventType="touchUpInside" id="BQX-EF-c1P"/>

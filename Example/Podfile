@@ -1,5 +1,5 @@
-source 'https://github.com/ZHocean123/Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://github.com/ZHocean123/Specs.git'
+#source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '9.0'
 use_frameworks!
@@ -20,6 +20,7 @@ target 'GitHubClient_Example' do
   pod 'YYText'
   pod 'URLNavigator'
   pod 'MJRefresh'
+  pod 'Texture'
 
   target 'GitHubClient_Tests' do
     inherit! :search_paths
