@@ -149,7 +149,7 @@ extension NSMutableAttributedString {
             return
         }
 
-        yy_color = UIColor(hex: 0xB4D6FE)
+        yy_color = .linkColor
 
         let border = YYTextBorder(fill: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.15), cornerRadius: 3)
         yy_setTextBorder(border, range: yy_rangeOfAll())

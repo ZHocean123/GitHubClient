@@ -36,7 +36,7 @@ class IssueListViewController: UIViewController, StoryboardBased {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableView.register(cellType: NotificationCell.self)
+        tableView.register(cellType: IssueCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         bindViewModel()
@@ -65,21 +65,9 @@ extension IssueListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: NotificationCell.self)
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: IssueCell.self)
         let issue = viewModel.issues.value[indexPath.row]
-//        cell.subjectLabel.text = notification.subject.title
-//        cell.dateLabel.text = notification.updatedAt
-//        cell.markButton.isHidden = !notification.unread
-//        switch issues.subject.type {
-//        case "Issue":
-//            cell.typeImageView.image = #imageLiteral(resourceName: "issue-opened")
-//        case "PullRequest":
-//            cell.typeImageView.image = #imageLiteral(resourceName: "pull-request")
-//        case "Release":
-//            cell.typeImageView.image = #imageLiteral(resourceName: "tag")
-//        default:
-//            cell.typeImageView.image = nil
-//        }
+        cell.viewModel = issue
         return cell
     }
 }

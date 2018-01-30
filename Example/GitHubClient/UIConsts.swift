@@ -12,10 +12,15 @@ extension UIColor {
     static let normalColor = UIColor(hex: 0x000000)
     static let linkColor = UIColor(hex: 0xB4D6FE)
     static let commitColor = UIColor(hex: 0x586069)
+    static let openColor = UIColor(hex: 0x2cbe4e)
+    static let closeColor = UIColor(hex: 0xcb2431)
+    static let mergedColor = UIColor(hex: 0x6f42c1)
+
 }
 
 extension UIFont {
     static let semiboldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
     static let regularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     static let smallregularFont = UIFont.systemFont(ofSize: 12, weight: .regular)
+    static let issueStatusFont = UIFont(name: "iconfont", size: 14)
 }
