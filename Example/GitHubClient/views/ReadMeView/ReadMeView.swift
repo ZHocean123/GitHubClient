@@ -15,7 +15,7 @@ class ReadMeView: UIView {
 
     let loadingBgView: UIView = {
         let bgView = UIView()
-//        bgView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        bgView.backgroundColor = UIColor(white: 1, alpha: 0.15)
         bgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return bgView
     }()
@@ -32,14 +32,11 @@ class ReadMeView: UIView {
 
     var isLoading: Bool = false {
         didSet {
+            loadingBgView.isHidden = !isLoading
             if isLoading {
-                addSubview(loadingBgView)
-                loadingBgView.frame = bounds
-                indicatorView.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
                 indicatorView.startAnimating()
             } else {
-                indicatorView.stopAnimating()
-                loadingBgView.removeFromSuperview()
+                indicatorView.startAnimating()
             }
             invalidateIntrinsicContentSize()
         }
@@ -64,6 +61,7 @@ class ReadMeView: UIView {
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(webView)
 
+        addSubview(loadingBgView)
         loadingBgView.addSubview(indicatorView)
 
         observation = webView.scrollView.observe(\.contentSize) { [weak self] scrollView, _ in
@@ -77,6 +75,13 @@ class ReadMeView: UIView {
         session.invalidateAndCancel()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        webView.frame = bounds
+        loadingBgView.frame = bounds
+        indicatorView.center = CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
     override var intrinsicContentSize: CGSize {
         return CGSize(width: webView.frame.width,
                       height: isLoading ? 100 : webView.scrollView.contentSize.height)
