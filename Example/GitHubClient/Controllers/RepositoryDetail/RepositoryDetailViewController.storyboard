@@ -44,10 +44,10 @@
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="C2u-MV-6i9" firstAttribute="top" secondItem="m8K-ng-8Q9" secondAttribute="top" id="HpS-p1-LAo"/>
                                                             <constraint firstItem="C2u-MV-6i9" firstAttribute="leading" secondItem="NNb-Ct-Js3" secondAttribute="trailing" constant="4" id="LTv-kg-WbM"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="Lup-Od-OWL"/>
                                                             <constraint firstItem="NNb-Ct-Js3" firstAttribute="centerY" secondItem="m8K-ng-8Q9" secondAttribute="centerY" id="ONf-2p-ay6"/>
                                                             <constraint firstItem="NNb-Ct-Js3" firstAttribute="leading" secondItem="m8K-ng-8Q9" secondAttribute="leading" id="WaA-7F-vpS"/>
                                                             <constraint firstAttribute="bottom" secondItem="C2u-MV-6i9" secondAttribute="bottom" id="fAR-Yd-evg"/>
@@ -57,88 +57,123 @@
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-sD-IF7" userLabel="Control Area" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28.5" width="359" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-IL-Rol" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.5" width="119" height="50"/>
-                                                                <state key="normal" backgroundImage="btn_bg_normal"/>
-                                                                <state key="highlighted" backgroundImage="btn_bg_highlight"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Stars"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="countNum">
-                                                                        <integer key="value" value="0"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" userLabel="Issues" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                                <rect key="frame" x="120" y="0.5" width="119" height="50"/>
-                                                                <state key="normal" backgroundImage="btn_bg_normal"/>
-                                                                <state key="highlighted" backgroundImage="btn_bg_highlight"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Forking"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="countNum">
-                                                                        <integer key="value" value="0"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                                <rect key="frame" x="240" y="0.5" width="119" height="50"/>
-                                                                <state key="normal" backgroundImage="btn_bg_normal"/>
-                                                                <state key="highlighted" backgroundImage="btn_bg_highlight"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="countNum">
-                                                                        <integer key="value" value="0"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="onBtnIssues:" destination="0Qg-ue-VN0" eventType="touchUpInside" id="BQX-EF-c1P"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-qI-xVR">
-                                                                <rect key="frame" x="119" y="0.0" width="1" height="50"/>
-                                                                <color key="backgroundColor" red="0.01176470588" green="0.40000000000000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-st-trq" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-IL-Rol" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="119.5" height="50"/>
+                                                                        <state key="highlighted" backgroundImage="btn_bg_highlight"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="name" value="Stars"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="countNum">
+                                                                                <integer key="value" value="0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="countColor">
+                                                                                <color key="value" red="0.70588235290000001" green="0.83921568629999999" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="nameColor">
+                                                                                <color key="value" red="0.97637809409999998" green="0.99576963510000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-b3-JJb" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                                        <rect key="frame" x="119.5" y="0.0" width="120" height="50"/>
+                                                                        <state key="highlighted" backgroundImage="btn_bg_highlight"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="name" value="Forking"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="countNum">
+                                                                                <integer key="value" value="0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="countColor">
+                                                                                <color key="value" red="0.70588235290000001" green="0.83921568629999999" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="nameColor">
+                                                                                <color key="value" red="0.97637809409999998" green="0.99576963510000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-a9-JDB" customClass="ControlButton" customModule="GitHubClient_Example" customModuleProvider="target">
+                                                                        <rect key="frame" x="239.5" y="0.0" width="119.5" height="50"/>
+                                                                        <state key="highlighted" backgroundImage="btn_bg_highlight"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="name" value="Issues"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="countNum">
+                                                                                <integer key="value" value="0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="countColor">
+                                                                                <color key="value" red="0.70588235290000001" green="0.83921568629999999" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="nameColor">
+                                                                                <color key="value" red="0.97637809409999998" green="0.99576963510000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="onBtnIssues:" destination="0Qg-ue-VN0" eventType="touchUpInside" id="BQX-EF-c1P"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-qI-xVR">
+                                                                        <rect key="frame" x="119" y="0.0" width="1" height="50"/>
+                                                                        <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="1" id="oQc-G6-b9r"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEc-1D-gmx">
+                                                                        <rect key="frame" x="239.5" y="0.0" width="1" height="50"/>
+                                                                        <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="1" id="h4p-G9-C38"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.97637809408183107" green="0.9957696351156573" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="1" id="oQc-G6-b9r"/>
+                                                                    <constraint firstItem="CxZ-a9-JDB" firstAttribute="top" secondItem="3dg-st-trq" secondAttribute="top" id="4Jn-Bg-1DH"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="CxZ-a9-JDB" secondAttribute="bottom" id="6L4-vn-T0I"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="nry-IL-Rol" secondAttribute="bottom" id="7LC-JO-Cfb"/>
+                                                                    <constraint firstItem="wEc-1D-gmx" firstAttribute="top" secondItem="3dg-st-trq" secondAttribute="top" id="CuX-Ng-Xke"/>
+                                                                    <constraint firstItem="JJV-b3-JJb" firstAttribute="width" secondItem="CxZ-a9-JDB" secondAttribute="width" id="D7h-FV-WD1"/>
+                                                                    <constraint firstItem="JJV-b3-JJb" firstAttribute="top" secondItem="3dg-st-trq" secondAttribute="top" id="MGe-IG-gUo"/>
+                                                                    <constraint firstItem="JJV-b3-JJb" firstAttribute="leading" secondItem="nry-IL-Rol" secondAttribute="trailing" id="MhG-Bv-bj3"/>
+                                                                    <constraint firstItem="CNS-qI-xVR" firstAttribute="leading" secondItem="JJV-b3-JJb" secondAttribute="leading" id="QJn-wK-51Z"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="CxZ-a9-JDB" secondAttribute="trailing" id="QbQ-pr-vSQ"/>
+                                                                    <constraint firstItem="CxZ-a9-JDB" firstAttribute="leading" secondItem="JJV-b3-JJb" secondAttribute="trailing" id="Qpo-VP-saQ"/>
+                                                                    <constraint firstItem="CNS-qI-xVR" firstAttribute="top" secondItem="3dg-st-trq" secondAttribute="top" id="UYS-69-BZR"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="JJV-b3-JJb" secondAttribute="bottom" id="WLh-Z0-3aX"/>
+                                                                    <constraint firstItem="nry-IL-Rol" firstAttribute="top" secondItem="3dg-st-trq" secondAttribute="top" id="Yfc-X7-Mul"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="wEc-1D-gmx" secondAttribute="bottom" id="cQa-ng-2dR"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="CNS-qI-xVR" secondAttribute="bottom" id="kCn-ob-aVQ"/>
+                                                                    <constraint firstItem="nry-IL-Rol" firstAttribute="leading" secondItem="3dg-st-trq" secondAttribute="leading" id="p1g-q1-DWH"/>
+                                                                    <constraint firstItem="wEc-1D-gmx" firstAttribute="leading" secondItem="CxZ-a9-JDB" secondAttribute="leading" id="ru8-vG-vhh"/>
+                                                                    <constraint firstItem="nry-IL-Rol" firstAttribute="width" secondItem="JJV-b3-JJb" secondAttribute="width" id="yyh-M8-2ic"/>
                                                                 </constraints>
-                                                            </view>
-                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEc-1D-gmx">
-                                                                <rect key="frame" x="239" y="0.0" width="1" height="50"/>
-                                                                <color key="backgroundColor" red="0.01176470588" green="0.40000000000000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="1" id="h4p-G9-C38"/>
-                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="Rectangle2_670x372_"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="3Z1-ds-ZM5"/>
-                                                            <constraint firstItem="wEc-1D-gmx" firstAttribute="leading" secondItem="JJV-b3-JJb" secondAttribute="trailing" id="Gr4-jD-YvY"/>
-                                                            <constraint firstItem="wEc-1D-gmx" firstAttribute="top" secondItem="BmT-sD-IF7" secondAttribute="top" id="KEu-3t-GbQ"/>
-                                                            <constraint firstItem="CNS-qI-xVR" firstAttribute="top" secondItem="BmT-sD-IF7" secondAttribute="top" id="Qci-cF-fFg"/>
-                                                            <constraint firstAttribute="bottom" secondItem="CNS-qI-xVR" secondAttribute="bottom" id="Sz8-F6-l7Q"/>
-                                                            <constraint firstAttribute="trailing" secondItem="CxZ-a9-JDB" secondAttribute="trailing" id="UoW-Ie-th4"/>
-                                                            <constraint firstItem="CxZ-a9-JDB" firstAttribute="width" secondItem="JJV-b3-JJb" secondAttribute="width" id="agO-c5-Luv"/>
-                                                            <constraint firstItem="nry-IL-Rol" firstAttribute="top" secondItem="BmT-sD-IF7" secondAttribute="top" id="bX1-cr-Snv"/>
-                                                            <constraint firstAttribute="bottom" secondItem="CxZ-a9-JDB" secondAttribute="bottom" id="bju-RP-krL"/>
-                                                            <constraint firstItem="nry-IL-Rol" firstAttribute="width" secondItem="CxZ-a9-JDB" secondAttribute="width" id="fxQ-O2-5KF"/>
-                                                            <constraint firstItem="CxZ-a9-JDB" firstAttribute="leading" secondItem="wEc-1D-gmx" secondAttribute="trailing" id="fz4-Gr-1iQ"/>
-                                                            <constraint firstItem="CNS-qI-xVR" firstAttribute="leading" secondItem="nry-IL-Rol" secondAttribute="trailing" id="i0e-m5-bA9"/>
-                                                            <constraint firstItem="JJV-b3-JJb" firstAttribute="top" secondItem="BmT-sD-IF7" secondAttribute="top" id="kBa-gf-v1t"/>
-                                                            <constraint firstAttribute="bottom" secondItem="wEc-1D-gmx" secondAttribute="bottom" id="lxT-jB-Kfg"/>
-                                                            <constraint firstItem="nry-IL-Rol" firstAttribute="leading" secondItem="BmT-sD-IF7" secondAttribute="leading" id="piN-6d-9C3"/>
-                                                            <constraint firstItem="JJV-b3-JJb" firstAttribute="leading" secondItem="CNS-qI-xVR" secondAttribute="trailing" id="uEP-Zh-JaO"/>
-                                                            <constraint firstAttribute="bottom" secondItem="nry-IL-Rol" secondAttribute="bottom" id="way-8T-acI"/>
-                                                            <constraint firstAttribute="bottom" secondItem="JJV-b3-JJb" secondAttribute="bottom" id="woo-FM-jSb"/>
-                                                            <constraint firstItem="CxZ-a9-JDB" firstAttribute="top" secondItem="BmT-sD-IF7" secondAttribute="top" id="z3D-Ss-XFD"/>
+                                                            <constraint firstItem="3dg-st-trq" firstAttribute="leading" secondItem="BmT-sD-IF7" secondAttribute="leading" id="D5j-3K-sQh"/>
+                                                            <constraint firstAttribute="trailing" secondItem="3dg-st-trq" secondAttribute="trailing" id="d9y-RJ-KVK"/>
+                                                            <constraint firstAttribute="bottom" secondItem="3dg-st-trq" secondAttribute="bottom" id="iyN-H1-VVD"/>
+                                                            <constraint firstItem="3dg-st-trq" firstAttribute="top" secondItem="BmT-sD-IF7" secondAttribute="top" id="wMk-M1-lQh"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="1" height="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="3"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.01176470588" green="0.40000000000000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                <real key="value" value="2"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
@@ -164,6 +199,7 @@
                                                             <constraint firstItem="aRP-OI-uYq" firstAttribute="top" secondItem="oW2-Ck-xzd" secondAttribute="top" id="Mkt-Cw-DdF"/>
                                                             <constraint firstItem="aRP-OI-uYq" firstAttribute="leading" secondItem="oW2-Ck-xzd" secondAttribute="leading" id="VVG-hv-PjZ"/>
                                                             <constraint firstItem="yN1-S0-zRX" firstAttribute="leading" secondItem="aRP-OI-uYq" secondAttribute="trailing" constant="4" id="a2K-e2-xg8"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22.5" id="a63-aN-3n1"/>
                                                             <constraint firstAttribute="trailing" secondItem="yN1-S0-zRX" secondAttribute="trailing" id="dYb-c3-PAO"/>
                                                             <constraint firstAttribute="bottom" secondItem="yN1-S0-zRX" secondAttribute="bottom" constant="3" id="f4h-gg-pO7"/>
                                                         </constraints>
@@ -194,6 +230,7 @@
                                                             <constraint firstItem="Vdf-VU-mln" firstAttribute="leading" secondItem="hKT-wh-d4h" secondAttribute="trailing" constant="4" id="9r0-mD-osq"/>
                                                             <constraint firstAttribute="bottom" secondItem="Vdf-VU-mln" secondAttribute="bottom" id="G6a-uS-p32"/>
                                                             <constraint firstItem="hKT-wh-d4h" firstAttribute="leading" secondItem="GXu-oN-sT1" secondAttribute="leading" id="Jgf-0q-mIk"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="TS1-B1-bcH"/>
                                                             <constraint firstItem="hKT-wh-d4h" firstAttribute="top" secondItem="GXu-oN-sT1" secondAttribute="top" constant="1.5" id="Tyr-YW-4Nv"/>
                                                             <constraint firstAttribute="trailing" secondItem="Vdf-VU-mln" secondAttribute="trailing" id="ViU-B3-bCI"/>
                                                             <constraint firstItem="Vdf-VU-mln" firstAttribute="top" secondItem="GXu-oN-sT1" secondAttribute="top" id="nGl-KR-J1P"/>
@@ -231,6 +268,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="LFA-al-gcJ" secondAttribute="trailing" id="ema-h5-l5q"/>
                                                             <constraint firstItem="MgJ-gl-pya" firstAttribute="top" secondItem="nU2-G8-tkV" secondAttribute="top" constant="3" id="gMU-j1-nc7"/>
                                                             <constraint firstAttribute="bottom" secondItem="MgJ-gl-pya" secondAttribute="bottom" constant="3" id="mdn-8h-XgY"/>
+                                                            <constraint firstAttribute="height" constant="22" id="t2a-Ef-e4V"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-qZ-HxB" userLabel="ReadMe" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
@@ -266,7 +304,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="AWA-Ou-hv8" firstAttribute="top" secondItem="WVm-Ow-mwB" secondAttribute="top" constant="8" id="Nfw-fm-DkB"/>
                                             <constraint firstItem="AWA-Ou-hv8" firstAttribute="leading" secondItem="WVm-Ow-mwB" secondAttribute="leading" constant="8" id="UtE-R5-Ioh"/>
@@ -314,8 +351,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Rectangle2_670x372_" width="670" height="372"/>
         <image name="btn_bg_highlight" width="40" height="40"/>
-        <image name="btn_bg_normal" width="40" height="40"/>
         <image name="code" width="31" height="23"/>
         <image name="info" width="16" height="16"/>
         <image name="repo" width="16" height="16"/>

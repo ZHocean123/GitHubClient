@@ -10,29 +10,13 @@ import UIKit
 
 @IBDesignable
 public class BorderView: UIView {
-    @IBInspectable public var borderColor: UIColor? {
-        get {
-            guard let color = layer.borderColor else {
-                return nil
-            }
-            return UIColor(cgColor: color)
-        }
-        set {
-            layer.borderColor = newValue?.cgColor
-        }
-    }
-    @IBInspectable public var borderWidth: CGFloat = 0 {
+    @IBInspectable var backgroundImage: UIImage? {
         didSet {
-            layer.borderWidth = borderWidth
-        }
-    }
-    @IBInspectable public var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
+            if let image = backgroundImage {
+                layer.backgroundColor = UIColor(patternImage: image).cgColor
+            } else {
+                layer.backgroundColor = nil
+            }
         }
     }
 }

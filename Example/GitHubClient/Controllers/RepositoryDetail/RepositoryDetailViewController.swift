@@ -66,15 +66,25 @@ class RepositoryDetailViewController: UIViewController, StoryboardBased {
         viewModel.languages.asObservable().subscribe(onNext: { [weak self] languages in
             self?.languagesBar.languages = languages
             self?.languagesBar.isHidden = languages.isEmpty
-            UIView.animate(withDuration: 0.3, animations: {
-                self?.languagesBar.superview?.layoutIfNeeded()
-            })
+            if languages.isEmpty {
+                self?.languagesBar.isHidden = true
+            } else {
+                self?.languagesBar.isHidden = false
+                let frame = self?.languagesBar.frame ?? .zero
+                self?.languagesBar.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 0, height: frame.height)
+                self?.languagesBar.clipsToBounds = true
+                UIView.animate(withDuration: 0.3, animations: {
+                    self?.languagesBar.frame = frame
+                })
+            }
         }).disposed(by: disposeBag)
         viewModel.topics.asObservable().subscribe(onNext: { [weak self] topics in
             self?.topicsView.topics = topics
-            UIView.animate(withDuration: 0.3, animations: {
-                self?.topicsView.superview?.isHidden = topics.isEmpty
-            })
+            if self?.topicsView.superview?.isHidden != topics.isEmpty {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self?.topicsView.superview?.isHidden = topics.isEmpty
+                })
+            }
         }).disposed(by: disposeBag)
     }
 

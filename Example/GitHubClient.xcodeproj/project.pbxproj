@@ -36,6 +36,7 @@
 		2F894B141FFF1735001F531E /* RepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B131FFF1735001F531E /* RepositoryListViewController.swift */; };
 		2F894B161FFF1903001F531E /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B151FFF1903001F531E /* RepositoryListViewModel.swift */; };
 		2F894B1B1FFF52B5001F531E /* RepositoryDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F894B1A1FFF52B5001F531E /* RepositoryDetailViewController.storyboard */; };
+		2F9A979B2021906700C7C86B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A979A2021906700C7C86B /* UIViewExtensions.swift */; };
 		2FA352261FA1C8C800D87553 /* RepositoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA352221FA1C8C800D87553 /* RepositoryCell.xib */; };
 		2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA352231FA1C8C800D87553 /* ViewController.swift */; };
 		2FA352281FA1C8C800D87553 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA352241FA1C8C800D87553 /* RepositoryCell.swift */; };
@@ -113,6 +114,7 @@
 		2F894B131FFF1735001F531E /* RepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
 		2F894B151FFF1903001F531E /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
 		2F894B1A1FFF52B5001F531E /* RepositoryDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RepositoryDetailViewController.storyboard; sourceTree = "<group>"; };
+		2F9A979A2021906700C7C86B /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		2FA352221FA1C8C800D87553 /* RepositoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryCell.xib; sourceTree = "<group>"; };
 		2FA352231FA1C8C800D87553 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FA352241FA1C8C800D87553 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			children = (
 				B0A9A8652006323500F3CD27 /* Log.swift */,
 				B092415C202053A500EBE7FC /* UIConsts.swift */,
+				2F9A979A2021906700C7C86B /* UIViewExtensions.swift */,
 				2FBD3D311FFE0864003FD6D6 /* Protocols */,
 				2FA3525C1FA1CB0500D87553 /* HUD.swift */,
 				2FA3525A1FA1CA5F00D87553 /* DateString.swift */,
@@ -798,6 +801,7 @@
 				2F2EF0F62010473200F16F33 /* IssueTagView.swift in Sources */,
 				2FA352271FA1C8C800D87553 /* ViewController.swift in Sources */,
 				2F628117200F19FE00493141 /* DropDownMenu.swift in Sources */,
+				2F9A979B2021906700C7C86B /* UIViewExtensions.swift in Sources */,
 				2FDDB0BA1FAAEF4800CBCED3 /* NotificationListViewController.swift in Sources */,
 				2F300143200C7477000B2CBF /* NSMutableAttributedString+.swift in Sources */,
 				2F3065141FA32AB0005A6E5A /* EventCell.swift in Sources */,
