@@ -10,7 +10,7 @@ import GitHubClient
 import UIKit
 import YYText
 
-let ContainerSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+let containerSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
 
 struct EventViewModel {
 
@@ -118,7 +118,7 @@ struct EventViewModel {
         default:
             break
         }
-        var size = ContainerSize
+        var size = containerSize
         size.width -= (48 + 8)
         self.attributedString = text
         let container = YYTextContainer(size: size)

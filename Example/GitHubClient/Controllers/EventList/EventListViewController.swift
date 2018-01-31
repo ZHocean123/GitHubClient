@@ -26,7 +26,7 @@ class EventListViewController: UIViewController {
         viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] state in
             switch state {
             case .loading:
-                if self?.viewModel.layoutList.value.count == 0 {
+                if self?.viewModel.layoutList.value.isEmpty ?? false {
                     self?.showProcess()
                 }
             case .loaded:

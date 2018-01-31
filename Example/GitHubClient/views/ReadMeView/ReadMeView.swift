@@ -66,8 +66,8 @@ class ReadMeView: UIView {
 
         loadingBgView.addSubview(indicatorView)
 
-        observation = webView.scrollView.observe(\.contentSize) { [weak self] _, change in
-            if let size = change.newValue, self?.frame.height != size.height {
+        observation = webView.scrollView.observe(\.contentSize) { [weak self] scrollView, _ in
+            if self?.frame.height != scrollView.contentSize.height {
                 self?.invalidateIntrinsicContentSize()
             }
         }
