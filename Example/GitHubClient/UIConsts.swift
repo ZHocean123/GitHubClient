@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     static let normalColor = UIColor(hex: 0x000000)
-    static let linkColor = UIColor(hex: 0xB4D6FE)
+    static let linkColor = UIColor(hex: 0x0366d6)
     static let commitColor = UIColor(hex: 0x586069)
     static let openColor = UIColor(hex: 0x2cbe4e)
     static let closeColor = UIColor(hex: 0xcb2431)
