@@ -58,6 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.viewModel.sourceType = .repo(owner: owner, name: name)
             return controller
         }
+        navigator.register("app://repo/<owner>/<repo>/issues/<int:number>") { (_, values, _) in
+            guard let owner = values["owner"] as? String,
+                let repo = values["repo"] as? String,
+                let number = values["number"] as? Int else {
+                    return nil
+            }
+            let controller = IssueDetailViewController.instantiate()
+            controller.viewModel.repo = repo
+            controller.viewModel.owner = owner
+            controller.viewModel.number = number
+            return controller
+        }
 
         return true
     }

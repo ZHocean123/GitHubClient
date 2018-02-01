@@ -10,18 +10,29 @@ import Foundation
 import GitHubClient
 import RxSwift
 
+enum IssueListSourceType {
+    case repo(owner: String, name: String)
+    case owner
+    case org(org: String)
+    case none
+}
+
+extension IssueListSourceType {
+    var repoInfo: (owner: String, repo: String) {
+        switch self {
+        case let .repo(owner, name):
+            return (owner, name)
+        default:
+            return ("", "")
+        }
+    }
+}
+
 class IssueListViewModel {
     let issues = Variable<[GitHubClient.Issue]>([])
     let loadingState = Variable<LoadingState>(.loaded)
 
-    enum SourceType {
-        case repo(owner: String, name: String)
-        case owner
-        case org(org: String)
-        case none
-    }
-
-    var sourceType: SourceType = .none {
+    var sourceType: IssueListSourceType = .none {
         didSet {
             switch sourceType {
             case let .repo(owner, name):

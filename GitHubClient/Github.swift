@@ -88,10 +88,15 @@ public class Github {
     @discardableResult
     private func request<T: Decodable>(_ endpoint: String,
                                        method: HTTPMethod = .get,
+                                       headers: [String: String] = [:],
                                        parameters: Parameters? = nil,
                                        success: SuccessHandler<T>?,
                                        failure: FailureHandler?) -> URLSessionDataTask {
-        let urlRequest = buildRequest(for: endpoint, withParameters: parameters, method: method)
+        let urlRequest = buildRequest(for: endpoint, withParameters: parameters, method: method, headers: headers)
+
+        if Github.showLog {
+            print(urlRequest.url ?? "no url")
+        }
 
         let task = urlSession.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -158,8 +163,15 @@ public class Github {
 
     private func buildRequest(for endpoint: String,
                               withParameters parameters: Parameters? = nil,
-                              method: HTTPMethod) -> URLRequest {
-        var headerFields = ["Authorization": "token \(keychain.get("accessToken") ?? "")", "Accept": "application/vnd.github.mercy-preview+json"]
+                              method: HTTPMethod,
+                              headers: [String: String] = [:]) -> URLRequest {
+        var headerFields = [
+            "Authorization": "token \(keychain.get("accessToken") ?? "")",
+            "Accept": "application/vnd.github.mercy-preview+json"
+        ]
+        headers.forEach { (key, value) in
+            headerFields[key] = value
+        }
         switch method {
         case .get:
             var urlComps = URLComponents(string: baseUrl + endpoint)!
@@ -301,6 +313,28 @@ public class Github {
         var parameters = Parameters()
         parameters["all"] = true
         return request("user/issues", parameters: parameters, success: success, failure: failure)
+    }
+    public func issueDetail(forRepo repo: String,
+                            owner: String,
+                            number: Int,
+                            success: SuccessHandler<Issue>?,
+                            failure: FailureHandler?) -> URLSessionTask {
+        var parameters = Parameters()
+        parameters["all"] = true
+        return request("repos/\(owner)/\(repo)/issues/\(number)", parameters: parameters, success: success, failure: failure)
+    }
+    public func issueComments(forRepo repo: String,
+                              owner: String,
+                              number: Int,
+                              success: SuccessHandler<[IssueComment]>?,
+                              failure: FailureHandler?) -> URLSessionTask {
+        var parameters = Parameters()
+        parameters["all"] = true
+        return request("repos/\(owner)/\(repo)/issues/\(number)/comments",
+//                       headers: ["Accept": "application/vnd.github.VERSION.html+json"],
+                       parameters: parameters,
+                       success: success,
+                       failure: failure)
     }
 }
 

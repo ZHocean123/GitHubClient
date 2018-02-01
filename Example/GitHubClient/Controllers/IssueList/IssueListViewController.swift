@@ -9,6 +9,7 @@
 import Reusable
 import RxSwift
 import UIKit
+import URLNavigator
 
 class IssueListViewController: UIViewController, StoryboardBased {
 
@@ -69,5 +70,11 @@ extension IssueListViewController: UITableViewDataSource, UITableViewDelegate {
         let issue = viewModel.issues.value[indexPath.row]
         cell.viewModel = issue
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let (owner, repo) = viewModel.sourceType.repoInfo
+        let number = viewModel.issues.value[indexPath.row].number
+        navigator.push("app://repo/\(owner)/\(repo)/issues/\(number)")
     }
 }
