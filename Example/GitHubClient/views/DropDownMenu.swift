@@ -8,6 +8,14 @@
 
 import UIKit
 
+protocol MenuOption {
+    var title: String { get }
+}
+
+protocol OptionMenuDelegate: class {
+    func didSelect(option: MenuOption)
+}
+
 @IBDesignable
 class DropDownMenu: UIView {
 
@@ -19,100 +27,15 @@ class DropDownMenu: UIView {
     func showOptionSelect(_ options: [MenuOption],
                           selectedOption option: MenuOption? = nil,
                           optionChanged: OptionChanged? = nil) {
-        guard let superview = superview else {
-            return
-        }
-        if optionDropDownView.superview == nil {
-            superview.addSubview(optionDropDownView)
-        } else {
-            superview.bringSubview(toFront: optionDropDownView)
-            optionDropDownView.isHidden = false
-        }
-        superview.bringSubview(toFront: self)
-        optionDropDownView.options = options
-        optionDropDownView.selectedOption = option
-        optionDropDownView.showMenu()
-    }
-
-    var optionHeight: CGFloat {
-        set {
-            optionDropDownView.optionHeight = newValue
-        }
-        get {
-            return optionDropDownView.optionHeight
-        }
-    }
-
-    var options: [MenuOption] {
-        set {
-            optionDropDownView.options = newValue
-        }
-        get {
-            return optionDropDownView.options
-        }
+        self.options = options
+        self.selectedOption = option
+        self.showMenu()
     }
 
     private let bottomLine = CAShapeLayer()
-
-    private let optionDropDownView = OptionDropDownView()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    func commonInit() {
-        bottomLine.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor
-        layer.addSublayer(bottomLine)
-
-        optionDropDownView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
-
-        showMenu()
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        guard let superview = superview else {
-            return
-        }
-        let lineHeight = 1 / UIScreen.main.scale
-        bottomLine.frame = CGRect(x: 0,
-                                  y: bounds.height - lineHeight,
-                                  width: bounds.width,
-                                  height: lineHeight)
-        optionDropDownView.menuHeight = bounds.height
-        optionDropDownView.frame = CGRect(x: 0,
-                                          y: frame.origin.y,
-                                          width: superview.frame.width,
-                                          height: superview.frame.height - frame.origin.y)
-    }
-
-    func showMenu(_ animated: Bool = true) {
-        guard let superview = superview else {
-            return
-        }
-        if optionDropDownView.superview == nil {
-            superview.addSubview(optionDropDownView)
-        } else {
-            superview.bringSubview(toFront: optionDropDownView)
-            optionDropDownView.isHidden = false
-        }
-        superview.bringSubview(toFront: self)
-        optionDropDownView.showMenu(animated)
-    }
-
-    func hideMenu(_ animated: Bool = true) {
-        optionDropDownView.hideMenu()
-    }
-}
-
-class OptionDropDownView: UIView {
-    var menuHeight: CGFloat = 0
+    private let optionDropDownView = UIView()
+    private let optionContainerView = UIView()
+    private let tableView = UITableView(frame: .zero, style: .plain)
 
     var options: [MenuOption] = [] {
         didSet {
@@ -132,6 +55,17 @@ class OptionDropDownView: UIView {
         }
     }
 
+    var isShowing: Bool = false
+
+    private func setSelectedOption(_ option: MenuOption?, animated: Bool = true) {
+        if let selectedOption = option, let index = options.index(where: { selectedOption.title == $0.title }) {
+            tableView.selectRow(at: IndexPath(row: index, section: 0),
+                                animated: animated, scrollPosition: UITableViewScrollPosition.top)
+        } else {
+            tableView.indexPathsForSelectedRows?.forEach({ tableView.deselectRow(at: $0, animated: animated) })
+        }
+    }
+
     var optionHeight: CGFloat = 30 {
         didSet {
             tableView.rowHeight = optionHeight
@@ -139,16 +73,14 @@ class OptionDropDownView: UIView {
     }
 
     private var tableviewHeight: CGFloat {
-        var height = bounds.height
+        var height = optionDropDownView.bounds.height
         if #available(iOS 11.0, *) {
-            height -= safeAreaInsets.bottom
+            height -= optionDropDownView.safeAreaInsets.bottom
         }
-        return min(CGFloat(options.count) * optionHeight, height - menuHeight)
+        return min(CGFloat(options.count) * optionHeight, height - bounds.height)
     }
 
     weak var delegate: OptionMenuDelegate?
-
-    private let tableView = UITableView(frame: .zero, style: .plain)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -161,73 +93,122 @@ class OptionDropDownView: UIView {
     }
 
     func commonInit() {
-        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
-        addSubview(tableView)
+        bottomLine.backgroundColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.7058823529, alpha: 1).cgColor
+        layer.addSublayer(bottomLine)
+
+        optionDropDownView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
+        optionDropDownView.alpha = 0
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        optionDropDownView.addGestureRecognizer(tap)
 
         tableView.register(OptionCell.self, forCellReuseIdentifier: "OptionCell")
         tableView.rowHeight = optionHeight
         tableView.delegate = self
         tableView.dataSource = self
+
+        optionContainerView.addSubview(tableView)
+
+        optionDropDownView.isHidden = true
+        optionContainerView.isHidden = true
+
+        showMenu()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let superview = superview else {
+            return
+        }
+        let lineHeight = 1 / UIScreen.main.scale
+        bottomLine.frame = CGRect(x: 0,
+                                  y: bounds.height - lineHeight,
+                                  width: bounds.width,
+                                  height: lineHeight)
+
+        optionDropDownView.frame = CGRect(x: 0,
+                                          y: frame.origin.y,
+                                          width: superview.frame.width,
+                                          height: superview.frame.height - frame.origin.y)
+        optionContainerView.frame = CGRect(x: frame.minX,
+                                           y: frame.maxY,
+                                           width: frame.width,
+                                           height: tableviewHeight)
+
+        if isShowing {
+            tableView.frame = optionContainerView.bounds
+        } else {
+            var tableViewFrame = optionContainerView.bounds
+            tableViewFrame.origin.y -= tableViewFrame.height
+            tableView.frame = tableViewFrame
+        }
+    }
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        optionDropDownView.removeFromSuperview()
+        optionContainerView.removeFromSuperview()
+        superview?.addSubview(optionDropDownView)
+        superview?.addSubview(optionContainerView)
     }
 
     func showMenu(_ animated: Bool = true) {
-        self.isHidden = false
+        guard let superview = superview else {
+            return
+        }
+        isShowing = true
+        if optionDropDownView.superview == nil {
+            superview.addSubview(optionDropDownView)
+        } else {
+            superview.bringSubview(toFront: optionDropDownView)
+            optionDropDownView.isHidden = false
+        }
+        if optionContainerView.superview == nil {
+            superview.addSubview(optionContainerView)
+        } else {
+            superview.bringSubview(toFront: optionContainerView)
+            optionContainerView.isHidden = false
+        }
+
+        superview.bringSubview(toFront: self)
+
         if animated {
-            alpha = 0
-            tableView.transform = CGAffineTransform(translationX: 0, y: -tableviewHeight)
-            UIView.animate(withDuration: 0.25, animations: {
-                self.alpha = 1
-                self.tableView.transform = CGAffineTransform.identity
+            var tableViewFrame = tableView.frame
+            tableViewFrame.origin.y = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.optionDropDownView.alpha = 1
+                self.tableView.frame = tableViewFrame
             })
         }
     }
 
     func hideMenu(_ animated: Bool = true) {
+        isShowing = false
         if animated {
-            var frame = tableView.frame
-            frame.origin.y -= frame.height
-            UIView.animate(withDuration: 0.25, animations: {
-                self.alpha = 0
-                self.tableView.frame = frame
+            var tableViewFrame = tableView.frame
+            tableViewFrame.origin.y = -tableViewFrame.height
+            UIView.animate(withDuration: 0.3, animations: {
+                self.optionDropDownView.alpha = 0
+                self.tableView.frame = tableViewFrame
             }, completion: { finished in
                 if finished {
-                    self.isHidden = true
+                    self.optionDropDownView.isHidden = true
+                    self.optionContainerView.isHidden = true
                 }
             })
         } else {
-            self.isHidden = true
+            optionDropDownView.isHidden = true
+            optionContainerView.isHidden = true
         }
     }
 
-    override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-        setNeedsLayout()
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        var originX: CGFloat = 0
-        var width: CGFloat = frame.width
-        if #available(iOS 11.0, *) {
-            originX += self.safeAreaInsets.left
-            width -= (self.safeAreaInsets.left + self.safeAreaInsets.right)
-        }
-        tableView.frame = CGRect(x: originX, y: menuHeight, width: width, height: tableviewHeight)
-    }
-
-    private func setSelectedOption(_ option: MenuOption?, animated: Bool = true) {
-        if let selectedOption = option, let index = options.index(where: { selectedOption.title == $0.title }) {
-            tableView.selectRow(at: IndexPath(row: index, section: 0),
-                                animated: animated, scrollPosition: UITableViewScrollPosition.top)
-        } else {
-            tableView.indexPathsForSelectedRows?.forEach({ tableView.deselectRow(at: $0, animated: animated) })
-        }
+    @objc
+    func handleTap() {
+        hideMenu()
     }
 }
 
-extension OptionDropDownView: UITableViewDataSource, UITableViewDelegate {
+extension DropDownMenu: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
@@ -241,5 +222,29 @@ extension OptionDropDownView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //        selectedOption = options[indexPath.row]
         delegate?.didSelect(option: options[indexPath.row])
+    }
+}
+
+class OptionCell: UITableViewCell {
+    let checkImage = UIImageView(image: #imageLiteral(resourceName: "icons8-checked"))
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        checkImage.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(checkImage)
+        checkImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        checkImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        checkImage.isHidden = !isSelected
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        checkImage.isHidden = !selected
+        textLabel?.textColor = selected ? UIColor.red : UIColor.gray
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

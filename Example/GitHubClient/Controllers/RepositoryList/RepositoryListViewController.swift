@@ -21,13 +21,6 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
     @IBOutlet private weak var dropDownMenu: DropDownMenu!
     @IBOutlet private weak var tableview: UITableView!
-    lazy var filterMenu: OptionMenu = {
-        let menu = OptionMenu()
-        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { types in
-            menu.options = types
-        }).disposed(by: disposeBag)
-        return menu
-    }()
 
     func bindViewModel() {
         viewModel.loadingState.asObservable().subscribe(onNext: { [weak self] state in
@@ -57,6 +50,8 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
         tableview.contentInset = temp
         bindViewModel()
 
+        dropDownMenu.delegate = self
+
         switch viewModel.sourceType {
         case .none:
             viewModel.sourceType = .owner
@@ -85,8 +80,12 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
     }
     */
     @IBAction func onBtnType(_ sender: Any) {
-        dropDownMenu.showOptionSelect(viewModel.repositoryTypesVariable.value,
-                                      selectedOption: viewModel.repositoryTypesVariable.value.last)
+        if dropDownMenu.isShowing {
+            dropDownMenu.hideMenu()
+        } else {
+            dropDownMenu.showOptionSelect(viewModel.repositoryTypesVariable.value,
+                                          selectedOption: viewModel.repositoryTypesVariable.value.last)
+        }
     }
     @IBAction func onBtnSortType(_ sender: Any) {
         dropDownMenu.hideMenu()
@@ -95,18 +94,13 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
 
 @objc extension RepositoryListViewController {
     func onBtnFilter() {
-        filterMenu.delegate = self
-        if filterMenu.isShow {
-            filterMenu.hide()
-        } else {
-            filterMenu.show(toController: self)
-        }
+        dropDownMenu.showMenu()
     }
 }
 
 extension RepositoryListViewController: OptionMenuDelegate {
     func didSelect(option: MenuOption) {
-        filterMenu.hide()
+        dropDownMenu.hideMenu()
         viewModel.repositoryType = option as? RepositoryType ?? .all
     }
 }
@@ -126,8 +120,8 @@ extension RepositoryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.fd_heightForCell(withIdentifier: RepositoryCell.reuseIdentifier,
                                           cacheBy: indexPath, configuration: { cell in
-            (cell as? RepositoryCell)?.cellLayout = self.viewModel.layoutList.value[indexPath.row]
-        })
+                                              (cell as? RepositoryCell)?.cellLayout = self.viewModel.layoutList.value[indexPath.row]
+                                          })
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

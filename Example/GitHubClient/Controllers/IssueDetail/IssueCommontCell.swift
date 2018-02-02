@@ -6,25 +6,21 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
-import Reusable
-import GitHubClient
 import EFMarkdown
+import GitHubClient
+import Reusable
+import UIKit
 
 class IssueCommontCell: UITableViewCell, NibReusable {
 
     @IBOutlet private weak var htmlView: ReadMeView!
 
+    var number: Int = -1
     var viewModel: IssueCommontCellViewModel? {
         didSet {
-            do {
-                let templateURL = Bundle.main.url(forResource: "index", withExtension: "html")!
-                let templateContent = try String(contentsOf: templateURL, encoding: String.Encoding.utf8)
-                let htmlStr = templateContent.replacingOccurrences(of: "$PLACEHOLDER", with: viewModel?.commont ?? "")
-                htmlView.webView.loadHTMLString(htmlStr, baseURL: templateURL)
-            } catch {
-                htmlView.webView.stopLoading()
-            }
+            htmlView.delegate = viewModel
+            htmlView.webView.loadHTMLString(viewModel?.commont ?? "",
+                                            baseURL: IssueCommontCellViewModel.issueCommontTemplateURL)
         }
     }
 
@@ -47,14 +43,29 @@ class IssueCommontCell: UITableViewCell, NibReusable {
 }
 
 class IssueCommontCellViewModel {
-
+    static let issueCommontTemplateURL = Bundle.main.url(forResource: "comment", withExtension: "html")!
+    static let templateContent = try? String(contentsOf: IssueCommontCellViewModel.issueCommontTemplateURL,
+                                             encoding: String.Encoding.utf8)
     var commont: String = ""
+    var htmlHeight: CGFloat = 10
+
+    var heightChangeHandler: ((CGFloat) -> Void)?
 
     init(_ commont: IssueComment) {
         do {
-            self.commont = try EFMarkdown().markdownToHTML(commont.body)
+            let markdownHTML = try EFMarkdown().markdownToHTML(commont.body)
+            self.commont = IssueCommontCellViewModel.templateContent?
+                .replacingOccurrences(of: "$PLACEHOLDER", with: markdownHTML) ?? ""
         } catch let error {
             log.error(error)
+        }
+    }
+}
+
+extension IssueCommontCellViewModel: ReadMeViewDelegate {
+    func heightDidChange(_ height: CGFloat) {
+        if height != htmlHeight {
+             heightChangeHandler?(height)
         }
     }
 }

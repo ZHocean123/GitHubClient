@@ -10,7 +10,10 @@ import EFMarkdown
 import UIKit
 import WebKit
 
-@objcMembers
+protocol ReadMeViewDelegate: class {
+    func heightDidChange(_ height: CGFloat)
+}
+
 class ReadMeView: UIView {
 
     let loadingBgView: UIView = {
@@ -29,6 +32,8 @@ class ReadMeView: UIView {
     let webView = WKWebView(frame: CGRect.zero, configuration: WKWebViewConfiguration())
     let session = URLSession(configuration: .default)
     var sessionTask: URLSessionTask?
+
+    weak var delegate: ReadMeViewDelegate?
 
     var isLoading: Bool = false {
         didSet {
@@ -66,7 +71,8 @@ class ReadMeView: UIView {
 
         observation = webView.scrollView.observe(\.contentSize) { [weak self] scrollView, _ in
             if self?.frame.height != scrollView.contentSize.height {
-                self?.invalidateIntrinsicContentSize()
+//                self?.invalidateIntrinsicContentSize()
+//                self?.delegate?.heightDidChange(scrollView.contentSize.height)
             }
         }
     }
@@ -81,7 +87,7 @@ class ReadMeView: UIView {
         loadingBgView.frame = bounds
         indicatorView.center = CGPoint(x: bounds.midX, y: bounds.midY)
     }
-    
+
     override var intrinsicContentSize: CGSize {
         return CGSize(width: webView.frame.width,
                       height: isLoading ? 100 : webView.scrollView.contentSize.height)
@@ -135,14 +141,15 @@ extension ReadMeView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isLoading = false
 //        invalidateIntrinsicContentSize()
-//        webView.evaluateJavaScript("document.body.offsetHeight") { [weak self] (result, error) in
-//            if let height = result as? CGFloat {
-//                if var frame = self?.webView.frame {
-//                    frame.size.height = height
-//                    self?.webView.frame = frame
-//                    self?.invalidateIntrinsicContentSize()
-//                }
-//            }
-//        }
+        webView.evaluateJavaScript("document.body.offsetHeight") { [weak self] (result, _) in
+            if let height = result as? CGFloat {
+                if var frame = self?.webView.frame {
+                    frame.size.height = height
+                    self?.webView.scrollView.contentSize = frame.size
+                    self?.invalidateIntrinsicContentSize()
+                    self?.delegate?.heightDidChange(height)
+                }
+            }
+        }
     }
 }
