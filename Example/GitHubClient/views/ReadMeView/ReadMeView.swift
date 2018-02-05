@@ -18,7 +18,7 @@ class ReadMeView: UIView {
 
     let loadingBgView: UIView = {
         let bgView = UIView()
-        bgView.backgroundColor = UIColor(white: 1, alpha: 0.15)
+        bgView.backgroundColor = .alphaBgColor
         bgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return bgView
     }()

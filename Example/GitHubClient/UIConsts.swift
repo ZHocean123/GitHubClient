@@ -6,6 +6,7 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
+import DynamicColor
 import UIKit
 
 extension UIColor {
@@ -15,7 +16,7 @@ extension UIColor {
     static let openColor = UIColor(hex: 0x2cbe4e)
     static let closeColor = UIColor(hex: 0xcb2431)
     static let mergedColor = UIColor(hex: 0x6f42c1)
-
+    static let alphaBgColor = UIColor(hex: 0x000000).withAlphaComponent(0.15)
 }
 
 extension UIFont {

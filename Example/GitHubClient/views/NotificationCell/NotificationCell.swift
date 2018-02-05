@@ -6,9 +6,9 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+import GitHubClient
 import Reusable
 import UIKit
-import GitHubClient
 
 class NotificationCell: UITableViewCell, NibReusable {
 

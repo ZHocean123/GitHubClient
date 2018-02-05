@@ -227,7 +227,7 @@ extension DropDownMenu: UITableViewDataSource, UITableViewDelegate {
 
 class OptionCell: UITableViewCell {
     let checkImage = UIImageView(image: #imageLiteral(resourceName: "icons8-checked"))
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -237,13 +237,13 @@ class OptionCell: UITableViewCell {
         checkImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         checkImage.isHidden = !isSelected
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         checkImage.isHidden = !selected
         textLabel?.textColor = selected ? UIColor.red : UIColor.gray
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

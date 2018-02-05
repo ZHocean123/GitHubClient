@@ -26,7 +26,7 @@ class RepositoryListViewModel {
         return [.all, .public, .private, .member, .owner]
     }()
 
-    let repositoryTypesVariable = Variable<[RepositoryType]>([])
+    let repositoryTypes = Variable<[RepositoryType]>([])
 
     enum SourceType {
         case user(username: String)
@@ -39,13 +39,13 @@ class RepositoryListViewModel {
         didSet {
             switch sourceType {
             case .user:
-                repositoryTypesVariable.value = userRepositoryTypes
+                repositoryTypes.value = userRepositoryTypes
             case .owner:
-                repositoryTypesVariable.value = ownerRepositoryTypes
+                repositoryTypes.value = ownerRepositoryTypes
             case .org:
-                repositoryTypesVariable.value = []
+                repositoryTypes.value = []
             default:
-                repositoryTypesVariable.value = []
+                repositoryTypes.value = []
             }
             load()
         }

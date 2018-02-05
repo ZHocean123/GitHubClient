@@ -133,11 +133,13 @@ extension NSAttributedStringKey {
 }
 
 extension NSMutableAttributedString {
+    @discardableResult
     func addNormalAttribut() -> NSMutableAttributedString {
         self.yy_font = .regularFont
         return self
     }
 
+    @discardableResult
     func addRepoAttribut(_ link: URL) -> NSMutableAttributedString {
         self.addAttributes([.URLLinkKey: link, .font: UIFont.semiboldFont, .foregroundColor: UIColor.blue],
                            range: NSRange(location: 0, length: self.length))
@@ -155,24 +157,28 @@ extension NSMutableAttributedString {
         yy_setTextBorder(border, range: yy_rangeOfAll())
     }
 
+    @discardableResult
     func addBranchAttribut(_ link: URL) -> NSMutableAttributedString {
         self.addAttributes([.URLLinkKey: link, .font: UIFont.regularFont, .foregroundColor: UIColor.blue],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
 
+    @discardableResult
     func addCommitAttribut(_ link: URL) -> NSMutableAttributedString {
         self.addAttributes([.URLLinkKey: link, .font: UIFont.smallregularFont, .foregroundColor: UIColor.blue],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
 
+    @discardableResult
     func addSmallAttribut() -> NSMutableAttributedString {
         self.addAttributes([.font: UIFont.smallregularFont, .foregroundColor: UIColor.commitColor],
                            range: NSRange(location: 0, length: self.length))
         return self
     }
 
+    @discardableResult
     func addSmallSepAttribut() -> NSMutableAttributedString {
         self.addAttributes([.font: UIFont.smallregularFont, .foregroundColor: UIColor.black],
                            range: NSRange(location: 0, length: self.length))

@@ -1,7 +1,7 @@
 excluded:
   - Carthage
   - Pods
-  - Source/ExcludedFolder
+  - GitHubClient/Vendors
   - Source/ExcludedFile.swift
 opt_in_rules:
   - empty_count
@@ -34,7 +34,7 @@ identifier_name:
     - id
     - x
     - y
-line_length: 120
+line_length: 300
 number_separator:
   minimum_length: 5
 

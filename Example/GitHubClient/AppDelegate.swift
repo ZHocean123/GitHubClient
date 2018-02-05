@@ -3,7 +3,7 @@
 //  GitHubClient
 //
 //  Created by ZHocean123 on 10/26/2017.
-//  Copyright (c) 2017 ZHocean123. All rights reserved.
+//  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import GitHubClient

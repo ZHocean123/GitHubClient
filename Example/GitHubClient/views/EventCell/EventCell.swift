@@ -6,10 +6,10 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+import Kingfisher
 import Reusable
 import UIKit
 import YYText
-import Kingfisher
 
 class EventCell: UITableViewCell, NibReusable {
 

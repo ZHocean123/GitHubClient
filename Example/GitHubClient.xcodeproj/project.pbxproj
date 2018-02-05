@@ -360,6 +360,14 @@
 			path = RepositorySearch;
 			sourceTree = "<group>";
 		};
+		2FBE03A32027E2A8000E7740 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				2F9A979A2021906700C7C86B /* UIViewExtensions.swift */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
 		2FDDB0C21FAAFB4B00CBCED3 /* RepositoryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,7 +434,7 @@
 			children = (
 				B0A9A8652006323500F3CD27 /* Log.swift */,
 				B092415C202053A500EBE7FC /* UIConsts.swift */,
-				2F9A979A2021906700C7C86B /* UIViewExtensions.swift */,
+				2FBE03A32027E2A8000E7740 /* Vendors */,
 				2FBD3D311FFE0864003FD6D6 /* Protocols */,
 				2FA3525C1FA1CB0500D87553 /* HUD.swift */,
 				2FA3525A1FA1CA5F00D87553 /* DateString.swift */,

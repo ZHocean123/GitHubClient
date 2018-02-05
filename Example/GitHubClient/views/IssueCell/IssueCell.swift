@@ -6,9 +6,9 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import UIKit
-import Reusable
 import GitHubClient
+import Reusable
+import UIKit
 
 class IssueCell: UITableViewCell, NibReusable {
 

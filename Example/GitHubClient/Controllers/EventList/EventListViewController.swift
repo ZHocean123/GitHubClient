@@ -3,7 +3,7 @@
 //  GitHubClient_Example
 //
 //  Created by yang on 30/10/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import CFNotify

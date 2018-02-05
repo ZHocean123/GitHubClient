@@ -35,7 +35,7 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
             }
         }).disposed(by: disposeBag)
 
-        viewModel.repositoryTypesVariable.asObservable().subscribe(onNext: { [weak self] types in
+        viewModel.repositoryTypes.asObservable().subscribe(onNext: { [weak self] types in
             self?.dropDownMenu.options = types
         }).disposed(by: disposeBag)
     }
@@ -83,8 +83,8 @@ class RepositoryListViewController: UIViewController, StoryboardBased {
         if dropDownMenu.isShowing {
             dropDownMenu.hideMenu()
         } else {
-            dropDownMenu.showOptionSelect(viewModel.repositoryTypesVariable.value,
-                                          selectedOption: viewModel.repositoryTypesVariable.value.last)
+            dropDownMenu.showOptionSelect(viewModel.repositoryTypes.value,
+                                          selectedOption: viewModel.repositoryType)
         }
     }
     @IBAction func onBtnSortType(_ sender: Any) {
