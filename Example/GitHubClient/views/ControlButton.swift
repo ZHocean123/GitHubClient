@@ -6,14 +6,29 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import SnapKit
 import UIKit
 
 @IBDesignable
 class ControlButton: UIButton {
 
+    enum DisplayType: Int {
+        case vertical
+        case horizontal
+    }
+
+    var type: DisplayType = .vertical
+
+    @IBInspectable var typeNumer: Int = 0 {
+        didSet {
+            type = DisplayType(rawValue: typeNumer % 2) ?? .vertical
+            invalidateIntrinsicContentSize()
+            setNeedsLayout()
+        }
+    }
+
     let countLabel = VerticalAlignmentLabel()
     let nameLabel = VerticalAlignmentLabel()
+    let spacing: CGFloat = 4
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,17 +54,47 @@ class ControlButton: UIButton {
 
         addSubview(countLabel)
         addSubview(nameLabel)
-        countLabel.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(4)
-            make.left.equalTo(self).offset(4)
-            make.right.equalTo(self).offset(-4)
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let countSize = countLabel.sizeThatFits(UILayoutFittingExpandedSize)
+        let nameSize = nameLabel.sizeThatFits(UILayoutFittingExpandedSize)
+        switch type {
+        case .vertical:
+            return CGSize(width: max(countSize.width, nameSize.width),
+                          height: countSize.height + nameSize.height + spacing)
+        case .horizontal:
+            return CGSize(width: countSize.width + nameSize.width + spacing,
+                          height: max(countSize.height, nameSize.height))
         }
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(countLabel.snp.bottom).offset(4)
-            make.left.equalTo(self).offset(4)
-            make.right.equalTo(self).offset(-4)
-            make.bottom.equalTo(self).offset(-4)
-            make.height.equalTo(countLabel.snp.height).multipliedBy(1.5)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let countSize = countLabel.sizeThatFits(UILayoutFittingExpandedSize)
+        let nameSize = nameLabel.sizeThatFits(UILayoutFittingExpandedSize)
+
+        switch type {
+        case .vertical:
+            let top = (frame.height - countSize.height - nameSize.height - spacing) / 2
+            countLabel.frame = CGRect(x: (frame.width - countSize.width) / 2,
+                                      y: top,
+                                      width: countSize.width,
+                                      height: countSize.height)
+            nameLabel.frame = CGRect(x: (frame.width - nameSize.width) / 2,
+                                     y: countLabel.frame.maxY + spacing,
+                                     width: nameSize.width,
+                                     height: nameSize.height)
+        case .horizontal:
+            let left = (frame.width - countSize.width - nameSize.width - spacing) / 2
+            countLabel.frame = CGRect(x: left,
+                                      y: (frame.height - countSize.height) / 2,
+                                      width: countSize.width,
+                                      height: countSize.height)
+            nameLabel.frame = CGRect(x: countLabel.frame.maxX + spacing,
+                                     y: (frame.height - nameSize.height) / 2,
+                                     width: nameSize.width,
+                                     height: nameSize.height)
         }
     }
 
@@ -60,29 +105,35 @@ class ControlButton: UIButton {
         }
     }
 
-    @IBInspectable var name: String = "" {
+    @IBInspectable var name: String? {
         didSet {
             nameLabel.text = name
-            setNeedsLayout()
         }
     }
 
-    @IBInspectable var countColor: UIColor? {
+    @IBInspectable var countColor: UIColor = .black {
         didSet {
-            if let color = countColor {
-                countLabel.textColor = color
-            }
+            countLabel.textColor = countColor
         }
     }
 
-    @IBInspectable var nameColor: UIColor? {
+    @IBInspectable var nameColor: UIColor = .black {
         didSet {
-            if let color = nameColor {
-                nameLabel.textColor = color
-            }
+            nameLabel.textColor = nameColor
         }
     }
 
+    @IBInspectable var countFontSize: CGFloat = 12 {
+        didSet {
+            countLabel.font = UIFont.systemFont(ofSize: countFontSize)
+        }
+    }
+
+    @IBInspectable var nameFontSize: CGFloat = 14 {
+        didSet {
+            nameLabel.font = UIFont.systemFont(ofSize: nameFontSize)
+        }
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

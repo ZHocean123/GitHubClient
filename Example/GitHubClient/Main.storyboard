@@ -12,7 +12,7 @@
         <!--Repos-->
         <scene sceneID="I43-Fd-kGO">
             <objects>
-                <navigationController id="Mfa-Yp-xZK" sceneMemberID="viewController">
+                <navigationController id="Mfa-Yp-xZK" customClass="BaseNavigationController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Repos" image="icons8-bookmark" id="JGo-cG-bQZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iXB-1c-CUT">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -29,7 +29,7 @@
         <!--Item-->
         <scene sceneID="CDS-OA-3mM">
             <objects>
-                <navigationController id="M9d-6i-JeU" sceneMemberID="viewController">
+                <navigationController id="M9d-6i-JeU" customClass="BaseNavigationController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="icons8-search_filled" id="euh-6E-lVC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ysk-x8-Jmx">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -76,7 +76,7 @@
         <!--events-->
         <scene sceneID="xc4-m0-7t2">
             <objects>
-                <navigationController id="Gqx-cc-yMI" sceneMemberID="viewController">
+                <navigationController id="Gqx-cc-yMI" customClass="BaseNavigationController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="events" image="icons8-appointment_reminders" id="J2f-3U-pfn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H14-5S-Fik">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -113,7 +113,7 @@
         <!--user-->
         <scene sceneID="REN-FV-Mwg">
             <objects>
-                <navigationController id="JZ8-8p-ZvX" sceneMemberID="viewController">
+                <navigationController id="JZ8-8p-ZvX" customClass="BaseNavigationController" customModule="GitHubClient_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="user" image="icons8-guest" id="UN6-RF-liS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yys-aM-7GR">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

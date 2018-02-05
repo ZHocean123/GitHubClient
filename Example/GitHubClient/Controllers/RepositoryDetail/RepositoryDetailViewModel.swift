@@ -84,8 +84,8 @@ class RepositoryDetailViewModel {
     }
 
     func loadRepoTags() {
-        tagsTask?.cancel()
-        guard let repo = repo else { return }
+//        tagsTask?.cancel()
+//        guard let repo = repo else { return }
 //        tagsTask = Github.shared.tags(owner: repo.owner.login, repo: repo.name, success: { (<#[String: Int]#>) in
 //            <#code#>
 //        }) { (error) in

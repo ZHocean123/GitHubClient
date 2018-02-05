@@ -35,6 +35,14 @@
 		2F7D3E5B2022BAC100F4BD0F /* IssueCommontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D3E592022BAC100F4BD0F /* IssueCommontCell.swift */; };
 		2F7D3E5C2022BAC100F4BD0F /* IssueCommontCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D3E5A2022BAC100F4BD0F /* IssueCommontCell.xib */; };
 		2F7D3E622022E71D00F4BD0F /* comment.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D3E5E2022E71D00F4BD0F /* comment.html */; };
+		2F82543120282A51009D407C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82543020282A51009D407C /* BaseViewController.swift */; };
+		2F82543320282A6E009D407C /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82543220282A6E009D407C /* BaseNavigationController.swift */; };
+		2F82543B2028484B009D407C /* UINavigationBar+Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82543420284848009D407C /* UINavigationBar+Rainbow.swift */; };
+		2F82543C2028484B009D407C /* RainbowPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82543520284849009D407C /* RainbowPushAnimator.swift */; };
+		2F82543D2028484B009D407C /* RainbowColorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8254362028484A009D407C /* RainbowColorSource.swift */; };
+		2F82543E2028484B009D407C /* RainbowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8254382028484A009D407C /* RainbowNavigation.swift */; };
+		2F82543F2028484B009D407C /* RainbowPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8254392028484B009D407C /* RainbowPopAnimator.swift */; };
+		2F8254402028484B009D407C /* RainbowDragPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82543A2028484B009D407C /* RainbowDragPop.swift */; };
 		2F8725942008836900B5125E /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8725932008836900B5125E /* BorderView.swift */; };
 		2F894B141FFF1735001F531E /* RepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B131FFF1735001F531E /* RepositoryListViewController.swift */; };
 		2F894B161FFF1903001F531E /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F894B151FFF1903001F531E /* RepositoryListViewModel.swift */; };
@@ -115,6 +123,14 @@
 		2F7D3E592022BAC100F4BD0F /* IssueCommontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCommontCell.swift; sourceTree = "<group>"; };
 		2F7D3E5A2022BAC100F4BD0F /* IssueCommontCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueCommontCell.xib; sourceTree = "<group>"; };
 		2F7D3E5E2022E71D00F4BD0F /* comment.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = comment.html; sourceTree = "<group>"; };
+		2F82543020282A51009D407C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2F82543220282A6E009D407C /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		2F82543420284848009D407C /* UINavigationBar+Rainbow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Rainbow.swift"; sourceTree = "<group>"; };
+		2F82543520284849009D407C /* RainbowPushAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowPushAnimator.swift; sourceTree = "<group>"; };
+		2F8254362028484A009D407C /* RainbowColorSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowColorSource.swift; sourceTree = "<group>"; };
+		2F8254382028484A009D407C /* RainbowNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowNavigation.swift; sourceTree = "<group>"; };
+		2F8254392028484B009D407C /* RainbowPopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowPopAnimator.swift; sourceTree = "<group>"; };
+		2F82543A2028484B009D407C /* RainbowDragPop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowDragPop.swift; sourceTree = "<group>"; };
 		2F8725932008836900B5125E /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		2F894B131FFF1735001F531E /* RepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
 		2F894B151FFF1903001F531E /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
@@ -277,9 +293,25 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2F82544120284882009D407C /* RainbowNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				2F8254362028484A009D407C /* RainbowColorSource.swift */,
+				2F82543A2028484B009D407C /* RainbowDragPop.swift */,
+				2F8254382028484A009D407C /* RainbowNavigation.swift */,
+				2F8254392028484B009D407C /* RainbowPopAnimator.swift */,
+				2F82543520284849009D407C /* RainbowPushAnimator.swift */,
+				2F82543420284848009D407C /* UINavigationBar+Rainbow.swift */,
+			);
+			path = RainbowNavigation;
+			sourceTree = "<group>";
+		};
 		2F872591200882E700B5125E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F82543020282A51009D407C /* BaseViewController.swift */,
+				2F82544120284882009D407C /* RainbowNavigation */,
+				2F82543220282A6E009D407C /* BaseNavigationController.swift */,
 				2FBA6CF0201032BE008B9060 /* IssueList */,
 				2FDDB0C31FAAFB5F00CBCED3 /* EventList */,
 				2FDDB0C41FAAFB6900CBCED3 /* NotificationList */,
@@ -800,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B092415D202053A500EBE7FC /* UIConsts.swift in Sources */,
+				2F82543C2028484B009D407C /* RainbowPushAnimator.swift in Sources */,
 				2FB576E11FB961390019BF56 /* Layer+Animation.swift in Sources */,
 				2FBA6CF420103383008B9060 /* IssueListViewController.swift in Sources */,
 				2F300145200C87D2000B2CBF /* UserDetailViewController.swift in Sources */,
@@ -807,8 +840,12 @@
 				2FBA6CF62010358D008B9060 /* IssueListViewModel.swift in Sources */,
 				2F0ACA61201086D200AFE403 /* IssueDetailViewModel.swift in Sources */,
 				2F2EF0F220103BB500F16F33 /* NotificationListViewModel.swift in Sources */,
+				2F82543320282A6E009D407C /* BaseNavigationController.swift in Sources */,
 				2FBC7CB92011CA31006638BF /* IssueCell.swift in Sources */,
+				2F82543120282A51009D407C /* BaseViewController.swift in Sources */,
+				2F82543E2028484B009D407C /* RainbowNavigation.swift in Sources */,
 				B0A9A8662006323500F3CD27 /* Log.swift in Sources */,
+				2F8254402028484B009D407C /* RainbowDragPop.swift in Sources */,
 				2FA3522B1FA1C8D200D87553 /* AppDelegate.swift in Sources */,
 				2FB54BAB20036304008493F7 /* ReadMeView.swift in Sources */,
 				2FDDB0C01FAAFB3700CBCED3 /* NotificationCell.swift in Sources */,
@@ -828,11 +865,14 @@
 				2F628117200F19FE00493141 /* DropDownMenu.swift in Sources */,
 				2F9A979B2021906700C7C86B /* UIViewExtensions.swift in Sources */,
 				2FDDB0BA1FAAEF4800CBCED3 /* NotificationListViewController.swift in Sources */,
+				2F82543D2028484B009D407C /* RainbowColorSource.swift in Sources */,
 				2F300143200C7477000B2CBF /* NSMutableAttributedString+.swift in Sources */,
 				2F3065141FA32AB0005A6E5A /* EventCell.swift in Sources */,
 				2FA3525D1FA1CB0500D87553 /* HUD.swift in Sources */,
+				2F82543F2028484B009D407C /* RainbowPopAnimator.swift in Sources */,
 				2F8725942008836900B5125E /* BorderView.swift in Sources */,
 				2F38F8C12005FBB200B27958 /* RepositoryDetailViewModel.swift in Sources */,
+				2F82543B2028484B009D407C /* UINavigationBar+Rainbow.swift in Sources */,
 				2FA352281FA1C8C800D87553 /* RepositoryCell.swift in Sources */,
 				2FA352291FA1C8C800D87553 /* RepositorySearchViewController.swift in Sources */,
 				2F38F8BD2005C03A00B27958 /* LanguageBar.swift in Sources */,

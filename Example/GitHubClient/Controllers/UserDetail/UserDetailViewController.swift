@@ -52,7 +52,17 @@ class UserDetailViewController: UIViewController, StoryboardBased {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-chevron_left_round"),
+                                                           landscapeImagePhone: #imageLiteral(resourceName: "icons8-chevron_left_round"),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(navBack))
         bindViewModel()
+    }
+
+    @objc
+    func navBack() {
+        navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

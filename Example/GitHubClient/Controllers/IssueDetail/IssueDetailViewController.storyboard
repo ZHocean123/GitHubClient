@@ -21,110 +21,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-EL-o4R">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="164" id="Nzc-pL-htJ">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="164"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nzc-pL-htJ" id="gXJ-ki-7MQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="D5t-qH-N7w">
-                                                    <rect key="frame" x="8" y="8" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="RLx-LP-O1z"/>
-                                                        <constraint firstAttribute="width" constant="40" id="ylc-4I-CVN"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-Jk-cZo" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                    <rect key="frame" x="56" y="8" width="311" height="147.5"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyI-6J-dxd" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqg-1z-Zbs">
-                                                                    <rect key="frame" x="8" y="10" width="76" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="4ZG-oq-IMT"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                    <color key="value" red="0.81960784310000001" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                    <real key="value" value="1"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glE-aO-cS9" customClass="ReadMeView" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="40" width="311" height="77"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9H-Ej-KSP" customClass="BorderView" customModule="GitHubClient_Example" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="117" width="311" height="30"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="P4h-NA-6CI"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                    <real key="value" value="1"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                    <color key="value" red="0.81960784310000001" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="glE-aO-cS9" firstAttribute="leading" secondItem="8qQ-Jk-cZo" secondAttribute="leading" id="0ZA-zH-1w1"/>
-                                                        <constraint firstItem="uyI-6J-dxd" firstAttribute="top" secondItem="8qQ-Jk-cZo" secondAttribute="top" id="2EI-Qt-Vdc"/>
-                                                        <constraint firstAttribute="bottom" secondItem="m9H-Ej-KSP" secondAttribute="bottom" id="339-oK-udo"/>
-                                                        <constraint firstItem="uyI-6J-dxd" firstAttribute="leading" secondItem="8qQ-Jk-cZo" secondAttribute="leading" id="5Cf-V9-5Vj"/>
-                                                        <constraint firstItem="glE-aO-cS9" firstAttribute="top" secondItem="uyI-6J-dxd" secondAttribute="bottom" id="KbY-Qf-I7A"/>
-                                                        <constraint firstItem="m9H-Ej-KSP" firstAttribute="leading" secondItem="8qQ-Jk-cZo" secondAttribute="leading" id="M9m-9O-92z"/>
-                                                        <constraint firstAttribute="trailing" secondItem="glE-aO-cS9" secondAttribute="trailing" id="NpY-xS-ol6"/>
-                                                        <constraint firstAttribute="trailing" secondItem="uyI-6J-dxd" secondAttribute="trailing" id="e9E-gd-MHv"/>
-                                                        <constraint firstAttribute="trailing" secondItem="m9H-Ej-KSP" secondAttribute="trailing" id="tKR-td-amX"/>
-                                                        <constraint firstItem="m9H-Ej-KSP" firstAttribute="top" secondItem="glE-aO-cS9" secondAttribute="bottom" id="wy5-24-dmL"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.81960784310000001" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_corner" translatesAutoresizingMaskIntoConstraints="NO" id="3ua-9h-sDk">
-                                                    <rect key="frame" x="45" y="22" width="12" height="12"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="8qQ-Jk-cZo" firstAttribute="top" secondItem="gXJ-ki-7MQ" secondAttribute="top" constant="8" id="0LX-8J-f15"/>
-                                                <constraint firstItem="D5t-qH-N7w" firstAttribute="top" secondItem="gXJ-ki-7MQ" secondAttribute="top" constant="8" id="1AS-XG-0s1"/>
-                                                <constraint firstItem="8qQ-Jk-cZo" firstAttribute="leading" secondItem="D5t-qH-N7w" secondAttribute="trailing" constant="8" id="71x-Z6-r7V"/>
-                                                <constraint firstAttribute="trailing" secondItem="8qQ-Jk-cZo" secondAttribute="trailing" constant="8" id="ATN-E7-Eke"/>
-                                                <constraint firstItem="3ua-9h-sDk" firstAttribute="centerY" secondItem="D5t-qH-N7w" secondAttribute="centerY" id="IX7-4H-g2r"/>
-                                                <constraint firstAttribute="bottom" secondItem="8qQ-Jk-cZo" secondAttribute="bottom" constant="8" id="Rop-8k-QXq"/>
-                                                <constraint firstItem="3ua-9h-sDk" firstAttribute="trailing" secondItem="8qQ-Jk-cZo" secondAttribute="leading" constant="1" id="kTt-V2-Y97"/>
-                                                <constraint firstItem="D5t-qH-N7w" firstAttribute="leading" secondItem="gXJ-ki-7MQ" secondAttribute="leading" constant="8" id="wvY-gr-CmM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="RrX-be-dXi" id="yJV-R8-faR"/>
                                     <outlet property="delegate" destination="RrX-be-dXi" id="dYo-bc-aNT"/>
@@ -149,8 +45,4 @@
             <point key="canvasLocation" x="-471" y="-192"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="comment_corner" width="12" height="12"/>
-        <image name="defaultAvatar" width="420" height="420"/>
-    </resources>
 </document>

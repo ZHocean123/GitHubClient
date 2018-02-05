@@ -222,6 +222,7 @@ extension DropDownMenu: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //        selectedOption = options[indexPath.row]
         delegate?.didSelect(option: options[indexPath.row])
+        optionChanged?(options[indexPath.row])
     }
 }
 

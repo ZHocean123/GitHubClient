@@ -25,3 +25,19 @@ extension UIFont {
     static let smallregularFont = UIFont.systemFont(ofSize: 12, weight: .regular)
     static let issueStatusFont = UIFont(name: "iconfont", size: 14)
 }
+
+extension UIImage {
+    static let clear: UIImage = {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+//        context?.setFillColor(UIColor.clear.cgColor)
+//        context?.fill(rect)
+        let theImage = UIGraphicsGetImageFromCurrentImageContext()!
+
+        UIGraphicsEndImageContext()
+
+        return theImage
+    }()
+}

@@ -66,7 +66,7 @@
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="string" keyPath="name" value="Stars"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="countNum">
-                                                                                <integer key="value" value="0"/>
+                                                                                <integer key="value" value="1"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="countColor">
                                                                                 <color key="value" red="0.70588235290000001" green="0.83921568629999999" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
