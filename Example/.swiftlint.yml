@@ -5,7 +5,7 @@ excluded:
   - Source/ExcludedFile.swift
 opt_in_rules:
   - empty_count
-  - file_header
+  # - file_header
   - explicit_init
   - closure_spacing
   - overridden_super_call
