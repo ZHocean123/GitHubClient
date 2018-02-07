@@ -11,7 +11,7 @@ import Reusable
 import RxSwift
 import UIKit
 
-class UserDetailViewController: UIViewController, StoryboardBased {
+class UserDetailViewController: BaseViewController, StoryboardBased {
     let viewModel = UserDetailViewModel()
 
     let disposeBag = DisposeBag()

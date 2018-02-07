@@ -12,7 +12,7 @@ import RxSwift
 import UIKit
 import UITableView_FDTemplateLayoutCell
 
-class RepositorySearchViewController: UIViewController, StoryboardBased, ViewModelBased {
+class RepositorySearchViewController: BaseViewController, StoryboardBased, ViewModelBased {
 
     var viewModel = RepositorySearchViewModel()
 

@@ -11,7 +11,7 @@ import GitHubClient
 import RxSwift
 import UIKit
 
-class NotificationListViewController: UIViewController {
+class NotificationListViewController: BaseViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 

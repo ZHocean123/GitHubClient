@@ -71,6 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return controller
         }
 
+        UITableView.appearance().backgroundColor = UIColor.appBgColor
+
         return true
     }
 

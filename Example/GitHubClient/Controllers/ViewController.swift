@@ -9,7 +9,7 @@
 import GitHubClient
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
 
     @IBOutlet private weak var logSwitch: UISwitch!
 
@@ -17,6 +17,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         logSwitch.isOn = Github.showLog
+
+        logSwitch.addGradientBackground([UIColor.red, UIColor.green],
+                                        cornerRadius: 3,
+                                        shadowOffSet: CGSize(width: 2, height: 2),
+                                        shadowRadius: 3)
     }
 
     override func didReceiveMemoryWarning() {

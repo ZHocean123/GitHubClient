@@ -52,8 +52,22 @@
                                     <action selector="toggleLog:" destination="n2J-PC-5CA" eventType="valueChanged" id="OMS-NY-PRP"/>
                                 </connections>
                             </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfK-s6-L8H" customClass="GradientTopicView" customModule="GitHubClient_Example" customModuleProvider="target">
+                                <rect key="frame" x="55" y="127" width="70.5" height="31"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="topic" value="topic"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showClose" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VfK-s6-L8H" firstAttribute="leading" secondItem="a9L-Zv-55X" secondAttribute="leading" constant="55" id="buO-Qq-Zw8"/>
+                            <constraint firstItem="VfK-s6-L8H" firstAttribute="top" secondItem="bD5-Lk-9Vh" secondAttribute="bottom" constant="107" id="hLg-2x-VNQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="a9L-Zv-55X"/>
                     </view>
                     <navigationItem key="navigationItem" id="40g-q0-ype"/>
@@ -63,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TW-lE-WFQ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5788" y="253"/>
+            <point key="canvasLocation" x="-5788" y="252.32383808095955"/>
         </scene>
         <!--RepositorySearchViewController-->
         <scene sceneID="W77-xN-yXn">

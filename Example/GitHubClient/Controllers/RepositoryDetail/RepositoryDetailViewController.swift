@@ -13,7 +13,7 @@ import RxSwift
 import SnapKit
 import UIKit
 
-class RepositoryDetailViewController: UIViewController, StoryboardBased {
+class RepositoryDetailViewController: BaseViewController, StoryboardBased {
 
     var repository: Repository? {
         set {

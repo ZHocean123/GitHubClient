@@ -10,7 +10,7 @@ import Reusable
 import RxSwift
 import UIKit
 
-class IssueDetailViewController: UIViewController, StoryboardBased {
+class IssueDetailViewController: BaseViewController, StoryboardBased {
 
     let viewModel = IssueDetailViewModel()
 

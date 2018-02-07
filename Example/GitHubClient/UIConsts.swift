@@ -10,6 +10,11 @@ import DynamicColor
 import UIKit
 
 extension UIColor {
+    static let navBgColor = UIColor(hex: 0x49616B)
+    static let navTitleColor = UIColor(hex: 0xB0BEC5)
+    static let navItemColor = UIColor(hex: 0x8ABEB3)
+    static let appBgColor = UIColor(hex: 0x526D7A)
+
     static let normalColor = UIColor(hex: 0x000000)
     static let linkColor = UIColor(hex: 0x0366d6)
     static let commitColor = UIColor(hex: 0x586069)

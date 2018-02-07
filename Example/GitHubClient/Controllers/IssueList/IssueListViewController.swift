@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 import URLNavigator
 
-class IssueListViewController: UIViewController, StoryboardBased {
+class IssueListViewController: BaseViewController, StoryboardBased {
 
     @IBOutlet private weak var tableView: UITableView!
 

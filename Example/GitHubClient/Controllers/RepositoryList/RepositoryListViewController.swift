@@ -13,7 +13,7 @@ import UIKit
 import UITableView_FDTemplateLayoutCell
 import URLNavigator
 
-class RepositoryListViewController: UIViewController, StoryboardBased {
+class RepositoryListViewController: BaseViewController, StoryboardBased {
 
     var viewModel = RepositoryListViewModel()
 

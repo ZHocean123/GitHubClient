@@ -79,6 +79,9 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9672545F2E4D4ABB1C06F8FF /* Pods_GitHubClient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D536D2C33452F879DB31BEFE /* Pods_GitHubClient_Tests.framework */; };
 		AC90611EF9199EB2576CF361 /* Pods_GitHubClient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADBC4B850F7F3DEFD085C49 /* Pods_GitHubClient_Example.framework */; };
+		B08F6FB0202A82C400DE9123 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAF202A82C400DE9123 /* GradientView.swift */; };
+		B08F6FB2202A83AA00DE9123 /* GradientTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FB1202A83AA00DE9123 /* GradientTopicView.swift */; };
+		B08F6FB4202A9F9D00DE9123 /* UIView+GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FB3202A9F9D00DE9123 /* UIView+GradientBackground.swift */; };
 		B092415D202053A500EBE7FC /* UIConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092415C202053A500EBE7FC /* UIConsts.swift */; };
 		B0A9A8662006323500F3CD27 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A9A8652006323500F3CD27 /* Log.swift */; };
 /* End PBXBuildFile section */
@@ -174,6 +177,9 @@
 		607FACE51AFB9204008FA782 /* GitHubClient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubClient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		B08F6FAF202A82C400DE9123 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		B08F6FB1202A83AA00DE9123 /* GradientTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTopicView.swift; sourceTree = "<group>"; };
+		B08F6FB3202A9F9D00DE9123 /* UIView+GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientBackground.swift"; sourceTree = "<group>"; };
 		B092415C202053A500EBE7FC /* UIConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConsts.swift; sourceTree = "<group>"; };
 		B0A9A8652006323500F3CD27 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		B74DFD72A60237B34521096A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -341,6 +347,9 @@
 				2F628116200F19FE00493141 /* DropDownMenu.swift */,
 				2F2EF0F52010473200F16F33 /* IssueTagView.swift */,
 				2FBC7CBB2011CA48006638BF /* IssueCell */,
+				B08F6FAF202A82C400DE9123 /* GradientView.swift */,
+				B08F6FB3202A9F9D00DE9123 /* UIView+GradientBackground.swift */,
+				B08F6FB1202A83AA00DE9123 /* GradientTopicView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -839,6 +848,8 @@
 				2F30014A200C8876000B2CBF /* UserDetailViewModel.swift in Sources */,
 				2FBA6CF62010358D008B9060 /* IssueListViewModel.swift in Sources */,
 				2F0ACA61201086D200AFE403 /* IssueDetailViewModel.swift in Sources */,
+				B08F6FB2202A83AA00DE9123 /* GradientTopicView.swift in Sources */,
+				B08F6FB4202A9F9D00DE9123 /* UIView+GradientBackground.swift in Sources */,
 				2F2EF0F220103BB500F16F33 /* NotificationListViewModel.swift in Sources */,
 				2F82543320282A6E009D407C /* BaseNavigationController.swift in Sources */,
 				2FBC7CB92011CA31006638BF /* IssueCell.swift in Sources */,
@@ -856,6 +867,7 @@
 				2FB54BA920030138008493F7 /* TopicsView.swift in Sources */,
 				2F4707201FA6B40900BD9328 /* EventListViewController.swift in Sources */,
 				2FD577002004B6C500C93DDF /* ControlButton.swift in Sources */,
+				B08F6FB0202A82C400DE9123 /* GradientView.swift in Sources */,
 				2FD577022004BA2400C93DDF /* VerticalAlignmentLabel.swift in Sources */,
 				2FBD3D331FFE0B3A003FD6D6 /* RepositorySearchViewModel.swift in Sources */,
 				2FA3525B1FA1CA5F00D87553 /* DateString.swift in Sources */,

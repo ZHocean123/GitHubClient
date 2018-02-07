@@ -73,11 +73,16 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.setBackgroundImage(UIImage.clear, for: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage.clear
 
-        realBar.backgroundColor = UIColor.gray
+        realBar.backgroundColor = .navBgColor
         realBar.frame = navigationBar.bounds
         view.insertSubview(realBar, belowSubview: navigationBar)
 
         popGestureRecognizerDelegate.navigationController = self
+
+        view.backgroundColor = .appBgColor
+        
+        navigationBar.tintColor = .navItemColor
+        navigationBar.titleTextAttributes = [.foregroundColor: UIColor.navTitleColor]
     }
 
     override func viewDidLayoutSubviews() {

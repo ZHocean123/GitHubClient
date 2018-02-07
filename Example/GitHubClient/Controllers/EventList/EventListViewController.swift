@@ -14,7 +14,7 @@ import Reusable
 import RxSwift
 import UIKit
 
-class EventListViewController: UIViewController {
+class EventListViewController: BaseViewController {
 
     var viewModel = EventListViewModel()
 
